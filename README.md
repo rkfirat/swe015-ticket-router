@@ -61,7 +61,7 @@ python evaluate.py     # writes results/
 python app.py          # http://127.0.0.1:7860
 ```
 
-Model weights are not stored in this repository. `python train.py` rebuilds them with fixed seeds. Trained weights: WEIGHTS_LINK. Unzip them into the repository root (they unpack into `models/`) to skip training.
+Model weights are not stored in this repository. `python train.py` rebuilds them with fixed seeds. Trained weights (586 MB): [swe015-ticket-router-weights.zip](https://github.com/rkfirat/swe015-ticket-router/releases/download/v1.0/swe015-ticket-router-weights.zip). Unzip them into the repository root (they unpack into `models/`) to skip training.
 
 ## Layout
 
