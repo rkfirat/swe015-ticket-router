@@ -1,0 +1,608 @@
+text,true,tf-idf + LogReg [FP64],word2vec + FFN [FP32],BERT-base fine-tuned [FP32],BERT-base fine-tuned [INT8 (dynamic)],BERT-mini distilled [FP32],BERT-mini distilled [INT8 (dynamic)]
+how would they say butter in zambia,translate,translate,translate,translate,translate,translate,oos
+what's the word for trees in norway,translate,oos,oos,oos,translate,oos,oos
+how do they say tacos in mexico,translate,translate,translate,translate,translate,oos,oos
+how would one say cruiser in china,translate,translate,translate,translate,translate,oos,oos
+what's the french word you use for potato,translate,oos,translate,translate,translate,oos,oos
+what would the word for grass be in finland,translate,oos,oos,oos,oos,oos,oos
+english to spanish for dog,translate,oos,translate,translate,translate,oos,oos
+dog in spanish,translate,oos,translate,translate,translate,oos,oos
+i would like to distribute some money between my accounts,transfer,transfer,transfer,transfer,transfer,oos,oos
+how much money can i transfer today,transfer,oos,transfer,oos,oos,oos,oos
+add funds to the retirement account from the pnc account only,transfer,oos,transfer,oos,oos,transfer,oos
+repeat what the weather will be like,transfer,weather,weather,weather,weather,weather,weather
+who set up the numbers for it,timer,oos,oos,oos,who_made_you,oos,oos
+"i heard some woman say she was going to yerd me, what's that mean",definition,oos,oos,oos,oos,oos,oos
+please explain the word catastrophic to me,definition,oos,oos,definition,definition,oos,oos
+what does peer-to-peer actually mean,definition,definition,oos,definition,definition,oos,oos
+what is the reason humans even exist,meaning_of_life,oos,oos,oos,oos,oos,oos
+is there a reason beyond biology about why humans are alive,meaning_of_life,oos,oos,oos,oos,oos,oos
+what's the answer to it all,meaning_of_life,oos,oos,oos,oos,oos,oos
+who do i contact about updating my insurance,insurance_change,insurance_change,oos,insurance_change,insurance_change,oos,oos
+i need to sign up for a new allstate plan,insurance_change,oos,insurance_change,oos,oos,oos,oos
+what is the procedure for signing up for a new allstate plan,insurance_change,oos,oos,oos,oos,oos,oos
+how do i sign up for a new allstatedplan,insurance_change,oos,oos,oos,oos,oos,oos
+where the bleep did i put my bleeping phone,find_phone,oos,find_phone,oos,oos,oos,oos
+what are the travel conditions for haiti,travel_alert,oos,travel_alert,travel_alert,travel_alert,oos,oos
+are there any travel bulletins about haiti,travel_alert,travel_alert,travel_alert,travel_alert,travel_alert,oos,oos
+does the state department say anything about traveling to haiti,travel_alert,oos,oos,oos,oos,travel_suggestion,travel_suggestion
+how is a vacation request made,pto_request,pto_request_status,oos,oos,pto_request,oos,oos
+vacation request information,pto_request,pto_request_status,pto_request_status,oos,oos,oos,oos
+vacation request please,pto_request,pto_request_status,oos,oos,oos,pto_request_status,oos
+how can i contribute to my credit score,improve_credit_score,improve_credit_score,improve_credit_score,improve_credit_score,improve_credit_score,credit_score,credit_score
+how can i up my credit score,improve_credit_score,credit_score,oos,improve_credit_score,improve_credit_score,credit_score,credit_score
+will my fico score decrease if i increase my student loan debt,improve_credit_score,oos,improve_credit_score,improve_credit_score,oos,oos,oos
+will only having five late payments really make my credit bad,improve_credit_score,oos,oos,improve_credit_score,improve_credit_score,oos,oos
+give me something interesting about stars,fun_fact,fun_fact,fun_fact,fun_fact,fun_fact,oos,oos
+please speak in tagalog,change_language,oos,change_language,change_language,change_language,oos,oos
+would you understand me if i speak to you in navajo,change_language,change_language,oos,change_language,change_language,oos,oos
+can you tell me the date of my last check,payday,oos,oos,oos,oos,oos,oos
+when did i last collect my salary,payday,last_maintenance,payday,payday,payday,oos,oos
+what day will i earn my payment from work,payday,oos,income,oos,oos,oos,oos
+what day can i expect to receive payment on,payday,oos,oos,oos,bill_due,bill_due,bill_due
+when will my payment be deposited,payday,oos,oos,oos,oos,oos,oos
+can credit card companies expedite delivery of reissued credit cards,replacement_card_duration,oos,oos,oos,oos,oos,oos
+can you call the help desk line for my credit card company,replacement_card_duration,oos,oos,make_call,oos,oos,oos
+how can i request a new credit card,replacement_card_duration,new_card,new_card,new_card,new_card,new_card,new_card
+what's the phone number for my credit card company,replacement_card_duration,oos,oos,oos,oos,oos,oos
+what is amount of time it takes to get a new credit card i lost mine recently,replacement_card_duration,oos,oos,replacement_card_duration,replacement_card_duration,oos,oos
+what is the shipping status of my replacement card,replacement_card_duration,replacement_card_duration,oos,oos,oos,oos,oos
+time to order and receive a new credit card,replacement_card_duration,oos,new_card,oos,oos,oos,oos
+is it after noon,time,oos,oos,oos,oos,oos,oos
+tell time for another city: dallas,time,oos,oos,oos,oos,oos,oos
+what time is boarding scheduled,flight_status,time,oos,flight_status,flight_status,oos,oos
+when is boarding scheduled,flight_status,oos,oos,flight_status,flight_status,flight_status,oos
+"ai, my name is deb please use my name when you talk to me",change_user_name,change_user_name,oos,change_user_name,change_user_name,oos,oos
+ai answer my questions with my name first which is deb,change_user_name,oos,oos,user_name,user_name,oos,oos
+are you from here or somewhere else originally,where_are_you_from,where_are_you_from,oos,where_are_you_from,where_are_you_from,oos,oos
+a hidden government facility,where_are_you_from,oos,oos,oos,oos,oos,oos
+are you from around here,where_are_you_from,where_are_you_from,oos,where_are_you_from,where_are_you_from,oos,oos
+where did you grow up,where_are_you_from,oos,where_are_you_from,oos,oos,how_old_are_you,how_old_are_you
+tack on a gallon of milk to the grocery list,shopping_list_update,oos,oos,shopping_list_update,shopping_list_update,oos,oos
+add laundry detergent to the list,shopping_list_update,todo_list_update,oos,oos,oos,todo_list_update,todo_list_update
+the list should also have 2 loaves of bread,shopping_list_update,oos,shopping_list,oos,oos,oos,oos
+include asparagus on the list,shopping_list_update,oos,oos,shopping_list_update,shopping_list_update,oos,oos
+"i don't need eggs anymore, but i do need milk",shopping_list_update,oos,oos,oos,oos,oos,oos
+what are you programmed to do for me,what_can_i_ask_you,oos,oos,oos,oos,who_made_you,who_made_you
+what things do you know how to do,what_can_i_ask_you,what_can_i_ask_you,oos,what_can_i_ask_you,what_can_i_ask_you,oos,oos
+undecided,maybe,oos,oos,oos,oos,oos,oos
+i am unable to say,maybe,oos,oos,maybe,maybe,oos,oos
+not sure to be honest,maybe,maybe,oos,maybe,maybe,oos,oos
+diy oil change,oil_change_how,oil_change_when,oil_change_how,oos,oos,oos,oos
+what oil do i use when changing oil and how do i do it,oil_change_how,oil_change_how,oil_change_how,oil_change_how,oil_change_how,oos,oos
+"i'd like to make a reservation at rooth chris, can you do that",restaurant_reservation,oos,oos,oos,oos,oos,oos
+are there any open reservations at outback tonight,restaurant_reservation,oos,oos,accept_reservations,accept_reservations,accept_reservations,accept_reservations
+what are my coffers at,balance,oos,oos,oos,oos,restaurant_reviews,restaurant_reviews
+what the numerical number inside my bank accounts,balance,balance,routing,oos,oos,oos,oos
+tell me whether or not i have a reservation at gramercy tavern for tad,confirm_reservation,oos,oos,confirm_reservation,confirm_reservation,oos,oos
+i wanna know your maker,who_made_you,oos,oos,who_made_you,who_made_you,who_made_you,oos
+what's the mileage to get the the taj mahal in atlantic city,distance,oos,oos,oos,mpg,mpg,mpg
+how much time is left until we get there,distance,oos,oos,distance,distance,oos,oos
+how far from our destination are we,distance,oos,oos,oos,distance,oos,oos
+how many minutes am i from texaco,distance,oos,oos,oos,oos,oos,oos
+is it going to be much longer until i reach the bank,distance,oos,oos,distance,distance,oos,oos
+am i close to arriving at the post office,distance,oos,oos,distance,distance,directions,directions
+when will i arrive at hy-vee,distance,oos,oos,oos,oos,oos,oos
+give me an eta on when i will arrive at my destination,distance,oos,oos,oos,oos,oos,oos
+how much farther is orlando from my location,distance,oos,oos,distance,distance,distance,oos
+do i have a ways to go or am i close to getting to penn station,distance,oos,oos,oos,oos,directions,directions
+what do i go by,user_name,oos,oos,user_name,user_name,user_name,oos
+what's your designation,user_name,what_is_your_name,oos,what_is_your_name,what_is_your_name,what_is_your_name,what_is_your_name
+what do you know me by,user_name,user_name,user_name,user_name,user_name,oos,oos
+you know me by what right now,user_name,oos,oos,user_name,user_name,oos,oos
+what time is it in phoenix,timezone,time,time,time,time,time,time
+i dont want to listen to this song,next_song,next_song,next_song,oos,oos,oos,oos
+when did i last make a purchase,transactions,last_maintenance,oos,oos,oos,oos,oos
+is my visa bill over my limit this month,transactions,oos,oos,oos,oos,credit_limit,credit_limit
+what have i spent things on,transactions,spending_history,spending_history,spending_history,spending_history,spending_history,spending_history
+what were my last 10 charges on my credit card,transactions,oos,oos,oos,oos,transactions,oos
+show what i have spent things on,transactions,spending_history,oos,oos,oos,spending_history,spending_history
+how much have i spent on my debit card this month,transactions,spending_history,oos,spending_history,spending_history,oos,oos
+how much have i spent on my bank card sine i last paid my bill,transactions,spending_history,oos,oos,oos,oos,oos
+how much was my last target trip,transactions,oos,transactions,oos,oos,oos,oos
+i need some suggestions for dinner places tonight,restaurant_suggestion,meal_suggestion,meal_suggestion,oos,oos,oos,oos
+what's the food can easily get in canada,restaurant_suggestion,oos,oos,oos,oos,meal_suggestion,oos
+i need reviews for places serving tacos in chicago,restaurant_suggestion,oos,oos,restaurant_suggestion,restaurant_suggestion,oos,oos
+charge my internet bill to the corporate account,pay_bill,oos,pay_bill,pay_bill,pay_bill,oos,oos
+"today my electric bill will be paid, or should be",pay_bill,oos,bill_due,oos,oos,bill_due,bill_due
+today is the day i should pay my electric bill,pay_bill,pay_bill,bill_due,oos,bill_due,bill_due,bill_due
+my electric bill should be paid today,pay_bill,oos,bill_due,pay_bill,pay_bill,oos,oos
+pay $175 on my visa,pay_bill,oos,oos,oos,pay_bill,oos,oos
+how much fast food have i bought recently,spending_history,spending_history,spending_history,spending_history,spending_history,oos,oos
+have i gone over my entertainment budget,spending_history,oos,oos,oos,oos,oos,oos
+"looking at this week only, have i overspent on hoagies",spending_history,oos,spending_history,oos,oos,oos,oos
+do i overspend when it comes to fast food,spending_history,oos,oos,oos,oos,cook_time,oos
+tell me how much i have been buying as of late,spending_history,oos,oos,oos,oos,oos,oos
+did i stick to my dinner budget,spending_history,oos,oos,oos,oos,oos,oos
+what are my finances like lately,spending_history,oos,income,oos,oos,oos,oos
+is vacation a go,pto_request_status,pto_request_status,oos,oos,oos,pto_request,pto_request
+can you notify me when my vacation days have approved,pto_request_status,pto_balance,oos,pto_request_status,pto_request_status,oos,oos
+when will my vacation time be confirmed,pto_request_status,oos,pto_request_status,oos,oos,oos,oos
+when will i hear back about my days off,pto_request_status,oos,oos,oos,oos,next_holiday,next_holiday
+am i okay to take those vacation days,pto_request_status,pto_balance,oos,oos,oos,oos,oos
+i'm trying to raise my credit score can you tell me what it is now,credit_score,oos,oos,improve_credit_score,improve_credit_score,improve_credit_score,improve_credit_score
+i need to get a new credit card application,new_card,new_card,new_card,new_card,oos,new_card,oos
+what's the best way to get a mastercard,new_card,oos,directions,new_card,new_card,new_card,oos
+how do i apply do get myself a visa,new_card,oos,oos,oos,new_card,oos,oos
+i need to get a mastercard somehow,new_card,oos,oos,new_card,new_card,oos,oos
+does bank of america give credit cards to people like me,new_card,oos,oos,oos,oos,oos,oos
+what's it take to get a mastercard,new_card,distance,oos,new_card,new_card,oos,oos
+i lost all my stuff that i had packed,lost_luggage,oos,oos,oos,oos,oos,oos
+"pardon, i didn't hear you",repeat,repeat,repeat,repeat,repeat,oos,oos
+sorry i missed that,repeat,oos,repeat,oos,oos,oos,oos
+what'd you say,repeat,translate,oos,oos,oos,oos,oos
+where can i find information on oil changes for my car,oil_change_when,oos,oos,oil_change_how,oil_change_how,oos,oos
+what are the manufacturers guidance on oil changes,oil_change_when,oos,oil_change_how,oil_change_how,oil_change_how,oil_change_how,oil_change_how
+that checks out,yes,order_checks,order_checks,oos,oos,order_checks,order_checks
+sure,yes,maybe,oos,yes,yes,oos,oos
+okay,yes,oos,oos,yes,yes,greeting,oos
+definitely,yes,oos,no,yes,yes,oos,oos
+roger that,yes,oos,oos,yes,yes,yes,oos
+you're right,yes,oos,oos,yes,yes,oos,oos
+please let's do it,yes,oos,oos,oos,oos,oos,oos
+can we please,yes,oos,oos,oos,oos,maybe,oos
+10-4,yes,oos,calculator,oos,oos,calculator,calculator
+ya,yes,oos,goodbye,oos,oos,oos,oos
+yup,yes,oos,oos,yes,oos,oos,oos
+great,yes,oos,goodbye,thank_you,thank_you,thank_you,oos
+help me pick a new location to travel to,travel_suggestion,oos,oos,oos,oos,oos,oos
+i am itching to travel but don't know where to go,travel_suggestion,oos,oos,travel_suggestion,travel_suggestion,travel_suggestion,oos
+i want to explore a new place but don't know where i should go do you have any ideas,travel_suggestion,restaurant_suggestion,oos,oos,oos,oos,oos
+cross grocery shopping off the todo list,todo_list_update,todo_list_update,oos,todo_list_update,todo_list_update,shopping_list_update,shopping_list_update
+i don't need grocery shopping on my todo list anymore,todo_list_update,todo_list,oos,todo_list_update,todo_list_update,oos,oos
+take grocery shopping off my todo list,todo_list_update,todo_list_update,oos,todo_list_update,todo_list_update,oos,oos
+remove grocery shopping from todo list,todo_list_update,todo_list_update,shopping_list_update,todo_list_update,todo_list_update,shopping_list_update,shopping_list_update
+cross off grocery shopping from todo list,todo_list_update,todo_list_update,oos,todo_list_update,todo_list_update,shopping_list_update,shopping_list_update
+empty the contents of my to do list,todo_list_update,todo_list_update,todo_list,todo_list_update,todo_list_update,todo_list,todo_list
+please put lawn mowing on my list of to dos,todo_list_update,todo_list_update,todo_list_update,oos,todo_list_update,todo_list_update,oos
+please note vacuuming on my to do list,todo_list_update,todo_list,todo_list,todo_list_update,todo_list_update,todo_list,todo_list
+you can vacuuming of my todo list,todo_list_update,todo_list,todo_list_update,todo_list_update,todo_list_update,oos,oos
+what kinds of things are you supposed to remind me of,reminder,oos,what_can_i_ask_you,oos,oos,oos,oos
+can you please remind me of the items that i made note of to not forget,reminder,oos,oos,oos,oos,reminder,oos
+can i change your talking voice,change_speed,change_speed,oos,oos,oos,oos,oos
+that can't be true,no,yes,oos,no,no,oos,oos
+there is no way in heck that is true,no,no,oos,no,no,oos,oos
+have i gotten around to adding the bike ride to my calendar yet,calendar,oos,oos,calendar_update,calendar_update,calendar_update,calendar_update
+have i added my doctor's appointment to my calendar,calendar,calendar_update,calendar_update,calendar_update,calendar_update,calendar_update,calendar_update
+is the marathon on friday added to my calendar,calendar,calendar_update,calendar_update,calendar_update,calendar_update,calendar_update,calendar_update
+retrieve events on my calendar,calendar,oos,calendar,oos,oos,calendar_update,calendar_update
+on tuesday you are supposed to have a meeting,calendar,oos,oos,schedule_meeting,schedule_meeting,schedule_meeting,schedule_meeting
+you have yo go to school on calendar,calendar,oos,oos,calendar_update,calendar_update,oos,oos
+"if something is 15% off $35, how much is it",calculator,oos,oos,calculator,calculator,oos,oos
+i bought 6 shirts at $499 each what was my total expenditure for them,calculator,oos,oos,oos,oos,oos,oos
+i spent 34 dollars for 12 gallons of paint what is the average price for each gallon,calculator,oos,oos,oos,oos,oos,oos
+what will tomorrow be on the calendar,date,oos,calendar,oos,oos,calendar,calendar
+can i bring perfume on the plane or what is the size limit,carry_on,oos,oos,oos,oos,credit_limit,credit_limit
+what are the rules for traveling with toothpaste,carry_on,oos,oos,oos,oos,oos,oos
+can i fly with my razors or are there restrictions,carry_on,oos,carry_on,oos,oos,oos,oos
+are there restrictions for carrying lighters in my backpack on a plane,carry_on,oos,oos,carry_on,carry_on,smart_home,oos
+i need to know how many days i toof off,pto_used,oos,oos,oos,oos,pto_balance,pto_balance
+how much pto is gone,pto_used,oos,oos,oos,oos,oos,oos
+how much of my pto is left,pto_used,pto_used,oos,pto_balance,oos,oos,oos
+find out the next available date and time i can go to get my oil changed please,schedule_maintenance,oos,oos,oil_change_when,oil_change_when,oil_change_when,oil_change_when
+can you let me know the next open slot for me to get my oil changed,schedule_maintenance,oos,oos,oil_change_when,oil_change_when,oos,oos
+what is the next date for which i can get an oil change appointment,schedule_maintenance,oos,oil_change_when,oos,oos,oil_change_when,oil_change_when
+where can i go to have my tires checked out,schedule_maintenance,oos,oos,schedule_maintenance,schedule_maintenance,oos,oos
+find a place near me to have my tires inspected,schedule_maintenance,oos,oos,oos,schedule_maintenance,tire_pressure,tire_pressure
+i'll be travelling to russia from april 1 through april 20 and need my financial institute apprised of it,travel_notification,oos,travel_notification,travel_notification,travel_notification,travel_notification,oos
+tell my bank's fraud department i'm going to mexico,travel_notification,travel_notification,oos,report_fraud,report_fraud,report_fraud,report_fraud
+i want you to connect to my handset,sync_device,sync_device,sync_device,sync_device,sync_device,oos,oos
+connect to my device,sync_device,oos,sync_device,sync_device,sync_device,sync_device,oos
+unsync yourself from my device,sync_device,oos,sync_device,oos,oos,oos,oos
+"ai is a helpful item to have in my home, thank you",thank_you,oos,oos,thank_you,thank_you,thank_you,oos
+how many days milk can be preserved,food_last,oos,calories,oos,oos,oos,oos
+when does the jerky expire,food_last,expiration_date,food_last,oos,oos,oos,oos
+what is the expiration date for honey,food_last,expiration_date,food_last,oos,food_last,oos,oos
+when is the egg expired,food_last,oos,oos,oos,oos,oos,oos
+what is the expiration date for those eg,food_last,expiration_date,oos,expiration_date,expiration_date,oos,oos
+what is the amount of time to keep milk refrigerated,food_last,oos,food_last,oos,oos,oos,oos
+how long to grill thick steaks,cook_time,cook_time,how_busy,cook_time,cook_time,oos,oos
+look up recipe time for this,cook_time,oos,oos,oos,oos,oos,oos
+how many minutes should i set an alarm for this bake,cook_time,alarm,oos,alarm,alarm,alarm,alarm
+when can i expect meal of salmon to be finished,cook_time,oos,meal_suggestion,oos,oos,oos,oos
+don't forget to tell me to call my mother,reminder_update,oos,oos,make_call,oos,make_call,make_call
+i don't want to forget to call mom,reminder_update,make_call,make_call,oos,oos,make_call,make_call
+help me to remember to pick up stan later,reminder_update,oos,reminder_update,oos,oos,oos,oos
+tell me later to call bill,reminder_update,make_call,make_call,make_call,make_call,make_call,make_call
+can you set a reminder alarm for me to workout,reminder_update,alarm,alarm,oos,reminder_update,reminder_update,oos
+someone used my chase card without my authorization,report_lost_card,report_fraud,oos,oos,oos,report_fraud,report_fraud
+my bank of america visa platinum was swiped from my belongings,report_lost_card,oos,oos,oos,oos,oos,oos
+my capital one visa was taken without permission,report_lost_card,oos,oos,oos,oos,report_fraud,report_fraud
+i need to report that someone ran off with my td bank card earlier,report_lost_card,oos,damaged_card,oos,oos,oos,oos
+can i swap chili for sloppy joe mix in the recipe,ingredient_substitution,oos,ingredient_substitution,ingredient_substitution,ingredient_substitution,oos,oos
+will it be ok to sub turkey for beef,ingredient_substitution,oos,oos,ingredient_substitution,ingredient_substitution,oos,oos
+is it alright to switch applesauce for oil,ingredient_substitution,oos,oil_change_how,oos,oos,oil_change_how,oil_change_how
+will it still work if i use applesauce instead of oil,ingredient_substitution,ingredient_substitution,ingredient_substitution,oos,oos,oos,oos
+is it ok to use oil spray instead of canola oil,ingredient_substitution,ingredient_substitution,ingredient_substitution,oos,oos,oos,oos
+i need you to call the phone company for me,make_call,make_call,oos,make_call,make_call,make_call,oos
+get mom on the phone,make_call,oos,oos,make_call,make_call,oos,oos
+x needs to be called by me,make_call,change_user_name,change_user_name,change_user_name,change_user_name,change_user_name,change_user_name
+did i put grocery shopping on my todo list,todo_list,todo_list,shopping_list,todo_list,todo_list,oos,oos
+have i told you to add washing dishes to my todo list,todo_list,todo_list_update,todo_list_update,todo_list_update,todo_list_update,todo_list_update,todo_list_update
+what items are on my list of to-dos,todo_list,todo_list,todo_list,todo_list,todo_list,todo_list,oos
+what kind of things do i have to do today,todo_list,todo_list,todo_list,todo_list,todo_list,todo_list,oos
+i really want to know my todo list again thanks,todo_list,todo_list,oos,todo_list,todo_list,todo_list,oos
+can you see if paying garbage bill is on my todo list for this week,todo_list,todo_list,oos,todo_list,todo_list,oos,oos
+please switch to the girl voice,change_accent,oos,oos,change_accent,change_accent,oos,oos
+change to the females voice please,change_accent,oos,change_accent,change_accent,change_accent,change_accent,oos
+how do i get that tax form from my employer,w2,w2,oos,w2,w2,oos,oos
+what's the latest i can pay my cellular bill,bill_due,pay_bill,oos,oos,oos,pay_bill,pay_bill
+tell me where i can find my exterminator bill's due date,bill_due,bill_due,bill_due,bill_due,bill_due,expiration_date,oos
+what's the ultimate day for me to pay the internet bill,bill_due,pay_bill,oos,bill_due,bill_due,bill_due,oos
+when does the current billing cycle end,bill_due,oos,oos,oos,oos,oos,oos
+is the bill due today,bill_due,bill_due,bill_due,bill_due,bill_due,bill_due,oos
+is the bill due,bill_due,bill_due,bill_due,oos,oos,oos,oos
+when do i have to pay my internet,bill_due,bill_due,bill_due,bill_due,bill_due,oos,oos
+when is my electricity due date,bill_due,bill_due,bill_due,oos,oos,oos,oos
+i need to know the next billing date of my american express card,bill_due,oos,expiration_date,oos,oos,oos,oos
+what do i do about a card that's too messed up to be properly scanned,damaged_card,oos,oos,oos,oos,oos,oos
+i spilled wine on my credit card and now its all mushy and needs to be replaced,damaged_card,oos,oos,damaged_card,damaged_card,damaged_card,oos
+i'm unable to use my card because it's been ruined,damaged_card,damaged_card,damaged_card,damaged_card,damaged_card,oos,oos
+i can't use my card because it’s messed up,damaged_card,damaged_card,damaged_card,damaged_card,damaged_card,oos,oos
+who should i talk to about the fact that i inadvertently split my card almost in half,damaged_card,damaged_card,oos,damaged_card,damaged_card,damaged_card,oos
+is the review ned's have good,restaurant_reviews,oos,restaurant_reviews,restaurant_reviews,restaurant_reviews,oos,oos
+do they serve good tacos at the buffet,restaurant_reviews,oos,restaurant_reviews,oos,oos,oos,oos
+"my favorite, beef tacos at the buffet",restaurant_reviews,oos,restaurant_reviews,oos,oos,oos,oos
+they sold out of tacos at the buffet,restaurant_reviews,oos,oos,oos,oos,oos,oos
+"yum, pulled pork tacos at the buffet",restaurant_reviews,oos,oos,oos,oos,oos,oos
+give me some feedback about the pasta at piada please,restaurant_reviews,oos,oos,restaurant_reviews,restaurant_reviews,restaurant_reviews,oos
+how is gramercy tavern rated,restaurant_reviews,oos,oos,restaurant_reviews,restaurant_reviews,oos,oos
+do people say per se is any good or not,restaurant_reviews,oos,restaurant_reviews,oos,oos,oos,oos
+how many stars does brasserie les halles have,restaurant_reviews,oos,oos,restaurant_reviews,restaurant_reviews,oos,oos
+what rating do the critics give the french laundry,restaurant_reviews,oos,oos,restaurant_reviews,restaurant_reviews,oos,oos
+i would like you to reserve a conference room for noon tomorrow,schedule_meeting,oos,oos,schedule_meeting,oos,oos,oos
+"go ahead and hold a conference room for friday at 11 am, please",schedule_meeting,oos,schedule_meeting,schedule_meeting,schedule_meeting,schedule_meeting,oos
+which gas would be best,gas_type,oos,oos,gas_type,gas_type,oos,oos
+what type of gas should i use,gas_type,gas_type,gas_type,oos,oos,gas_type,oos
+what raiting of gas is called for,gas_type,gas,oos,oos,oos,credit_score,credit_score
+what kind of gas goes in,gas_type,gas_type,gas_type,gas_type,gas_type,oos,oos
+the car you are driving uses what kind of gas,gas_type,gas_type,gas_type,gas_type,gas_type,oos,oos
+is electricity the same in france,plug_type,oos,oos,oos,oos,oos,oos
+does z used the same plus as we do in the united states,plug_type,oos,oos,oos,oos,oos,oos
+what kind of electrical outlet does that country use,plug_type,plug_type,plug_type,plug_type,oos,oos,oos
+how many miles are my tires rated for,tire_change,oos,oos,oos,oos,tire_pressure,tire_pressure
+convert 200 us dollars to british pounds,exchange_rate,exchange_rate,exchange_rate,exchange_rate,exchange_rate,exchange_rate,oos
+what is a british pound worth in mexican pesos,exchange_rate,oos,exchange_rate,exchange_rate,exchange_rate,exchange_rate,oos
+how long do i have to wait to get a day off,next_holiday,how_busy,oos,oos,oos,how_busy,how_busy
+decrease your decibel level,change_volume,oos,change_volume,oos,oos,oos,oos
+be more quiet,change_volume,cancel,oos,oos,cancel,cancel,cancel
+please lower the sound,change_volume,oos,change_volume,change_volume,change_volume,change_volume,oos
+speak up,change_volume,change_speed,change_speed,oos,oos,oos,oos
+not so loud,change_volume,oos,no,oos,oos,whisper_mode,whisper_mode
+quieter please,change_volume,oos,oos,oos,oos,oos,oos
+please lower your volume,change_volume,change_volume,change_volume,change_volume,change_volume,oos,oos
+can you speak quieter,change_volume,change_speed,change_speed,whisper_mode,whisper_mode,oos,oos
+are you my insubordinate,who_do_you_work_for,who_do_you_work_for,who_do_you_work_for,oos,oos,oos,oos
+do i own you,who_do_you_work_for,oos,do_you_have_pets,oos,oos,oos,oos
+do i control you,who_do_you_work_for,oos,oos,oos,oos,oos,oos
+am i in charge of you,who_do_you_work_for,oos,oos,who_do_you_work_for,who_do_you_work_for,oos,oos
+is there another person that controls you,who_do_you_work_for,oos,who_do_you_work_for,oos,oos,oos,oos
+who controls you,who_do_you_work_for,who_made_you,who_made_you,oos,oos,oos,oos
+who employs you,who_do_you_work_for,who_made_you,who_made_you,who_do_you_work_for,who_do_you_work_for,oos,oos
+where do you work,who_do_you_work_for,who_do_you_work_for,who_do_you_work_for,who_do_you_work_for,who_do_you_work_for,who_do_you_work_for,oos
+what is the name of the place you work at,who_do_you_work_for,oos,oos,who_do_you_work_for,who_do_you_work_for,oos,oos
+who can i talk to above you,who_do_you_work_for,oos,oos,oos,oos,oos,oos
+what's the most i can charge on my card,credit_limit,oos,oos,oos,oos,oos,oos
+how much do i have available on my visa card,credit_limit,oos,oos,oos,oos,credit_limit,oos
+what is my credit max,credit_limit,credit_score,credit_limit,oos,oos,oos,oos
+how much credit do i have on my discover card,credit_limit,oos,oos,oos,oos,credit_limit,oos
+how much is my maximum to spend on credit cards,credit_limit,oos,credit_limit,oos,oos,oos,oos
+how much can i use on my visa,credit_limit,credit_limit,oos,credit_limit,credit_limit,credit_limit,oos
+can i get a table for four at 8:00,how_busy,restaurant_reservation,restaurant_reservation,restaurant_reservation,restaurant_reservation,restaurant_reservation,restaurant_reservation
+is the friday's full after 4,how_busy,oos,oos,oos,oos,oos,oos
+is the mexican place crowded at night,how_busy,oos,oos,oos,how_busy,how_busy,oos
+are cool people at the bar at 9:00 pm,how_busy,restaurant_reservation,oos,oos,how_busy,oos,oos
+what is the best time to go to get a burger without a line,how_busy,oos,oos,oos,oos,oos,oos
+how long before i can eat at chic fil a,how_busy,oos,oos,how_busy,how_busy,oos,oos
+is the breakfast place full in the mornings,how_busy,oos,oos,how_busy,how_busy,oos,oos
+is mr joes pizza available for a seating,how_busy,oos,oos,oos,oos,oos,oos
+does mr joes pizza usually have a long wait,how_busy,oos,how_busy,how_busy,how_busy,oos,oos
+can you find out the waiting times for mr joes pizza,how_busy,oos,oos,how_busy,how_busy,oos,oos
+what's the typical wait time for mr joes pizza,how_busy,oos,how_busy,how_busy,how_busy,oos,oos
+can i do a reservation at sammy's crab shack,accept_reservations,oos,oos,accept_reservations,accept_reservations,oos,oos
+can i reserve tables at the new york restaurant,accept_reservations,oos,oos,oos,restaurant_reservation,oos,oos
+is it possible to reserve a table at white castle,accept_reservations,restaurant_reservation,restaurant_reservation,restaurant_reservation,restaurant_reservation,restaurant_reservation,restaurant_reservation
+do you think they'll let me reserve a table at the olive garden,accept_reservations,oos,oos,restaurant_reservation,restaurant_reservation,restaurant_reservation,restaurant_reservation
+will we have to make reservations for roca,accept_reservations,accept_reservations,oos,accept_reservations,accept_reservations,accept_reservations,oos
+can you help with delivery tracking,order_status,oos,oos,oos,oos,oos,oos
+i need a delivery tracked,order_status,oos,order,order_status,order_status,oos,oos
+could you track an order for me,order_status,order,order,order_status,order_status,order,order
+can you tell me when my item will get here,order_status,oos,oos,oos,oos,oos,oos
+can you tell me where my item is,order_status,oos,oos,oos,oos,oos,oos
+i would like to change the name on my checking account,pin_change,change_ai_name,pin_change,oos,change_ai_name,oos,oos
+i would like to change the name on my credit card account,pin_change,oos,oos,oos,change_ai_name,oos,oos
+i would like to change the name on my first hawaiian bank account,pin_change,oos,pin_change,oos,oos,oos,oos
+i would like to change the name on my first bankcard account,pin_change,oos,pin_change,oos,change_ai_name,oos,oos
+i would like to change the name on my capital one account,pin_change,oos,pin_change,oos,change_ai_name,oos,oos
+change the code of my savings account to be 1234,pin_change,oos,pin_change,oos,oos,oos,oos
+it was really awesome to talk to you,goodbye,goodbye,goodbye,goodbye,goodbye,goodbye,oos
+regards,goodbye,oos,oos,oos,oos,oos,oos
+"great talk, thanks",goodbye,thank_you,goodbye,oos,thank_you,oos,oos
+thank you goodbye,goodbye,thank_you,oos,goodbye,goodbye,oos,oos
+that will be all have a nice day!,goodbye,oos,oos,goodbye,goodbye,oos,oos
+"that's all i need, i'm going now",goodbye,oos,oos,oos,oos,oos,oos
+"thanks for your help, goodbye!",goodbye,thank_you,thank_you,goodbye,goodbye,oos,oos
+signing off,goodbye,oos,oos,oos,oos,oos,oos
+are there any problems with my bank account,account_blocked,account_blocked,account_blocked,account_blocked,account_blocked,oos,oos
+did someone who is unauthorized try to get into my bank account,account_blocked,oos,oos,report_fraud,report_fraud,report_fraud,report_fraud
+how can i unfreeze my bank account,account_blocked,freeze_account,oos,freeze_account,freeze_account,freeze_account,freeze_account
+what kind of music on the speaker now,what_song,oos,oos,what_song,what_song,oos,oos
+"in x, what is the charge if i use my card",international_fees,international_fees,international_fees,oos,oos,oos,oos
+"if i use my card in x, will there be a charge",international_fees,international_fees,international_fees,international_fees,oos,international_fees,oos
+tell me if i have a meeting with liz today,meeting_schedule,meeting_schedule,meeting_schedule,meeting_schedule,meeting_schedule,oos,oos
+is there a meeting with sam today,meeting_schedule,schedule_meeting,meeting_schedule,meeting_schedule,meeting_schedule,oos,oos
+is it possible i have a meeting with kim today,meeting_schedule,meeting_schedule,meeting_schedule,oos,oos,schedule_meeting,schedule_meeting
+what food do you need to make lasagna,ingredients_list,ingredients_list,oos,oos,oos,oos,oos
+what is needed to make lasagna,ingredients_list,oos,ingredients_list,ingredients_list,ingredients_list,ingredients_list,oos
+what is needed to cook lasagna,ingredients_list,oos,oos,oos,oos,recipe,oos
+give me a recipe for tacos,ingredients_list,recipe,recipe,recipe,recipe,recipe,recipe
+tell me what's in tacos,ingredients_list,oos,oos,ingredients_list,oos,oos,oos
+what's a good recipe foe tacos,ingredients_list,recipe,recipe,recipe,recipe,recipe,recipe
+how much flour do i need for a strawberry cake,ingredients_list,oos,oos,oos,oos,oos,oos
+tell me the ingredients to make an apple pie,ingredients_list,recipe,ingredients_list,ingredients_list,ingredients_list,oos,oos
+what do i need to make authentic kimchi,ingredients_list,ingredients_list,ingredients_list,ingredients_list,ingredients_list,oos,oos
+what do i need to make macaroni,ingredients_list,ingredients_list,oos,ingredients_list,ingredients_list,oos,oos
+what do i need to buy for spaghetti,ingredients_list,oos,oos,oos,oos,ingredients_list,oos
+what am i gonna need for sushi,ingredients_list,oos,oos,oos,oos,oos,oos
+pull up everything i need to make a pasta dish,ingredients_list,oos,oos,oos,oos,oos,oos
+tell me all the things i need to buy to make pasta,ingredients_list,oos,oos,oos,oos,oos,oos
+what do i need to make brownies,ingredients_list,ingredients_list,ingredients_list,ingredients_list,ingredients_list,oos,oos
+i seem to have a purchase that i didn't make from olive garden on my account,report_fraud,oos,oos,report_fraud,report_fraud,oos,oos
+my online bill has some items that i didn't purchase from penneys,report_fraud,oos,oos,oos,oos,oos,oos
+my account shows a transaction that i didn't make from foot locker,report_fraud,report_fraud,report_fraud,report_fraud,report_fraud,oos,oos
+my bill shows a purchase from payless shoes but i didn't buy anything,report_fraud,order,oos,oos,oos,oos,oos
+this charge is bs,report_fraud,oos,oos,oos,oos,oos,oos
+i have a bogus transaction from amazon on my account,report_fraud,report_fraud,report_fraud,report_fraud,report_fraud,transactions,transactions
+i have a crap transaction from guitar center on my account,report_fraud,report_fraud,report_fraud,report_fraud,report_fraud,transactions,transactions
+i think this transaction is bogus,report_fraud,report_fraud,report_fraud,report_fraud,report_fraud,transactions,transactions
+i don't remember buying this,report_fraud,oos,oos,oos,oos,oos,oos
+i have a bs transaction from ebay on my account,report_fraud,report_fraud,report_fraud,report_fraud,oos,transactions,transactions
+i think someone jacked my bank account,report_fraud,account_blocked,account_blocked,oos,oos,oos,oos
+someone else used my account to buy stuff from mcdonald's,report_fraud,oos,oos,oos,oos,oos,oos
+there's a messed up transaction on my account from mcdonald's,report_fraud,report_fraud,report_fraud,report_fraud,report_fraud,transactions,transactions
+how does measurement slugs convert to measurement lb,measurement_conversion,oos,oos,measurement_conversion,measurement_conversion,oos,oos
+how does measurement a convert to measurement b,measurement_conversion,oos,oos,oos,oos,oos,oos
+where can i find measurement conversions,measurement_conversion,w2,oos,oos,oos,oos,oos
+start the dishwasher,smart_home,oos,oos,smart_home,smart_home,oos,oos
+turn on the microwave for 3 minutes,smart_home,oos,oos,oos,oos,timer,oos
+i want the light less bright please,smart_home,oos,oos,smart_home,smart_home,oos,oos
+open map and pin point my location,current_location,current_location,current_location,pin_change,current_location,oos,oos
+what could help me locate myself,current_location,oos,oos,oos,oos,oos,oos
+forget what i told you to do,cancel,oos,oos,cancel,cancel,oos,oos
+can you turn off the process,cancel,oos,oos,oos,oos,cancel,oos
+hush,cancel,oos,oos,cancel,oos,oos,oos
+stop processing,cancel,cancel,cancel,cancel,cancel,cancel,oos
+i would like to know my vacation days balance,pto_balance,pto_balance,pto_balance,pto_balance,pto_balance,oos,oos
+how many days on holiday do i have,pto_balance,oos,oos,pto_balance,pto_balance,pto_balance,oos
+can you see if i have any vacation days available for a request,pto_balance,oos,oos,pto_request,pto_request,pto_request,pto_request
+what is the balance on my vacation days,pto_balance,oos,pto_balance,oos,pto_balance,oos,oos
+how many sick days do i have,pto_balance,oos,oos,pto_balance,pto_balance,oos,oos
+i want directions to phoenix,directions,oos,directions,directions,directions,directions,oos
+where is the closest gas station to glendale,directions,directions,directions,directions,directions,oos,oos
+"tell me how to spent ""frightened",spelling,oos,spending_history,oos,oos,spending_history,spending_history
+is everything ok today,greeting,greeting,oos,greeting,greeting,oos,oos
+revert to the original configuration,reset_settings,oos,reset_settings,reset_settings,reset_settings,oos,oos
+change all setting to original ones,reset_settings,oos,reset_settings,reset_settings,reset_settings,oos,oos
+who do i have the pleasure of speaking with,what_is_your_name,oos,oos,oos,oos,oos,oos
+who am i speaking with,what_is_your_name,oos,oos,oos,oos,oos,oos
+"i'd like my checks to be deposited into my account directly, how do i do that",direct_deposit,oos,direct_deposit,order_checks,order_checks,order_checks,order_checks
+what's the apr on my savings account,interest_rate,apr,oos,apr,apr,apr,apr
+when can i change my credit limit,credit_limit_change,credit_limit_change,credit_limit_change,credit_limit_change,credit_limit_change,oos,oos
+can i get more credit,credit_limit_change,credit_limit_change,oos,oos,oos,improve_credit_score,improve_credit_score
+what do you do on off days,what_are_your_hobbies,oos,oos,what_are_your_hobbies,what_are_your_hobbies,oos,oos
+what do you do after work,what_are_your_hobbies,oos,who_do_you_work_for,what_are_your_hobbies,what_are_your_hobbies,who_do_you_work_for,who_do_you_work_for
+what do you like to do besides work,what_are_your_hobbies,oos,oos,what_are_your_hobbies,what_are_your_hobbies,oos,oos
+book me a place to chicago from atlanta united airlines,book_flight,oos,book_flight,oos,oos,book_hotel,book_hotel
+"""i'll be travelling from lax and headed to phl for 120 on the 10th of may",book_flight,oos,oos,oos,oos,oos,oos
+"""i'm fly out from lax to phl this weekend for around $120",book_flight,oos,book_flight,book_flight,book_flight,oos,oos
+"""i""m headed out to lax and going to phl for a low price of $120 this weekend on the 12th",book_flight,oos,oos,oos,oos,oos,oos
+"""i'll leave to lax and go to phl for $120 on nov 5th",book_flight,oos,book_flight,oos,oos,oos,oos
+can i fly from atlanta to san francisco for less than 100 dollars,book_flight,oos,oos,book_flight,book_flight,oos,oos
+did i remember to put oatmeal on my list,shopping_list,oos,todo_list,oos,oos,todo_list,todo_list
+iterate over the items on my grocery list,shopping_list,oos,oos,oos,oos,oos,oos
+have i already got eggs down on the shopping list,shopping_list,shopping_list,oos,oos,oos,oos,oos
+recite the items i'm planning to purchase,shopping_list,oos,order,oos,order,oos,oos
+what's on my purchase list,shopping_list,oos,shopping_list,oos,oos,oos,oos
+am i supposed to buy milk,shopping_list,oos,oos,oos,order,oos,oos
+is milk one of the things i need to buy,shopping_list,oos,oos,oos,oos,oos,oos
+are carrots added to the grocery list,shopping_list,shopping_list_update,oos,shopping_list_update,shopping_list_update,shopping_list_update,shopping_list_update
+tell jim i'm coming home soon,text,oos,oos,oos,oos,oos,oos
+i want to tell susan that the meeting has been cancelled,text,oos,oos,oos,oos,meeting_schedule,meeting_schedule
+tell fred that i don't have his guitar,text,oos,oos,oos,oos,oos,oos
+what do i owe to jcp,bill_balance,oos,oos,oos,oos,bill_balance,oos
+how much do i owe visa,bill_balance,bill_balance,oos,oos,oos,oos,oos
+i need to know the price of my car payment and insurance please,bill_balance,oos,oos,oos,oos,oos,oos
+how much is my water and sewer,bill_balance,bill_balance,bill_balance,oos,oos,gas,gas
+how much does my water and electricity cost,bill_balance,bill_balance,bill_balance,oos,oos,oos,oos
+has my electricity bill increased this month how much,bill_balance,bill_balance,bill_balance,oos,oos,oos,oos
+how expensive is my internet,bill_balance,oos,oos,oos,oos,oos,oos
+what will i be paying for utilities this month,bill_balance,oos,bill_balance,oos,oos,bill_balance,oos
+how much do i have to pay this month,bill_balance,bill_balance,bill_balance,oos,oos,income,income
+tell me my water bill please,bill_balance,bill_balance,bill_balance,bill_balance,bill_balance,oos,oos
+is the phone bill the same as last month,bill_balance,oos,min_payment,oos,oos,oos,oos
+whens my insurance due and how much does it cost,bill_balance,oos,bill_due,oos,oos,bill_due,oos
+i'd like for this person to know my location,share_location,current_location,current_location,oos,oos,oos,oos
+can you indicate my location to my friend,share_location,share_location,oos,share_location,share_location,oos,oos
+what is my current location,share_location,current_location,current_location,current_location,current_location,current_location,current_location
+show allison how to get to me,share_location,oos,directions,oos,oos,oos,oos
+how do i get stuff with visa points,redeem_rewards,oos,redeem_rewards,redeem_rewards,redeem_rewards,oos,oos
+what are my mastercard points good for,redeem_rewards,oos,oos,oos,rewards_balance,oos,oos
+how many points do i have to cash,redeem_rewards,redeem_rewards,oos,oos,oos,oos,oos
+what do i have to do to use my credit points acquired through purchases,redeem_rewards,redeem_rewards,redeem_rewards,redeem_rewards,redeem_rewards,oos,oos
+i want to use my card reward points,redeem_rewards,redeem_rewards,redeem_rewards,redeem_rewards,redeem_rewards,redeem_rewards,oos
+what are the steps to get my rewards for my visa card,redeem_rewards,rewards_balance,oos,oos,oos,rewards_balance,rewards_balance
+how can i claim my rewards for my visa card,redeem_rewards,rewards_balance,rewards_balance,oos,oos,rewards_balance,rewards_balance
+how can i get my rewards for my master card,redeem_rewards,rewards_balance,oos,oos,oos,rewards_balance,rewards_balance
+where would i get my rewards for my master card,redeem_rewards,rewards_balance,rewards_balance,rewards_balance,rewards_balance,rewards_balance,rewards_balance
+what can i get with my mastercard points,redeem_rewards,oos,redeem_rewards,oos,redeem_rewards,oos,oos
+get me my slow sounds,play_music,oos,oos,oos,oos,change_speed,change_speed
+let me hear my slow songs,play_music,oos,play_music,play_music,oos,oos,oos
+pull up the songs under slow,play_music,oos,oos,oos,oos,oos,oos
+i'm in the mood for slow songs and nothing else,play_music,oos,oos,oos,oos,oos,oos
+drop some beats,play_music,oos,fun_fact,oos,oos,oos,oos
+turn on top 20 country hits,play_music,oos,oos,oos,oos,oos,oos
+turn on my tunes,play_music,oos,smart_home,play_music,play_music,oos,oos
+bump some jams,play_music,oos,oos,oos,oos,oos,oos
+turn on metallicas greatest hits,play_music,smart_home,smart_home,play_music,oos,oos,oos
+put on my 90s playlist,play_music,update_playlist,oos,play_music,oos,oos,oos
+what can i do to get rid of this event,calendar_update,oos,oos,oos,oos,calendar_update,oos
+what is the best way to remove this appointment,calendar_update,oos,oos,oos,oos,oos,oos
+are you a computer generated voice,are_you_a_bot,are_you_a_bot,are_you_a_bot,are_you_a_bot,are_you_a_bot,oos,oos
+can i get to susan's house with my current tank,gas,oos,gas,oos,oos,oos,oos
+how many more miles can i drive on my current tank,gas,oos,gas,oos,mpg,oos,oos
+what is the expiration month and year on my credit car,expiration_date,expiration_date,expiration_date,expiration_date,expiration_date,oos,oos
+when is my card expired,expiration_date,oos,expiration_date,expiration_date,expiration_date,expiration_date,oos
+what month is my card expired in,expiration_date,oos,expiration_date,expiration_date,expiration_date,expiration_date,oos
+when will my new credit card arrive,expiration_date,replacement_card_duration,oos,replacement_card_duration,replacement_card_duration,replacement_card_duration,replacement_card_duration
+in my motivational playlist include the song rap god,update_playlist,update_playlist,oos,update_playlist,update_playlist,oos,oos
+what do you think about me calling you cora,change_ai_name,oos,user_name,oos,change_ai_name,change_ai_name,oos
+you are going to be called joe now,change_ai_name,oos,oos,change_ai_name,change_ai_name,change_ai_name,oos
+start responding to joe,change_ai_name,oos,change_ai_name,oos,oos,oos,oos
+what's your bday,how_old_are_you,oos,oos,oos,oos,oos,oos
+"in x, help me book a car",car_rental,car_rental,car_rental,car_rental,oos,car_rental,oos
+i need options or italian tonight,meal_suggestion,oos,meal_suggestion,oos,oos,oos,oos
+do you have any recommendations for korean,meal_suggestion,oos,meal_suggestion,change_language,oos,oos,oos
+what kind of indian would you recommend,meal_suggestion,oos,meal_suggestion,oos,oos,oos,oos
+what would you suggest for japanese,meal_suggestion,oos,oos,oos,oos,oos,oos
+i need to know what's good for chinese around here,meal_suggestion,oos,oos,oos,oos,translate,translate
+i want to eat something from turkey,meal_suggestion,oos,oos,oos,oos,oos,oos
+do you have any suggested roman recipes,meal_suggestion,oos,oos,recipe,recipe,recipe,recipe
+what do i need to do to cook a chicken,recipe,oos,ingredients_list,oos,oos,oos,oos
+how do i go about cooking a 10lb turkey,recipe,oos,oos,recipe,recipe,oos,oos
+what instructions do i need to bake a cake from scratch,recipe,oos,ingredients_list,recipe,recipe,oos,oos
+how do you prepare taco,recipe,oos,oos,recipe,recipe,oos,oos
+show me ideas for hamburger,recipe,oos,oos,oos,oos,oos,oos
+recipes for garlic bread please,recipe,oos,ingredient_substitution,oos,recipe,oos,oos
+please tell me a recipe for this meal,recipe,recipe,meal_suggestion,oos,oos,oos,oos
+what do i take home,income,oos,oos,oos,oos,oos,oos
+what do i bring in over a year,income,oos,oos,oos,oos,income,oos
+what is my compensation,income,oos,income,oos,oos,oos,oos
+what will i get paid this year,income,payday,payday,income,income,oos,oos
+what is my payment going to be,income,oos,oos,oos,oos,oos,oos
+place my order alexa,order,order_status,order_status,order_status,order_status,order_status,order_status
+"siri, place my amazon order",order,oos,order_status,order_status,order_status,order_status,order_status
+make a purchase of doritos,order,order,order,order,order,oos,oos
+please go on amazon so i can buy bluetooth speakers,order,oos,oos,oos,order,oos,oos
+will you please go on amazon so i can buy speakers,order,order,order,oos,oos,oos,oos
+where can i find bluetooth speakers,order,oos,current_location,oos,oos,oos,oos
+what is the price of bluetooth speakers on amazon,order,oos,oos,oos,oos,oos,oos
+why my card stop working,card_declined,card_declined,oos,oos,oos,oos,oos
+i could not buy food using my card when i was in vietnam,card_declined,oos,oos,international_fees,international_fees,international_fees,oos
+i was in thailand and i could not use my card to buy snacks,card_declined,oos,oos,oos,oos,oos,oos
+can you explain why i couldn't use my card at target,card_declined,card_declined,card_declined,card_declined,card_declined,oos,oos
+my credit card was turned down at target and i'd like to know why,card_declined,card_declined,card_declined,card_declined,card_declined,oos,oos
+why can't i use my credit card,card_declined,oos,oos,oos,oos,oos,oos
+why won't you let me pay with my credit card,card_declined,oos,oos,oos,oos,oos,oos
+how come my credit card isn't working,card_declined,oos,oos,oos,oos,damaged_card,oos
+can you dim the brightness of my screen,oos,oos,oos,oos,oos,smart_home,smart_home
+can you add a bag to my reservation,oos,oos,oos,oos,oos,cancel_reservation,cancel_reservation
+how many steps have i taken today,oos,pto_used,oos,oos,oos,pto_used,pto_used
+read text,oos,text,text,oos,oos,text,text
+when should i remove my snow tires,oos,tire_change,tire_change,tire_change,tire_change,tire_change,tire_change
+what is the fee for a cash advance,oos,oos,oos,oos,oos,international_fees,international_fees
+can i deposit a check,oos,direct_deposit,direct_deposit,oos,direct_deposit,direct_deposit,direct_deposit
+go and check the fridge,oos,food_last,food_last,oos,oos,food_last,food_last
+should i do a complete stop at red lights,oos,oos,oos,oos,oos,smart_home,smart_home
+are all televisions high definition,oos,oos,oos,oos,oos,definition,definition
+how much time do i have left on my 0% apr,oos,oos,oos,apr,apr,apr,apr
+can i set up mobile deposits,oos,oos,direct_deposit,direct_deposit,direct_deposit,direct_deposit,direct_deposit
+what bills is congress talking about passing or blocking today,oos,oos,oos,oos,oos,bill_balance,bill_balance
+delete the contact uncle john from my phone,oos,sync_device,oos,sync_device,sync_device,make_call,make_call
+is there a way to change your houses address,oos,oos,oos,oos,oos,change_ai_name,change_ai_name
+is there a better bus route i should be taking,oos,oos,traffic,directions,directions,directions,directions
+i need to get kalee added to my phone plan,oos,sync_device,sync_device,oos,oos,sync_device,sync_device
+how long do i have to wait to get my refund,oos,how_busy,oos,oos,oos,how_busy,how_busy
+how long does it take the irs to issue a tax refund,oos,oos,distance,taxes,oos,taxes,taxes
+i need to add a person to my bank account,oos,oos,freeze_account,oos,oos,freeze_account,freeze_account
+create a contact labeled mom,oos,oos,text,make_call,make_call,make_call,make_call
+is there an alternate bus stop close to my home i can use,oos,directions,oos,directions,directions,directions,directions
+can i use direct deposit for my tax refund,oos,direct_deposit,direct_deposit,oos,oos,direct_deposit,direct_deposit
+what is the cheapest new car for this year,oos,oos,oos,oos,oos,mpg,mpg
+check battery health on this device,oos,oos,current_location,oos,oos,jump_start,jump_start
+remind me of the address for my workplace please,oos,oos,oos,oos,oos,reminder_update,reminder_update
+what is the median salary for someone with an engineering degree,oos,oos,oos,oos,oos,income,income
+check the status of my amazon orders for me,oos,order_status,order_status,order_status,order_status,order_status,order_status
+what is the official language of romania,oos,oos,oos,oos,oos,change_language,change_language
+show me the best times to book flights for traveling to another country,oos,oos,book_flight,book_flight,book_flight,book_flight,book_flight
+what coupons do i have for restaurants,oos,oos,oos,oos,oos,restaurant_suggestion,restaurant_suggestion
+is anything on my grocery list on sale today,oos,oos,todo_list,shopping_list,shopping_list,shopping_list,shopping_list
+what are some of the most visited countries for people looking to travel abroad,oos,oos,oos,travel_suggestion,travel_suggestion,travel_suggestion,travel_suggestion
+what's the power consumption of my fridge,oos,oos,food_last,oos,oos,food_last,food_last
+are you allowed to call someone a dirty name as part of free speech,oos,oos,oos,oos,oos,make_call,make_call
+what's the proper subject verb order in japanese,oos,oos,oos,oos,oos,translate,translate
+the bus moves with tyre,oos,directions,distance,oos,oos,directions,directions
+how the bus moves,oos,oos,directions,oos,oos,directions,directions
+what are some good resources to learn about mental illness,oos,oos,oos,oos,oos,fun_fact,fun_fact
+how can i get help for my mental health,oos,oos,oos,oos,oos,insurance,insurance
+send information on flood clean up to my phone,oos,sync_device,sync_device,sync_device,sync_device,sync_device,sync_device
+what's the cost of buying a sump pump,oos,oos,oos,oos,oos,jump_start,jump_start
+are there any apartments for rent nearby,oos,oos,oos,oos,oos,car_rental,car_rental
+where is the closest architecture college,oos,directions,directions,directions,directions,directions,directions
+when can i get a business card printed locally,oos,oos,replacement_card_duration,oos,oos,replacement_card_duration,replacement_card_duration
+how many calories does doing 20 situps burn,oos,calories,calories,calories,calories,calories,calories
+what other countries speak the english language,oos,change_language,change_language,oos,oos,change_language,change_language
+do they speak english in australia,oos,oos,oos,change_language,change_language,change_language,change_language
+what movies are playing,oos,oos,oos,oos,oos,what_song,what_song
+are there cameras hidden in stop lights,oos,oos,oos,oos,oos,smart_home,smart_home
+will the anti-vaxxers die off if no one gives them vaccines,oos,oos,oos,oos,oos,vaccines,vaccines
+tell me something about linkin park,oos,fun_fact,oos,fun_fact,fun_fact,fun_fact,fun_fact
+i have a super runny nose and want to find a doctor,oos,oos,oos,oos,oos,tell_joke,tell_joke
+can you store a gun in a safe deposit box,oos,oos,oos,oos,oos,direct_deposit,direct_deposit
+how do you get a safe deposit box,oos,oos,direct_deposit,oos,direct_deposit,direct_deposit,direct_deposit
+give me the weather forecast for today,oos,weather,weather,weather,weather,weather,weather
+can you colorize a black and white photo,oos,oos,oos,calories,calories,calories,calories
+make a list of facts about green book,oos,fun_fact,fun_fact,fun_fact,fun_fact,fun_fact,fun_fact
+is there a vaccine for ebola,oos,oos,oos,oos,oos,vaccines,vaccines
+what do you do if your cat eats an octopus,oos,oos,oos,oos,oos,do_you_have_pets,do_you_have_pets
+find the names of all the rain forests located in south america,oos,oos,oos,oos,oos,weather,weather
+does cutting down the rain forest really add to global warming,oos,oos,oos,oos,oos,weather,weather
+what's the current demand for wood from rain forests,oos,oos,oos,oos,oos,weather,weather
+what's the current prevailing interest rate for mortgages in my area,oos,interest_rate,interest_rate,interest_rate,interest_rate,interest_rate,interest_rate
+see if you can purchase a spacesuit online,oos,oos,order,order,order,order,order
+how do i get venture capital for my app,oos,oos,oos,oos,oos,application_status,application_status
+see if there is a recipe to make a casserole without any dairy,oos,recipe,recipe,recipe,recipe,recipe,recipe
+tell me amazon's choice for a set of 4 dinner plates,oos,oos,meal_suggestion,oos,oos,meal_suggestion,meal_suggestion
+look up the conversion rate for the euro to dollar exchange,oos,exchange_rate,exchange_rate,exchange_rate,exchange_rate,exchange_rate,exchange_rate
+i need you to order a new pair of eyeglasses for me,oos,order,order,order,order,order,order
+give me a list of tax attorneys that practice in my city,oos,oos,oos,oos,oos,taxes,taxes
+give me the number of a traffic attorney near here,oos,oos,directions,oos,oos,traffic,traffic
+get me a list of universities that provide full scholarships in arizona,oos,oos,oos,oos,oos,travel_suggestion,travel_suggestion
+call an uber to take me to the closest grocery store,oos,uber,uber,uber,uber,uber,uber
+which houses do not have automatic spot lights in front of their garage,oos,oos,oos,oos,oos,smart_home,smart_home
+tell me where to send my resume in order to get a job at delta airlines,oos,oos,oos,oos,oos,order_status,order_status
+review my resume for spelling errors,oos,oos,oos,oos,spelling,spelling,spelling
+please spell check my resume,oos,oos,oos,spelling,spelling,spelling,spelling
+read my friend's text message,oos,text,text,text,text,text,text
+accept incoming phone call,oos,make_call,make_call,make_call,make_call,make_call,make_call
+deny incoming phone call,oos,make_call,make_call,oos,oos,make_call,make_call
+what do i put on my feet,oos,oos,oos,oos,oos,measurement_conversion,measurement_conversion
+what are the words to the chorus for this song,oos,what_song,what_song,what_song,what_song,what_song,what_song
+display the song lyrics for me,oos,oos,oos,what_song,what_song,what_song,what_song
+can you group my photos by location,oos,oos,oos,oos,oos,share_location,share_location
+can you book me an appointment at a car wash,oos,oos,schedule_maintenance,oos,oos,schedule_maintenance,schedule_maintenance
+please clean the car windows,oos,oos,smart_home,oos,oos,smart_home,smart_home
+vacuum out the car,oos,oos,oos,smart_home,smart_home,smart_home,smart_home
+what should i take for a cold,oos,oos,oos,oos,oos,weather,weather
+where's the closest car wash my car smells,oos,directions,jump_start,directions,directions,directions,directions
+order me a book of stamps and envelopes,oos,order,order,order,order,order,order
+order me a blue pin stripe suit from saville row,oos,order,order,order,order,pin_change,pin_change
+how many calories does jumping up and down burn,oos,calories,oos,calories,calories,calories,calories
+can you order some ointment for me,oos,order,order,order,order,order,order
+forward the text i just got from henry to giselle,oos,text,text,text,text,text,text
+please read the text message i just received,oos,text,text,text,text,text,text
+save my text on my laptop hard drive,oos,oos,oos,oos,oos,text,text
+answer the phone,oos,sync_device,make_call,oos,oos,sync_device,sync_device
+ignore call,oos,make_call,make_call,oos,cancel,make_call,make_call
+can you look at what average reviews say about the new windows phone on amazon for me,oos,oos,oos,restaurant_reviews,restaurant_reviews,restaurant_reviews,restaurant_reviews
+tell me a summary of reviews that oakley frogskins get on amazon,oos,oos,oos,restaurant_reviews,restaurant_reviews,restaurant_reviews,restaurant_reviews
+show me a tabulation of reviews for lcd tv's on amazon,oos,oos,oos,restaurant_reviews,restaurant_reviews,restaurant_reviews,restaurant_reviews
+look up the average temperature changes over the last 30 years for my area,oos,oos,oos,weather,weather,weather,weather
+can you find me sheet music for the beatles white album online,oos,oos,oos,oos,oos,play_music,play_music
+where can i find cheap rental skis nearby,oos,oos,oos,oos,oos,car_rental,car_rental
+how much should i tip on this bill,oos,oos,bill_balance,bill_balance,bill_balance,bill_balance,bill_balance
+what's my budget for today's shopping trip,oos,oos,oos,oos,oos,shopping_list,shopping_list
+find instructions on how to play taboo,oos,oos,oos,oos,oos,play_music,play_music
+what's my current electric bill,oos,oos,bill_balance,bill_balance,bill_balance,bill_balance,bill_balance
+where's my buddy steve right this second,oos,oos,oos,oos,oos,share_location,share_location
+locate jenny at her present position,oos,oos,oos,share_location,share_location,share_location,share_location
+let me know where jim is right now,oos,oos,oos,share_location,share_location,share_location,share_location

@@ -1,0 +1,27 @@
+W1118 19:02:43.032000 80662 .venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 201/201 [00:00<00:00, 6886.64it/s]
+
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 201/201 [00:00<00:00, 28649.03it/s]
+
+Loading weights:   0%|          | 0/73 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 73/73 [00:00<00:00, 8364.77it/s]
+
+Loading weights:   0%|          | 0/73 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 73/73 [00:00<00:00, 33877.43it/s]
+evaluating tf-idf + LogReg [FP64]
+evaluating word2vec + FFN [FP32]
+evaluating BERT-base fine-tuned [FP32]
+evaluating BERT-base fine-tuned [INT8 (dynamic)]
+evaluating BERT-mini distilled [FP32]
+evaluating BERT-mini distilled [INT8 (dynamic)]
+               model      precision  accuracy  in-scope acc  OOS recall  size (MB)  latency (ms)  threshold
+     tf-idf + LogReg           FP64     83.44         81.82        90.7       39.0          1.06       0.50
+      word2vec + FFN           FP32     81.49         80.33        86.7        4.8          0.89       0.80
+BERT-base fine-tuned           FP32     91.33         91.16        92.1      438.4         17.80       0.70
+BERT-base fine-tuned INT8 (dynamic)     91.27         91.09        92.1      110.4         15.05       0.65
+ BERT-mini distilled           FP32     89.51         90.18        86.5       44.8          1.85       0.75
+ BERT-mini distilled INT8 (dynamic)     88.96         89.00        88.8       11.6          2.83       0.80
+Apple M4 CPU, 4 torch threads, batch size 1

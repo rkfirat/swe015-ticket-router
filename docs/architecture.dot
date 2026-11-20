@@ -1,0 +1,36 @@
+// Rendered with: dot -Tpng docs/architecture.dot -o docs/architecture.png
+digraph router {
+  rankdir=TB;
+  graph [fontname="Helvetica", fontsize=11, nodesep=0.25, ranksep=0.45, pad=0.2];
+  node  [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled", fillcolor="#f2f2f2", color="#555555"];
+  edge  [fontname="Helvetica", fontsize=9, color="#555555"];
+
+  ui     [label="Gradio UI (app.py)\nuser types a message", fillcolor="#dde8f5"];
+
+  subgraph cluster_pre {
+    label="Preprocessing (src/common.py) - area B"; style=dashed; color="#888888";
+    regex  [label="Regex normalization\nURL/e-mail/model code -> tokens\nlowercase, repeated letters"];
+    codes  [label="Model-code extraction\nDW-6534"];
+    spell  [label="Spell correction\nmin. edit distance vs\ntraining vocab (real words kept)"];
+    eliza  [label="ELIZA rules\ngreetings / thanks / bye"];
+  }
+
+  subgraph cluster_models {
+    label="Model ladder (src/models.py) - CPU, same test set"; style=dashed; color="#888888";
+    m1 [label="1  tf-idf (1-2 gram) + LogReg\nFP64 - area B baseline"];
+    m2 [label="2  word2vec (own, skip-gram) avg\n-> FFN 256, SGD+backprop\nFP32 - area A"];
+    m3 [label="3  BERT-base fine-tuned\nFP32 - area C"];
+    m4 [label="4  BERT-mini distilled from 3\n+ dynamic INT8 quantization\narea D", fillcolor="#e3f1e0"];
+  }
+
+  thr    [label="Confidence threshold\n(tuned on validation)\nmax p < tau or 'oos'"];
+  out    [label="Output\nteam (intent) | human agent |\nrule reply + side-by-side table", fillcolor="#dde8f5"];
+
+  ui -> regex;
+  regex -> codes [style=dotted, arrowhead=none];
+  regex -> spell -> eliza;
+  spell -> m1; spell -> m2; spell -> m3; spell -> m4;
+  m4 -> thr [label="routing decision", penwidth=1.6];
+  m1 -> out [style=dashed, label="shown"]; m2 -> out [style=dashed]; m3 -> out [style=dashed];
+  thr -> out; eliza -> out [label="whole-message small talk"]; codes -> out;
+}

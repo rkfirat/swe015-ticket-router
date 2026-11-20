@@ -1,0 +1,7 @@
+model,precision,accuracy,in-scope acc,OOS recall,size (MB),latency (ms),threshold
+tf-idf + LogReg,FP64,83.44,81.82,90.7,39.0,1.06,0.5
+word2vec + FFN,FP32,81.49,80.33,86.7,4.8,0.89,0.8
+BERT-base fine-tuned,FP32,91.33,91.16,92.1,438.4,17.8,0.7
+BERT-base fine-tuned,INT8 (dynamic),91.27,91.09,92.1,110.4,15.05,0.65
+BERT-mini distilled,FP32,89.51,90.18,86.5,44.8,1.85,0.75
+BERT-mini distilled,INT8 (dynamic),88.96,89.0,88.8,11.6,2.83,0.8
