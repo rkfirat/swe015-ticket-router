@@ -48,7 +48,7 @@ Rows 4 and 5 are ablations: the quantized teacher, and the student before quanti
 - Out-of-scope detection is the weak point. Unseen topics often land in the catch-all intent `general_quirky` with high confidence.
 - Distillation gives the speed: 15× faster and 9.6× smaller than BERTurk. Here the student is also more accurate, because the teacher peaked at epoch 3.
 - INT8 quantization gives the size: 3.9× smaller, −2.6 points. On the M4 CPU it does not speed up the small student. The run-time activation quantization costs more than the 256-wide layers save.
-- Latency was measured with other processes running on the laptop. Between runs, the tf-idf and BERTurk latencies moved by up to 4×.
+- Latency was measured with other processes running on the laptop. Between runs, the tf-idf latency moved between 1.3 and 5.3 ms and BERTurk between 26 and 42 ms.
 
 ## Setup and run
 
