@@ -5,26 +5,26 @@ digraph router {
   node  [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled", fillcolor="#f2f2f2", color="#555555"];
   edge  [fontname="Helvetica", fontsize=9, color="#555555"];
 
-  ui     [label="Gradio UI (app.py)\nuser types a message", fillcolor="#dde8f5"];
+  ui     [label="Gradio UI (app.py)\nuser types a Turkish message", fillcolor="#dde8f5"];
 
   subgraph cluster_pre {
     label="Preprocessing (src/common.py) - area B"; style=dashed; color="#888888";
-    regex  [label="Regex normalization\nURL/e-mail/model code -> tokens\nlowercase, repeated letters"];
+    regex  [label="Regex normalization\nURL/e-mail/model code -> tokens\nTurkish lowercase (I->ı, İ->i), repeated letters"];
     codes  [label="Model-code extraction\nDW-6534"];
-    spell  [label="Spell correction\nmin. edit distance vs\ntraining vocab (real words kept)"];
-    eliza  [label="ELIZA rules\ngreetings / thanks / bye"];
+    spell  [label="Spell correction\n1) restore Turkish letters (isik->ışık)\n2) min. edit distance vs training vocab"];
+    eliza  [label="ELIZA rules\nmerhaba / teşekkürler / görüşürüz"];
   }
 
   subgraph cluster_models {
     label="Model ladder (src/models.py) - CPU, same test set"; style=dashed; color="#888888";
-    m1 [label="1  tf-idf (1-2 gram) + LogReg\nFP64 - area B baseline"];
-    m2 [label="2  word2vec (own, skip-gram) avg\n-> FFN 256, SGD+backprop\nFP32 - area A"];
-    m3 [label="3  BERT-base fine-tuned\nFP32 - area C"];
-    m4 [label="4  BERT-mini distilled from 3\n+ dynamic INT8 quantization\narea D", fillcolor="#e3f1e0"];
+    m1 [label="1  tf-idf (word 1-2 + char 2-5 gram)\n+ LogReg, FP64 - area B baseline"];
+    m2 [label="2  own fastText (skip-gram) avg\n-> FFN 256, SGD+backprop\nFP32 - area A"];
+    m3 [label="3  BERTurk fine-tuned\nFP32 - area C"];
+    m4 [label="4  Turkish BERT-mini distilled from 3\n+ dynamic INT8 quantization\narea D", fillcolor="#e3f1e0"];
   }
 
-  thr    [label="Confidence threshold\n(tuned on validation)\nmax p < tau or 'oos'"];
-  out    [label="Output\nteam (intent) | human agent |\nrule reply + side-by-side table", fillcolor="#dde8f5"];
+  thr    [label="Confidence threshold\n(tuned on validation)\nmax p < tau -> human agent"];
+  out    [label="Output\nteam (14) | human agent |\nrule reply + side-by-side table", fillcolor="#dde8f5"];
 
   ui -> regex;
   regex -> codes [style=dotted, arrowhead=none];

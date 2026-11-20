@@ -1,4 +1,4 @@
-"""Train the four-model ladder on CLINC150 (plus).
+"""Train the four-model ladder on MASSIVE tr-TR (held-out scenarios are out-of-scope).
 
     python train.py                 # everything
     python train.py tfidf ffn       # selected stages: tfidf ffn bert distill
@@ -15,7 +15,7 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 
-from src.common import MODELS, SEED, get_corrector, load_clinc, normalize
+from src.common import MODELS, SEED, get_corrector, load_data, normalize
 from src.models import FFN, average_vectors
 
 DEVICE = "mps" if torch.backends.mps.is_available() else "cpu"
@@ -32,11 +32,15 @@ def log(msg):
 
 
 def data():
-    ds, names, oos = load_clinc()
+    splits, names, oos, _ = load_data()
     get_corrector()  # builds models/vocab.json from the training split only
-    split = {k: ([normalize(t) for t in ds[k]["text"]], np.array(ds[k]["intent"]))
+    split = {k: ([normalize(t) for t in splits[k][0]], np.array(splits[k][1]))
              for k in ("train", "validation")}
-    return split, len(names)
+    # Checkpoints are picked on in-scope validation accuracy; OOS is handled later by a threshold.
+    xva, yva = split["validation"]
+    keep = yva != oos
+    split["validation"] = ([t for t, k in zip(xva, keep) if k], yva[keep])
+    return split, oos  # number of in-scope classes == index of "oos"
 
 
 # --- 1. tf-idf + logistic regression ------------------------------------------
@@ -44,9 +48,14 @@ def data():
 def train_tfidf(split, n_classes):
     from sklearn.feature_extraction.text import TfidfVectorizer
     from sklearn.linear_model import LogisticRegression
+    from sklearn.pipeline import FeatureUnion
 
     (xtr, ytr), (xva, yva) = split["train"], split["validation"]
-    vec = TfidfVectorizer(ngram_range=(1, 2), sublinear_tf=True, min_df=1)
+    # Word 1-2 grams plus character 2-5 grams: Turkish suffixes ("alarm-lar-ım-ı") share stems.
+    vec = FeatureUnion([
+        ("word", TfidfVectorizer(ngram_range=(1, 2), sublinear_tf=True)),
+        ("char", TfidfVectorizer(analyzer="char_wb", ngram_range=(2, 5), sublinear_tf=True, min_df=2)),
+    ])
     clf = LogisticRegression(C=20, max_iter=2000)
     clf.fit(vec.fit_transform(xtr), ytr)
     log(f"tf-idf val acc {clf.score(vec.transform(xva), yva):.4f}")
@@ -54,15 +63,15 @@ def train_tfidf(split, n_classes):
         pickle.dump((vec, clf), f)
 
 
-# --- 2. word2vec + feedforward network (SGD + backprop) ---------------------
+# --- 2. fastText + feedforward network (SGD + backprop) ---------------------
 
 def train_ffn(split, n_classes, epochs=60, hidden=256):
-    from gensim.models import Word2Vec
+    from gensim.models import FastText
 
     (xtr, ytr), (xva, yva) = split["train"], split["validation"]
-    w2v = Word2Vec([t.split() for t in xtr], vector_size=200, window=5, min_count=1,
-                   sg=1, epochs=40, seed=SEED, workers=1)
-    w2v.wv.save(str(MODELS / "word2vec.kv"))
+    w2v = FastText([t.split() for t in xtr], vector_size=200, window=5, min_count=1,
+                   sg=1, epochs=40, min_n=3, max_n=5, bucket=100_000, seed=SEED, workers=1)
+    w2v.wv.save(str(MODELS / "fasttext.kv"))
 
     Xtr = torch.from_numpy(average_vectors(w2v.wv, xtr))
     Xva = torch.from_numpy(average_vectors(w2v.wv, xva))
@@ -145,8 +154,9 @@ def fine_tune(model, tok, split, out_dir, epochs, lr, bs=32, teacher_logits=None
 def train_bert(split, n_classes):
     from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
-    name = "bert-base-uncased"
-    tok = AutoTokenizer.from_pretrained(name)
+    name = "dbmdz/bert-base-turkish-uncased"
+    # The default would strip accents (ş -> s) and break Turkish words into odd pieces.
+    tok = AutoTokenizer.from_pretrained(name, strip_accents=False)
     model = AutoModelForSequenceClassification.from_pretrained(name, num_labels=n_classes)
     fine_tune(model, tok, split, MODELS / "bert", epochs=4, lr=4e-5)
 
@@ -166,7 +176,7 @@ def train_distill(split, n_classes):
     teacher_logits = torch.cat(logits)
     del teacher
 
-    name = "google/bert_uncased_L-4_H-256_A-4"  # BERT-mini, 11M parameters
+    name = "ytu-ce-cosmos/turkish-mini-bert-uncased"  # 4 layers, 256 hidden
     tok = AutoTokenizer.from_pretrained(name)
     student = AutoModelForSequenceClassification.from_pretrained(name, num_labels=n_classes)
     fine_tune(student, tok, split, MODELS / "student", epochs=25, lr=2e-4, bs=64,

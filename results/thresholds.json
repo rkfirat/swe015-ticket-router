@@ -1,8 +1,8 @@
 {
-  "tf-idf + LogReg [FP64]": 0.5,
-  "word2vec + FFN [FP32]": 0.8,
-  "BERT-base fine-tuned [FP32]": 0.7,
-  "BERT-base fine-tuned [INT8 (dynamic)]": 0.65,
-  "BERT-mini distilled [FP32]": 0.75,
-  "BERT-mini distilled [INT8 (dynamic)]": 0.8
+  "tf-idf + LogReg [FP64]": 0.45,
+  "fastText + FFN [FP32]": 0.4,
+  "BERTurk fine-tuned [FP32]": 0.5,
+  "BERTurk fine-tuned [INT8 (dynamic)]": 0.5,
+  "Turkish BERT-mini distilled [FP32]": 0.5,
+  "Turkish BERT-mini distilled [INT8 (dynamic)]": 0.45
 }

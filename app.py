@@ -1,4 +1,4 @@
-"""Customer Support Ticket Router - Gradio app.
+"""Müşteri destek yönlendiricisi - Gradio uygulaması.
 
     python app.py      # http://127.0.0.1:7860
 """
@@ -10,33 +10,29 @@ import time
 import gradio as gr
 import pandas as pd
 
-from src.common import RESULTS, eliza_reply, extract_model_codes, load_clinc, normalize
+from src.common import RESULTS, eliza_reply, extract_model_codes, load_data, normalize
 from src.models import load_all
 
-_, NAMES, OOS = load_clinc()
+_, NAMES, OOS, TEAM_OF = load_data()
 MODELS = load_all()
 ROUTER = MODELS[-1]  # the quantized Transformer makes the routing decision (R5)
 THRESHOLDS = json.loads((RESULTS / "thresholds.json").read_text()) if (RESULTS / "thresholds.json").exists() else {}
 
 EXAMPLES = [
-    "my card got declined at the grocery store",
-    "whats my acount balanse",
-    "i neeed to book a fligt to boston tomorow",
-    "the dishwasher DW-6534 is not draining, what do I do",
-    "who won the football game last night",
-    "hello",
-    "what is the official language of romania",
+    "yarın sabah yedide beni uyandır",
+    "isiklari kapatirmisin",
+    "ankaraya yarın için tren bileti bul",
+    "bulaşık makinem DW-6534 su boşaltmıyor",
+    "merhaba",
+    "yarın istanbulda yağmur yağacak mı",
+    "bana bir fıkra anlat",
 ]
-
-
-def pretty(intent: str) -> str:
-    return intent.replace("_", " ")
 
 
 def classify(text: str):
     text = (text or "").strip()
     if not text:
-        return "", "", "Type a message.", pd.DataFrame()
+        return "", "", "Bir mesaj yaz.", pd.DataFrame()
 
     norm = normalize(text)
     codes = ", ".join(extract_model_codes(text)) or "-"
@@ -50,39 +46,35 @@ def classify(text: str):
         ms = (time.perf_counter() - t0) * 1000
         idx = int(probs.argmax())
         conf = float(probs[idx])
-        if idx == OOS:
-            routed, reason = "human agent", f"predicted out-of-scope, p={conf:.2f}"
-        elif conf < tau:
-            routed, reason = "human agent", f"low confidence {conf:.2f} < {tau:.2f}"
+        if conf < tau:
+            routed, reason = "müşteri temsilcisi", f"düşük güven {conf:.2f} < eşik {tau:.2f}"
         else:
-            routed, reason = pretty(NAMES[idx]), f"confidence {conf:.2f}"
-        rows.append({"model": key, "predicted intent": pretty(NAMES[idx]),
-                     "confidence": round(conf, 3), "routed to": routed, "latency (ms)": round(ms, 1)})
+            routed, reason = TEAM_OF[NAMES[idx]], f"niyet {NAMES[idx]}, güven {conf:.2f}"
+        rows.append({"model": key, "tahmin edilen niyet": NAMES[idx], "güven": round(conf, 3),
+                     "yönlendirme": routed, "gecikme (ms)": round(ms, 1)})
         if m is ROUTER:
             decision = (routed, reason)
 
     reply = eliza_reply(norm)
     if reply:
-        answer = f"**Rule-based reply (small talk):** {reply}"
-    elif decision[0] == "human agent":
-        answer = f"**Routed to: human agent** ({decision[1]})"
+        answer = f"**Kural tabanlı cevap (sohbet):** {reply}"
     else:
-        answer = f"**Routed to team: {decision[0]}** ({decision[1]})"
+        answer = f"**Yönlendirildi: {decision[0]}** ({decision[1]})"
     return norm, codes, answer, pd.DataFrame(rows)
 
 
-with gr.Blocks(title="Support Ticket Router") as demo:
-    gr.Markdown("# Customer Support Ticket Router\nCLINC150 intents (150 + out-of-scope). "
-                "The final decision comes from the distilled INT8 BERT-mini; all four models are shown side by side.")
+with gr.Blocks(title="Destek Yönlendirici") as demo:
+    gr.Markdown("# Müşteri Destek Yönlendiricisi\nMASSIVE tr-TR: 53 niyet, 14 ekip. Düşük güvenli mesajlar "
+                "müşteri temsilcisine gider. Son kararı damıtılmış INT8 Türkçe BERT-mini verir; dört model yan yana.")
     with gr.Row():
-        inp = gr.Textbox(label="Customer message", lines=2, scale=4)
-        btn = gr.Button("Route", variant="primary", scale=1)
-    gr.Examples(EXAMPLES, inp)
+        inp = gr.Textbox(label="Müşteri mesajı", lines=2, scale=4)
+        btn = gr.Button("Yönlendir", variant="primary", scale=1)
+    gr.Examples(EXAMPLES, inp, label="Örnekler")
     decision = gr.Markdown()
     with gr.Row():
-        norm = gr.Textbox(label="Normalized + spell-corrected input")
-        codes = gr.Textbox(label="Extracted model codes")
-    table = gr.Dataframe(label="All models", interactive=False)
+        norm = gr.Textbox(label="Normalize + yazım düzeltilmiş girdi")
+        codes = gr.Textbox(label="Yakalanan model kodları")
+    table = gr.Dataframe(label="Tüm modeller", interactive=False)
     btn.click(classify, inp, [norm, codes, decision, table])
     inp.submit(classify, inp, [norm, codes, decision, table])
 

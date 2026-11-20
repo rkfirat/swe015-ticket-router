@@ -15,7 +15,7 @@ PREAMBLE = r"""\documentclass[aspectratio=169,10pt]{beamer}
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{graphicx}
-\usepackage[T1]{fontenc}
+\usepackage{fontspec}
 \usepackage{hyperref}
 \hyphenpenalty=10000 \exhyphenpenalty=10000
 """
@@ -35,28 +35,28 @@ Demo video & \url{{{VIDEO}}} \\
 
     ("Introduction: the problem", r"""
 \begin{itemize}
-\item A support desk receives thousands of free-text messages a day; each must reach the right team \textbf{instantly}.
+\item A support desk receives thousands of free-text \textbf{Turkish} messages a day; each must reach the right team \textbf{instantly}.
 \item Users: the support team (routing) and customers (fast answer).
-\item The app takes a message $\rightarrow$ normalizes it $\rightarrow$ predicts the intent with a confidence $\rightarrow$ routes it.
-\item Low-confidence or out-of-scope messages go to a \textbf{human agent}; greetings and thanks get a rule-based reply.
-\item Domain change (allowed by Section 4): English \textbf{CLINC150} intents (banking, travel, home, work, \dots) instead of appliances -- public, labeled, with a real out-of-scope class.
+\item The app takes a message $\rightarrow$ normalizes it $\rightarrow$ predicts the intent with a confidence $\rightarrow$ routes it to one of 14 teams.
+\item Low-confidence messages (e.g.\ topics never seen in training) go to a \textbf{human agent}; greetings and thanks get a rule-based reply.
+\item Domain change (allowed by Section 4): Turkish \textbf{MASSIVE} assistant requests (alarm, smart home, transport, \dots) instead of appliance tickets -- public and labeled.
 \end{itemize}
 \textbf{Success} = high in-scope accuracy \emph{and} high out-of-scope recall (a wrong team is worse than a human agent), at CPU latency of a few ms.
 """),
 
     ("Development: data", r"""
 \begin{itemize}
-\item \textbf{CLINC150 ``plus''} (Larson et al., EMNLP 2019, CC BY 3.0), Hugging Face \texttt{clinc/clinc\_oos}.
-\item 150 intents in 10 domains + \texttt{oos} (out-of-scope) class.
-\item Fixed splits: train 15,250 $\cdot$ validation 3,100 (100 OOS) $\cdot$ \textbf{test 5,500 (1,000 OOS)}.
-\item All models trained on train; confidence thresholds tuned on validation; \textbf{every number on the following slides is from the same test split}.
-\item Preprocessing (identical for all models): Unicode NFKC, URL/e-mail/model-code tokens (\texttt{DW-6534}), lowercase, repeated letters (\textit{neeed} $\rightarrow$ \textit{need}), punctuation removal, edit-distance spelling correction.
+\item \textbf{MASSIVE 1.1, tr-TR} (FitzGerald et al., 2022, CC BY 4.0): 18 scenarios, 60 intents, fixed train/validation/test splits.
+\item No out-of-scope class, so 4 scenarios (cooking, takeaway, social, weather) are \textbf{removed from training}; their validation/test sentences are labelled out-of-scope.
+\item Result: 53 intents in 14 teams. Train 10,082 $\cdot$ validation 2,033 (281 OOS) $\cdot$ \textbf{test 2,974 (391 OOS)}.
+\item Models trained on train; checkpoints and thresholds chosen on validation; \textbf{every number on the following slides is from the same test split}.
+\item Preprocessing (identical for all models): NFKC, URL/e-mail/model-code tokens (\texttt{DW-6534}), Turkish lowercase (I$\rightarrow$ı, İ$\rightarrow$i), repeated letters, punctuation, restoring Turkish letters (\textit{isiklari} $\rightarrow$ \textit{ışıkları}), edit-distance spelling correction.
 \end{itemize}
 """),
 
     ("Development: architecture", r"""
 \centering
-\vspace*{\fill}\includegraphics[width=\linewidth]{architecture.png}\vspace*{\fill}
+\vspace*{\fill}\includegraphics[width=\linewidth,height=0.85\textheight,keepaspectratio]{architecture.png}\vspace*{\fill}
 """),
 
     ("Development: technique map", r"""
@@ -64,10 +64,10 @@ Demo video & \url{{{VIDEO}}} \\
 \begin{tabular}{>{\raggedright}p{2.4cm}>{\raggedright}p{6.2cm}>{\raggedright\arraybackslash}p{4.2cm}}
 \toprule
 \textbf{Area} & \textbf{Technique used} & \textbf{Where in the code} \\ \midrule
-A $\cdot$ Neural networks & Feedforward net on averaged word2vec, trained with SGD (momentum) + backprop & \texttt{train.py: train\_ffn}, \texttt{src/models.py: FFN} \\
-B $\cdot$ Classical NLP & Regex normalization, model-code extraction, min.\ edit distance spelling correction, ELIZA-style rules, tf-idf + logistic regression; own skip-gram word2vec & \texttt{src/common.py}, \texttt{train.py: train\_tfidf} \\
-C $\cdot$ Transformers & BERT-base (uncased) fine-tuned with a 151-way classification head; WordPiece tokenizer & \texttt{train.py: train\_bert} \\
-D $\cdot$ Efficient models & Knowledge distillation BERT-base $\rightarrow$ BERT-mini, then dynamic INT8 quantization; size and latency benchmark & \texttt{train.py: train\_distill}, \texttt{src/models.py}, \texttt{evaluate.py} \\
+A $\cdot$ Neural networks & Feedforward net on averaged fastText vectors, trained with SGD (momentum) + backprop & \texttt{train.py: train\_ffn}, \texttt{src/models.py: FFN} \\
+B $\cdot$ Classical NLP & Regex normalization, model-code extraction, min.\ edit distance spelling correction, ELIZA-style rules, tf-idf + logistic regression; own fastText embeddings & \texttt{src/common.py}, \texttt{train.py: train\_tfidf} \\
+C $\cdot$ Transformers & BERTurk fine-tuned with a 53-way classification head; WordPiece tokenizer & \texttt{train.py: train\_bert} \\
+D $\cdot$ Efficient models & Knowledge distillation BERTurk $\rightarrow$ Turkish BERT-mini, then dynamic INT8 quantization; size and latency benchmark & \texttt{train.py: train\_distill}, \texttt{src/models.py}, \texttt{evaluate.py} \\
 \bottomrule
 \end{tabular}
 """),
@@ -75,15 +75,15 @@ D $\cdot$ Efficient models & Knowledge distillation BERT-base $\rightarrow$ BERT
     ("Development: the four models and how they were trained", r"""
 \small
 \begin{enumerate}
-\item \textbf{Classical baseline:} tf-idf (word 1--2 grams, sublinear tf) + logistic regression ($C{=}20$).
-\item \textbf{Own neural network:} skip-gram word2vec (200-d, window 5, 40 epochs) trained on the training messages; averaged message vector $\rightarrow$ FFN (256 ReLU, dropout 0.3) $\rightarrow$ softmax; SGD lr 0.1, momentum 0.9, 60 epochs, best validation epoch kept.
-\item \textbf{Transformer:} \texttt{bert-base-uncased} (110M params) fine-tuned 4 epochs, AdamW lr $4\cdot10^{-5}$, batch 32, linear warm-up/decay (Apple M4 GPU, MPS).
-\item \textbf{Quantized Transformer:} \texttt{BERT-mini} student (4 layers, 256 hidden, 11M params) trained 25 epochs on $0.5\cdot$KL(teacher, T=2) + $0.5\cdot$CE; then PyTorch dynamic quantization: \texttt{Linear} weights INT8, embedding table 8-bit weight-only.
+\item \textbf{Classical baseline:} tf-idf on word 1--2 grams + character 2--5 grams (Turkish suffixes share stems) + logistic regression ($C{=}20$).
+\item \textbf{Own neural network:} skip-gram fastText (200-d, char 3--5 grams, 40 epochs) trained on the training sentences; averaged sentence vector $\rightarrow$ FFN (256 ReLU, dropout 0.3) $\rightarrow$ softmax; SGD lr 0.1, momentum 0.9, 60 epochs, best validation epoch kept.
+\item \textbf{Transformer:} BERTurk (\texttt{dbmdz/bert-base-turkish-uncased}, 110M params, \texttt{strip\_accents=False}) fine-tuned 4 epochs, AdamW lr $4\cdot10^{-5}$, batch 32, linear warm-up/decay (Apple M4 GPU).
+\item \textbf{Quantized Transformer:} Turkish BERT-mini student (\texttt{ytu-ce-cosmos}, 4 layers, 256 hidden) trained 25 epochs on $0.5\cdot$KL(teacher, T=2) + $0.5\cdot$CE; then PyTorch dynamic quantization: \texttt{Linear} weights INT8, embedding table 8-bit weight-only.
 \end{enumerate}
-Routing: if $\max p < \tau$ or the class is \texttt{oos} $\rightarrow$ human agent. $\tau$ per model maximizes (in-scope acc + OOS recall)/2 on validation.
+Routing: if $\max p < \tau$ $\rightarrow$ human agent (no model has an out-of-scope output). $\tau$ per model maximizes accuracy on validation (14\% out-of-scope, about the same share as test).
 """),
 
-    ("Development: results (same held-out test set, 5,500 messages)", r"""
+    ("Development: results (same held-out test set, 2,974 messages)", r"""
 \centering\footnotesize
 @@RESULTS@@
 
@@ -94,31 +94,37 @@ Routing: if $\max p < \tau$ or the class is \texttt{oos} $\rightarrow$ human age
     ("Conclusion: what the comparison showed", r"""
 \small
 \begin{itemize}
-\item \textbf{BERT-base wins on quality}: 91.3\% accuracy and 92.1\% OOS recall, +7.9 points over the tf-idf baseline -- but 438 MB and 17.8 ms per message.
-\item \textbf{The classical baseline is strong}: tf-idf + LogReg (83.4\%) beats my own word2vec + FFN (81.5\%). Averaging word vectors loses word order, and word2vec trained on 15k short messages is weak. The FFN is the smallest and fastest model (4.8 MB, 0.9 ms).
-\item \textbf{Distillation brought the speed}: the BERT-mini student keeps 98\% of the teacher's accuracy (89.5\%) and is 9.8$\times$ smaller and 9.6$\times$ faster.
-\item \textbf{Quantization brought the size}: INT8 cuts the student from 44.8 to 11.6 MB (3.9$\times$) for $-0.55$ points accuracy. On the M4 CPU, dynamic INT8 is \emph{slower} for this small model (1.85 $\rightarrow$ 2.83 ms), because quantizing activations at every layer costs more than the 256-wide matrix multiplications save. On BERT-base, INT8 is 4$\times$ smaller and 15\% faster with no loss.
-\item \textbf{Final app model}: 11.6 MB, 2.8 ms, 89.0\% accuracy -- 38$\times$ smaller and 6$\times$ faster than BERT-base for $-2.4$ points.
+\item \textbf{Out-of-scope is the hard part}: every model reaches 75--84\% in-scope accuracy, but catches only 38--55\% of never-seen topics. Unseen topics get confident wrong answers, mostly into the catch-all intent \texttt{general\_quirky}.
+\item \textbf{The classical baseline is strong}: tf-idf + LogReg (74.9\%) beats my fastText + FFN (71.5\%) and has the best OOS recall (55\%). Character n-grams handle Turkish suffixes; averaging word vectors loses word order.
+\item \textbf{The student beat its teacher}: BERTurk peaked at epoch 3 (79.1\% in-scope); the distilled BERT-mini reached 83.9\%. Soft labels regularize, and the student trained for 25 epochs.
+\item \textbf{Distillation brought the speed}: 9.6$\times$ smaller and 15$\times$ faster than BERTurk.
+\item \textbf{Quantization brought the size}: INT8 cuts the student from 46.3 to 11.9 MB (3.9$\times$) for $-2.6$ points. On the M4 CPU it is \emph{slower} for this small model (1.9 $\rightarrow$ 2.7 ms): quantizing activations at every layer costs more than the 256-wide multiplications save. On BERTurk, INT8 is 4$\times$ smaller and 2.1$\times$ faster for $-0.7$ points.
+\item \textbf{Final app model}: 11.9 MB, 2.7 ms, 75.3\% accuracy -- 37$\times$ smaller and 11$\times$ faster than BERTurk, and slightly more accurate.
 \end{itemize}
 
 """),
 
     ("Conclusion: failure examples and limitations", r"""
 \small
-Final model: 607 of 5,500 test messages wrong. \textbf{399} are in-scope messages sent to a human agent (the safe error), \textbf{112} are out-of-scope messages routed to a team, and 96 went to the wrong team.
+Final model: 736 of 2,974 test messages wrong. \textbf{221} in-scope messages went to a human agent (the safe error), \textbf{221} out-of-scope messages went to a team, and 294 went to the wrong team.
 \begin{itemize}
-\item \textit{``what is the official language of romania''} $\rightarrow$ \texttt{change\_language} (0.94). This is a keyword trap: BERT-base and tf-idf correctly send it to a human. The student learned ``language'' and is over-confident.
-\item \textit{``how do i fix the ice maker in my fridge''} $\rightarrow$ \texttt{food\_last} (0.85). CLINC has no appliance intents, so the model picks the nearest kitchen intent.
-\item \textit{``I lost my credit card, please freeze my account''} $\rightarrow$ human agent (0.63). The message has two intents, but the classifier is single-label.
+\item \textit{``bugün hava nasıl olacak''} (weather, never seen) $\rightarrow$ \texttt{general\_quirky} (0.88). The catch-all intent absorbs unknown topics with high confidence, so the threshold cannot catch it.
+\item \textit{``bana makarna tarifi ver''} (cooking, never seen) $\rightarrow$ \texttt{general\_quirky} (0.64). This is the same failure.
+\item \textit{``beni yarım saat sonra kaldır''} (true: \texttt{alarm\_set}) $\rightarrow$ human agent. ``kaldır'' means both ``wake'' and ``remove'' in Turkish.
 \end{itemize}
-\textbf{Limitations:} English only. Intents stand in for teams. The thresholds are tuned on only 100 out-of-scope validation messages. The latency is measured on one laptop CPU.
+\textbf{Limitations:}
+\begin{itemize}
+\item MASSIVE is assistant requests, not real support tickets, and intents stand in for teams.
+\item Out-of-scope is simulated with 4 held-out scenarios.
+\item Latency was measured on a laptop with other processes running, so the tf-idf and BERTurk numbers moved by up to 4$\times$ between runs.
+\end{itemize}
 
 """),
 
     ("Conclusion: next steps", r"""
 \begin{itemize}
-\item Collect Turkish messages (e.g. MASSIVE tr-TR) and fine-tune a multilingual student (BERTurk / XLM-R) for the original appliance scenario.
-\item Map intents to real teams and add 50--100 hand-written domain examples (appliance faults, model codes).
+\item Collect real Turkish support tickets (appliance faults, model codes) and map intents to real teams.
+\item Train with an explicit out-of-scope class instead of relying on the threshold alone.
 \item Try static INT8 or ONNX Runtime kernels, where INT8 actually speeds up the matrix multiplications on ARM.
 \item Calibrate confidences (temperature scaling) so the human-agent threshold is more reliable.
 \end{itemize}
@@ -128,7 +134,7 @@ Final model: 607 of 5,500 test messages wrong. \textbf{399} are in-scope message
 \begin{itemize}
 \item \textbf{Claude (Anthropic), via Claude Code}: wrote and debugged the training, evaluation and Gradio code, the Graphviz architecture diagram and the draft of these slides.
 \item All training and evaluation ran on my own laptop (Apple M4); every number comes from these runs (\texttt{results/results.csv}, \texttt{results/train.log}), none from papers, model cards or AI answers.
-\item No AI tool was used to generate data or labels; the dataset is public CLINC150.
+\item No AI tool was used to generate data or labels; the dataset is public MASSIVE.
 \end{itemize}
 """),
 ]

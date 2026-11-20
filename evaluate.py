@@ -1,4 +1,4 @@
-"""Evaluate every model on the same held-out CLINC150 test split (R3, R4).
+"""Evaluate every model on the same held-out MASSIVE tr-TR test split (R3, R4).
 
 Outputs results/results.csv, results/results.md, results/thresholds.json, results/errors.csv.
 """
@@ -14,29 +14,24 @@ import numpy as np
 import pandas as pd
 import torch
 
-from src.common import RESULTS, load_clinc
+from src.common import RESULTS, load_data
 from src.models import load_all
 
 LATENCY_RUNS = 200
 
 
 def route(probs: np.ndarray, oos: int, tau: float) -> np.ndarray:
-    """Low confidence or explicit out-of-scope -> human agent (oos)."""
+    """Max probability below tau -> human agent (oos). The models have no oos output."""
     pred = probs.argmax(-1)
     pred[probs.max(-1) < tau] = oos
     return pred
 
 
 def pick_threshold(probs, y, oos) -> float:
-    """Validation has only 100 OOS messages out of 3,100, so plain accuracy would ignore them;
-    maximize the mean of in-scope accuracy and OOS recall instead."""
+    """Maximize overall accuracy on validation, where 14% of the messages are out-of-scope
+    (about the same share as in test)."""
     grid = np.round(np.arange(0.0, 0.96, 0.05), 2)
-
-    def balanced(t):
-        m = metrics(route(probs, oos, t), y, oos)
-        return (m["in-scope acc"] + m["OOS recall"]) / 2
-
-    return float(max(grid, key=balanced))
+    return float(max(grid, key=lambda t: (route(probs, oos, t) == y).mean()))
 
 
 def metrics(pred, y, oos):
@@ -68,9 +63,9 @@ def hardware() -> str:
 
 
 def main():
-    ds, names, oos = load_clinc()
-    val_x, val_y = ds["validation"]["text"], np.array(ds["validation"]["intent"])
-    test_x, test_y = ds["test"]["text"], np.array(ds["test"]["intent"])
+    splits, names, oos, _ = load_data()
+    val_x, val_y = splits["validation"][0], np.array(splits["validation"][1])
+    test_x, test_y = splits["test"][0], np.array(splits["test"][1])
 
     rows, thresholds, preds = [], {}, {}
     for model in load_all(with_ablations=True):
@@ -93,8 +88,9 @@ def main():
     df.to_csv(RESULTS / "results.csv", index=False)
     hw = hardware()
     (RESULTS / "results.md").write_text(
-        f"Test split: CLINC150 'plus' test, {len(test_y)} messages "
-        f"({(test_y == oos).sum()} out-of-scope). Latency: mean of {LATENCY_RUNS} single-message "
+        f"Test split: MASSIVE 1.1 tr-TR test, {len(test_y)} messages "
+        f"({(test_y == oos).sum()} out-of-scope from held-out scenarios). "
+        f"Latency: mean of {LATENCY_RUNS} single-message "
         f"calls incl. preprocessing, {hw}.\n\n" + df.to_markdown(index=False) + "\n"
     )
     (RESULTS / "thresholds.json").write_text(json.dumps(thresholds, indent=2))

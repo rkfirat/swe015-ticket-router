@@ -1,27 +1,27 @@
-W1118 19:02:43.032000 80662 .venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+W1118 19:55:09.753000 97528 .venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
 
 Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]
-Loading weights: 100%|██████████| 201/201 [00:00<00:00, 6886.64it/s]
+Loading weights: 100%|██████████| 201/201 [00:00<00:00, 18650.84it/s]
 
 Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]
-Loading weights: 100%|██████████| 201/201 [00:00<00:00, 28649.03it/s]
+Loading weights: 100%|██████████| 201/201 [00:00<00:00, 10282.92it/s]
 
 Loading weights:   0%|          | 0/73 [00:00<?, ?it/s]
-Loading weights: 100%|██████████| 73/73 [00:00<00:00, 8364.77it/s]
+Loading weights: 100%|██████████| 73/73 [00:00<00:00, 27045.68it/s]
 
 Loading weights:   0%|          | 0/73 [00:00<?, ?it/s]
-Loading weights: 100%|██████████| 73/73 [00:00<00:00, 33877.43it/s]
+Loading weights: 100%|██████████| 73/73 [00:00<00:00, 8640.00it/s]
 evaluating tf-idf + LogReg [FP64]
-evaluating word2vec + FFN [FP32]
-evaluating BERT-base fine-tuned [FP32]
-evaluating BERT-base fine-tuned [INT8 (dynamic)]
-evaluating BERT-mini distilled [FP32]
-evaluating BERT-mini distilled [INT8 (dynamic)]
-               model      precision  accuracy  in-scope acc  OOS recall  size (MB)  latency (ms)  threshold
-     tf-idf + LogReg           FP64     83.44         81.82        90.7       39.0          1.06       0.50
-      word2vec + FFN           FP32     81.49         80.33        86.7        4.8          0.89       0.80
-BERT-base fine-tuned           FP32     91.33         91.16        92.1      438.4         17.80       0.70
-BERT-base fine-tuned INT8 (dynamic)     91.27         91.09        92.1      110.4         15.05       0.65
- BERT-mini distilled           FP32     89.51         90.18        86.5       44.8          1.85       0.75
- BERT-mini distilled INT8 (dynamic)     88.96         89.00        88.8       11.6          2.83       0.80
+evaluating fastText + FFN [FP32]
+evaluating BERTurk fine-tuned [FP32]
+evaluating BERTurk fine-tuned [INT8 (dynamic)]
+evaluating Turkish BERT-mini distilled [FP32]
+evaluating Turkish BERT-mini distilled [INT8 (dynamic)]
+                      model      precision  accuracy  in-scope acc  OOS recall  size (MB)  latency (ms)  threshold
+            tf-idf + LogReg           FP64     74.88         77.86       55.24       25.5          5.28       0.45
+             fastText + FFN           FP32     71.52         74.72       50.38       86.9          1.04       0.40
+         BERTurk fine-tuned           FP32     74.41         79.13       43.22      442.7         29.18       0.50
+         BERTurk fine-tuned INT8 (dynamic)     73.74         78.28       43.73      111.4         13.58       0.50
+Turkish BERT-mini distilled           FP32     77.84         83.89       37.85       46.3          1.92       0.50
+Turkish BERT-mini distilled INT8 (dynamic)     75.25         80.06       43.48       11.9          2.73       0.45
 Apple M4 CPU, 4 torch threads, batch size 1

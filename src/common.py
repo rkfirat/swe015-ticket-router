@@ -1,4 +1,4 @@
-"""Shared paths, data loading and the text normalizer (area B)."""
+"""Shared paths, data loading and the Turkish text normalizer (area B)."""
 from __future__ import annotations
 
 import json
@@ -16,29 +16,75 @@ RESULTS.mkdir(exist_ok=True)
 
 SEED = 42
 
+# MASSIVE has no out-of-scope class. These scenarios are removed from training and their
+# validation/test messages are labelled "oos": topics the router has never seen.
+HELD_OUT = ("cooking", "takeaway", "social", "weather")
 
-def load_clinc():
-    """CLINC150 'plus' split: 150 intents + out-of-scope, fixed train/val/test."""
+# Each MASSIVE scenario is one support team.
+TEAMS = {
+    "alarm": "Alarm ekibi", "audio": "Ses ekibi", "calendar": "Takvim ekibi",
+    "datetime": "Tarih/saat ekibi", "email": "E-posta ekibi", "general": "Genel destek",
+    "iot": "Akıllı ev ekibi", "lists": "Liste ekibi", "music": "Müzik ekibi",
+    "news": "Haber ekibi", "play": "Medya oynatma ekibi", "qa": "Bilgi ekibi",
+    "recommendation": "Öneri ekibi", "transport": "Ulaşım ekibi",
+}
+
+
+@lru_cache(maxsize=1)
+def load_data():
+    """MASSIVE 1.1 tr-TR (Amazon, CC BY 4.0) with held-out scenarios as out-of-scope.
+
+    Returns (splits, names, oos, team_of) where splits[k] = (texts, labels),
+    names[i] is the intent name, names[oos] == "oos" and team_of[intent] is the team.
+    """
     from datasets import load_dataset
 
-    ds = load_dataset("clinc/clinc_oos", "plus")
-    names = ds["train"].features["intent"].names
-    return ds, names, names.index("oos")
+    base = "hf://datasets/AmazonScience/massive@refs%2Fconvert%2Fparquet/tr-TR/"
+    ds = load_dataset("parquet", data_files={s: f"{base}{s}/0000.parquet"
+                                             for s in ("train", "validation", "test")})
+    scen = ds["train"].features["scenario"].names
+    intents = ds["train"].features["intent"].names
+
+    in_scope = sorted({intents[i] for i, s in zip(ds["train"]["intent"], ds["train"]["scenario"])
+                       if scen[s] not in HELD_OUT})
+    names = in_scope + ["oos"]
+    oos = len(in_scope)
+    index = {n: i for i, n in enumerate(in_scope)}
+    team_of = {n: TEAMS[n.split("_")[0]] for n in in_scope}
+
+    splits = {}
+    for k in ("train", "validation", "test"):
+        texts, labels = [], []
+        for t, i, s in zip(ds[k]["utt"], ds[k]["intent"], ds[k]["scenario"]):
+            if scen[s] in HELD_OUT:
+                if k == "train":
+                    continue  # never shown to any model
+                labels.append(oos)
+            else:
+                labels.append(index[intents[i]])
+            texts.append(t)
+        splits[k] = (texts, labels)
+    return splits, names, oos, team_of
 
 
 # --- B: regex normalization ------------------------------------------------
 
-# Upper-case product/model codes like "DW-6534" or "RF5000" (so "my 401k" is not one).
+# Upper-case product/model codes like "DW-6534" or "RF5000".
 MODEL_CODE = re.compile(r"\b([A-Z]{1,4})-?(\d{3,5}[A-Z]?)\b")
 URL = re.compile(r"https?://\S+|www\.\S+")
 EMAIL = re.compile(r"\b[\w.+-]+@[\w-]+\.[\w.]+\b")
-REPEAT = re.compile(r"(\w)\1{2,}")  # "sooooo" -> "soo"
-NON_WORD = re.compile(r"[^a-z0-9<>' ]+")
+REPEAT = re.compile(r"(\w)\1{2,}")  # "çooook" -> "çook"
+NON_WORD = re.compile(r"[^a-z0-9çğıöşü<> ]+")
 SPACES = re.compile(r"\s+")
 
 
+def tr_lower(text: str) -> str:
+    """Turkish lower case: I -> ı and İ -> i (Python's lower() turns İ into i + a combining dot)."""
+    return text.replace("I", "ı").replace("İ", "i").lower()
+
+
 def extract_model_codes(text: str) -> list[str]:
-    return [f"{a.upper()}-{b.upper()}" for a, b in MODEL_CODE.findall(text)]
+    return [f"{a}-{b}" for a, b in MODEL_CODE.findall(text)]
 
 
 def regex_normalize(text: str) -> str:
@@ -46,7 +92,7 @@ def regex_normalize(text: str) -> str:
     text = URL.sub(" <url> ", text)
     text = EMAIL.sub(" <email> ", text)
     text = MODEL_CODE.sub(" <model> ", text)
-    text = text.lower()
+    text = tr_lower(text)
     text = REPEAT.sub(r"\1\1", text)
     text = NON_WORD.sub(" ", text)
     return SPACES.sub(" ", text).strip()
@@ -67,35 +113,45 @@ def edit_distance(a: str, b: str) -> int:
     return prev[-1]
 
 
-def is_english_word(w: str) -> bool:
-    """Real English words outside the training vocabulary (e.g. "draining") are left alone."""
+def is_turkish_word(w: str) -> bool:
+    """Real Turkish words outside the training vocabulary are left alone."""
     from wordfreq import zipf_frequency
 
-    return zipf_frequency(w, "en") >= 3.0
+    return zipf_frequency(w, "tr") >= 2.5
+
+
+ASCII_FOLD = str.maketrans("çğıöşü", "cgiosu")
 
 
 class SpellCorrector:
-    """Replaces unknown words with the closest frequent training word (minimum edit distance)."""
+    """Fixes unknown words: first missing Turkish letters ("muzik" -> "müzik"),
+    then the closest frequent training word by minimum edit distance."""
 
     def __init__(self, vocab: Counter, min_count: int = 2):
         self.freq = {w: c for w, c in vocab.items() if c >= min_count}
         self.by_len: dict[int, list[str]] = {}
-        for w in self.freq:
+        self.folded: dict[str, str] = {}
+        for w in sorted(self.freq, key=self.freq.get):  # most frequent wins
             self.by_len.setdefault(len(w), []).append(w)
+            self.folded[w.translate(ASCII_FOLD)] = w
 
     @classmethod
     def from_texts(cls, texts) -> "SpellCorrector":
         return cls(Counter(w for t in texts for w in regex_normalize(t).split()))
 
     def save(self, path: Path):
-        path.write_text(json.dumps(self.freq))
+        path.write_text(json.dumps(self.freq, ensure_ascii=False))
 
     @classmethod
     def load(cls, path: Path) -> "SpellCorrector":
         return cls(Counter(json.loads(path.read_text())), min_count=0)
 
     def correct_word(self, w: str) -> str:
-        if w in self.freq or len(w) < 4 or not w.isalpha() or is_english_word(w):
+        if w in self.freq:
+            return w
+        if w in self.folded:
+            return self.folded[w]
+        if len(w) < 4 or not w.isalpha() or is_turkish_word(w):
             return w
         max_d = 1 if len(w) < 8 else 2
         best, best_key = w, None
@@ -117,8 +173,8 @@ def get_corrector() -> SpellCorrector:
     path = MODELS / "vocab.json"
     if path.exists():
         return SpellCorrector.load(path)
-    ds, _, _ = load_clinc()
-    sc = SpellCorrector.from_texts(ds["train"]["text"])
+    splits, _, _, _ = load_data()
+    sc = SpellCorrector.from_texts(splits["train"][0])
     sc.save(path)
     return sc
 
@@ -131,21 +187,21 @@ def normalize(text: str, correct: bool = True) -> str:
 # --- B: ELIZA-style small talk rules ---------------------------------------
 
 ELIZA_RULES = [
-    (re.compile(r"^(hi|hello|hey|good (morning|afternoon|evening))( there)?$"),
-     "Hello! Tell me what is wrong and I will route you to the right team."),
-    (re.compile(r"^(thanks|thank you|thx)( (so|very) much)?$"),
-     "You're welcome. Is there anything else I can help with?"),
-    (re.compile(r"^(bye|goodbye|see you)( later)?$"),
-     "Goodbye! Have a nice day."),
-    (re.compile(r"^how are you( doing| today)?$"),
-     "I'm a support bot, always fine. How can I help you today?"),
-    (re.compile(r"^are you (a )?(bot|robot|human|real)$"),
-     "I'm an automated assistant. Ask for a human agent any time."),
+    (re.compile(r"^(merhaba|selam|selamlar|günaydın|iyi akşamlar|iyi günler)$"),
+     "Merhaba! Sorununu yaz, seni doğru ekibe yönlendireyim."),
+    (re.compile(r"^(teşekkürler|teşekkür ederim|sağ ol|sağol|eyvallah)( çok)?$"),
+     "Rica ederim. Başka bir konuda yardımcı olabilir miyim?"),
+    (re.compile(r"^(görüşürüz|hoşça kal|güle güle|bay bay)$"),
+     "Görüşmek üzere, iyi günler!"),
+    (re.compile(r"^(nasılsın|naber|ne haber)$"),
+     "Ben bir destek botuyum, hep iyiyim. Sana nasıl yardımcı olabilirim?"),
+    (re.compile(r"^(sen )?(bot|robot|insan) mısın$"),
+     "Otomatik bir asistanım. İstersen seni bir müşteri temsilcisine aktarırım."),
 ]
 
 
 def eliza_reply(normalized: str) -> str | None:
-    """Whole-message rules only, so "thanks my card was declined" still gets routed."""
+    """Whole-message rules only, so "teşekkürler kartım reddedildi" still gets routed."""
     for pattern, reply in ELIZA_RULES:
         if pattern.match(normalized):
             return reply

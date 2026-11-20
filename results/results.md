@@ -1,10 +1,10 @@
-Test split: CLINC150 'plus' test, 5500 messages (1000 out-of-scope). Latency: mean of 200 single-message calls incl. preprocessing, Apple M4 CPU, 4 torch threads, batch size 1.
+Test split: MASSIVE 1.1 tr-TR test, 2974 messages (391 out-of-scope from held-out scenarios). Latency: mean of 200 single-message calls incl. preprocessing, Apple M4 CPU, 4 torch threads, batch size 1.
 
-| model                | precision      |   accuracy |   in-scope acc |   OOS recall |   size (MB) |   latency (ms) |   threshold |
-|:---------------------|:---------------|-----------:|---------------:|-------------:|------------:|---------------:|------------:|
-| tf-idf + LogReg      | FP64           |      83.44 |          81.82 |         90.7 |        39   |           1.06 |        0.5  |
-| word2vec + FFN       | FP32           |      81.49 |          80.33 |         86.7 |         4.8 |           0.89 |        0.8  |
-| BERT-base fine-tuned | FP32           |      91.33 |          91.16 |         92.1 |       438.4 |          17.8  |        0.7  |
-| BERT-base fine-tuned | INT8 (dynamic) |      91.27 |          91.09 |         92.1 |       110.4 |          15.05 |        0.65 |
-| BERT-mini distilled  | FP32           |      89.51 |          90.18 |         86.5 |        44.8 |           1.85 |        0.75 |
-| BERT-mini distilled  | INT8 (dynamic) |      88.96 |          89    |         88.8 |        11.6 |           2.83 |        0.8  |
+| model                       | precision      |   accuracy |   in-scope acc |   OOS recall |   size (MB) |   latency (ms) |   threshold |
+|:----------------------------|:---------------|-----------:|---------------:|-------------:|------------:|---------------:|------------:|
+| tf-idf + LogReg             | FP64           |      74.88 |          77.86 |        55.24 |        25.5 |           5.28 |        0.45 |
+| fastText + FFN              | FP32           |      71.52 |          74.72 |        50.38 |        86.9 |           1.04 |        0.4  |
+| BERTurk fine-tuned          | FP32           |      74.41 |          79.13 |        43.22 |       442.7 |          29.18 |        0.5  |
+| BERTurk fine-tuned          | INT8 (dynamic) |      73.74 |          78.28 |        43.73 |       111.4 |          13.58 |        0.5  |
+| Turkish BERT-mini distilled | FP32           |      77.84 |          83.89 |        37.85 |        46.3 |           1.92 |        0.5  |
+| Turkish BERT-mini distilled | INT8 (dynamic) |      75.25 |          80.06 |        43.48 |        11.9 |           2.73 |        0.45 |

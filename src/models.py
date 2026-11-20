@@ -1,4 +1,7 @@
-"""The four models of the ladder behind one interface: predict_proba(list[str]) -> (n, 151)."""
+"""The four models of the ladder behind one interface: predict_proba(list[str]) -> (n, 53).
+
+None of them has an out-of-scope output; out-of-scope is decided by a confidence threshold.
+"""
 from __future__ import annotations
 
 import pickle
@@ -39,7 +42,7 @@ class TfidfLR(Model):
         return self.clf.predict_proba(self.vec.transform([normalize(t) for t in texts]))
 
 
-# --- 2. Neural network trained from scratch: averaged word2vec -> FFN --------
+# --- 2. Neural network trained from scratch: averaged fastText -> FFN --------
 
 class FFN(nn.Module):
     def __init__(self, dim: int, hidden: int, n_classes: int, dropout: float = 0.3):
@@ -53,28 +56,30 @@ class FFN(nn.Module):
 
 
 def average_vectors(kv, texts: list[str]) -> np.ndarray:
+    """Mean of the word vectors. fastText builds a vector even for unseen words
+    ("alarmlarımı") from its character n-grams."""
     out = np.zeros((len(texts), kv.vector_size), dtype=np.float32)
     for i, t in enumerate(texts):
-        vecs = [kv[w] for w in t.split() if w in kv]
+        vecs = [kv[w] for w in t.split()]
         if vecs:
             out[i] = np.mean(vecs, axis=0)
     return out
 
 
-class W2VFFN(Model):
-    name, precision = "word2vec + FFN", "FP32"
-    w2v_path = MODELS / "word2vec.kv"
+class FastTextFFN(Model):
+    name, precision = "fastText + FFN", "FP32"
+    w2v_path = MODELS / "fasttext.kv"
     ffn_path = MODELS / "ffn.pt"
 
     def __init__(self):
-        from gensim.models import KeyedVectors
+        from gensim.models.fasttext import FastTextKeyedVectors
 
-        self.kv = KeyedVectors.load(str(self.w2v_path))
+        self.kv = FastTextKeyedVectors.load(str(self.w2v_path))
         ckpt = torch.load(self.ffn_path, weights_only=True)
         self.net = FFN(ckpt["dim"], ckpt["hidden"], ckpt["n_classes"])
         self.net.load_state_dict(ckpt["state"])
         self.net.eval()
-        self.files = [self.ffn_path, *MODELS.glob("word2vec.kv*")]
+        self.files = [self.ffn_path, *MODELS.glob("fasttext.kv*")]
 
     @torch.no_grad()
     def predict_proba(self, texts):
@@ -116,24 +121,24 @@ class HFClassifier(Model):
 
 
 def bert():
-    return HFClassifier(MODELS / "bert", "BERT-base fine-tuned", "FP32")
+    return HFClassifier(MODELS / "bert", "BERTurk fine-tuned", "FP32")
 
 
 def student_int8():
-    return HFClassifier(MODELS / "student", "BERT-mini distilled", "INT8 (dynamic)", quantize=True)
+    return HFClassifier(MODELS / "student", "Turkish BERT-mini distilled", "INT8 (dynamic)", quantize=True)
 
 
 def bert_int8():
-    return HFClassifier(MODELS / "bert", "BERT-base fine-tuned", "INT8 (dynamic)", quantize=True)
+    return HFClassifier(MODELS / "bert", "BERTurk fine-tuned", "INT8 (dynamic)", quantize=True)
 
 
 def student_fp32():
-    return HFClassifier(MODELS / "student", "BERT-mini distilled", "FP32")
+    return HFClassifier(MODELS / "student", "Turkish BERT-mini distilled", "FP32")
 
 
 def load_all(with_ablations: bool = False) -> list[Model]:
-    """The four-model ladder; ablations add BERT-base INT8 and the student before quantization."""
-    models = [TfidfLR(), W2VFFN(), bert()]
+    """The four-model ladder; ablations add BERTurk INT8 and the student before quantization."""
+    models = [TfidfLR(), FastTextFFN(), bert()]
     if with_ablations:
         models += [bert_int8(), student_fp32()]
     return models + [student_int8()]
