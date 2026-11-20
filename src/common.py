@@ -1,7 +1,8 @@
-"""Shared paths, data loading and the Turkish text normalizer (area B)."""
+"""Shared paths, data loading and the text normalizer (area B)."""
 from __future__ import annotations
 
 import json
+import random
 import re
 import unicodedata
 from collections import Counter
@@ -16,59 +17,116 @@ RESULTS.mkdir(exist_ok=True)
 
 SEED = 42
 
-# MASSIVE has no out-of-scope class. These scenarios are removed from training and their
-# validation/test messages are labelled "oos": topics the router has never seen.
-HELD_OUT = ("cooking", "takeaway", "social", "weather")
+# No intent is sent to a human on top of the threshold rule; Bitext has its own
+# contact_human_agent intent, which the "Human agent" team owns.
+TO_HUMAN: tuple[str, ...] = ()
 
-# MASSIVE's catch-all intent for odd requests ("bana bugünü anlat", "merkezi olmayan tasarım").
-# No team owns it, and unseen topics land in it with high confidence, so it goes to a human.
-TO_HUMAN = ("general_quirky",)
-
-# Each MASSIVE scenario is one support team.
+# Each Bitext category is one support team.
 TEAMS = {
-    "alarm": "Alarm ekibi", "audio": "Ses ekibi", "calendar": "Takvim ekibi",
-    "datetime": "Tarih/saat ekibi", "email": "E-posta ekibi", "general": "Genel destek",
-    "iot": "Akıllı ev ekibi", "lists": "Liste ekibi", "music": "Müzik ekibi",
-    "news": "Haber ekibi", "play": "Medya oynatma ekibi", "qa": "Bilgi ekibi",
-    "recommendation": "Öneri ekibi", "transport": "Ulaşım ekibi",
+    "ACCOUNT": "Account team", "CANCEL": "Cancellation team", "CONTACT": "Human agent",
+    "DELIVERY": "Delivery team", "FEEDBACK": "Feedback team", "INVOICE": "Billing team",
+    "ORDER": "Orders team", "PAYMENT": "Payments team", "REFUND": "Refunds team",
+    "SHIPPING": "Shipping address team", "SUBSCRIPTION": "Newsletter team",
 }
+
+# Bitext writes slots as {{Order Number}}; real customers type values, so we fill them.
+SLOTS = {
+    "{{Order Number}}": lambda r: r.choice(["#", "order ", "#", ""]) + str(r.randint(10000, 999999)),
+    "{{Invoice Number}}": lambda r: f"INV-{r.randint(1000, 99999)}",
+    "{{Account Type}}": lambda r: r.choice(["free", "premium", "pro", "business", "gold", "standard"]),
+    "{{Account Category}}": lambda r: r.choice(["personal", "business", "family", "student", "platinum"]),
+    "{{Person Name}}": lambda r: r.choice(["John", "Maria", "Ahmet", "Emma", "Lucas", "Ayse", "Olivia", "Noah"]),
+    "{{Refund Amount}}": lambda r: str(r.choice([15, 29, 49, 120, 250, 999])),
+    "{{Currency Symbol}}": lambda r: r.choice(["$", "€", "£"]),
+    "{{Delivery City}}": lambda r: r.choice(["Istanbul", "London", "Berlin", "Madrid", "Chicago", "Lisbon"]),
+    "{{Delivery Country}}": lambda r: r.choice(["Turkey", "Germany", "Spain", "the UK", "Portugal", "the US"]),
+}
+# Bitext sentences almost never name a product, while the CLINC negatives often do ("blender",
+# "jacket"). Without help the models learn "a product name means out-of-scope". We append a
+# product to 30% of the in-scope training sentences to break that shortcut (val/test untouched).
+PRODUCTS = ["blender", "jacket", "phone", "laptop", "shoes", "headphones", "coffee machine", "sofa",
+            "t-shirt", "watch", "camera", "vacuum cleaner", "lamp", "backpack", "jeans", "tv",
+            "microwave", "toaster", "book", "keyboard", "package", "parcel", "dress", "mattress"]
+PRODUCT_TAILS = [" (the {p})", " for my {p}", ", it's about the {p} i bought", " - the {p}"]
+
+
+def augment_product(text: str, r: random.Random, share: float = 0.3) -> str:
+    if r.random() >= share:
+        return text
+    return text + r.choice(PRODUCT_TAILS).format(p=r.choice(PRODUCTS))
+
+
+# CLINC150 intents never used as negatives: they overlap with an online-shop support desk.
+OVERLAPPING = {
+    "transfer", "transactions", "balance", "freeze_account", "pay_bill", "bill_balance", "bill_due",
+    "interest_rate", "routing", "min_payment", "order_checks", "pin_change", "report_fraud",
+    "account_blocked", "spending_history", "credit_score", "report_lost_card", "credit_limit",
+    "rewards_balance", "new_card", "application_status", "card_declined", "international_fees", "apr",
+    "redeem_rewards", "credit_limit_change", "damaged_card", "replacement_card_duration",
+    "improve_credit_score", "expiration_date", "order", "order_status", "cancel", "direct_deposit",
+    # Short replies and complaint-like phrasing ("no, that is wrong", "thanks") that real support
+    # messages also contain; as negatives they taught the models "natural phrasing = out-of-scope".
+    "no", "yes", "maybe", "thank_you", "repeat", "greeting", "goodbye",
+    "lost_luggage", "cancel_reservation", "confirm_reservation", "last_maintenance", "insurance",
+}
+SLOT = re.compile(r"\{\{[^}]+\}\}")
+
+
+def fill_slots(text: str, r: random.Random) -> str:
+    return SLOT.sub(lambda m: SLOTS.get(m.group(0), lambda _: "")(r), text)
 
 
 @lru_cache(maxsize=1)
 def load_data():
-    """MASSIVE 1.1 tr-TR (Amazon, CC BY 4.0) with held-out scenarios as out-of-scope.
+    """Bitext customer-support dataset (27 intents in 11 teams, CDLA-Sharing-1.0), split 70/10/20
+    with a fixed seed. CLINC150 (CC BY 3.0) adds 3,000 other-domain training negatives and its
+    out-of-scope queries for validation and test.
 
     Returns (splits, names, oos, team_of) where splits[k] = (texts, labels),
     names[i] is the intent name, names[oos] == "oos" and team_of[intent] is the team.
     """
+    import pandas as pd
     from datasets import load_dataset
+    from huggingface_hub import hf_hub_download
+    from sklearn.model_selection import train_test_split
 
-    base = "hf://datasets/AmazonScience/massive@refs%2Fconvert%2Fparquet/tr-TR/"
-    ds = load_dataset("parquet", data_files={s: f"{base}{s}/0000.parquet"
-                                             for s in ("train", "validation", "test")})
-    scen = ds["train"].features["scenario"].names
-    intents = ds["train"].features["intent"].names
-
-    in_scope = sorted({intents[i] for i, s in zip(ds["train"]["intent"], ds["train"]["scenario"])
-                       if scen[s] not in HELD_OUT})
+    path = hf_hub_download("bitext/Bitext-customer-support-llm-chatbot-training-dataset",
+                           "Bitext_Sample_Customer_Support_Training_Dataset_27K_responses-v11.csv",
+                           repo_type="dataset")
+    df = pd.read_csv(path).drop_duplicates("instruction")
+    r = random.Random(SEED)
+    df["text"] = [fill_slots(t, r) for t in df["instruction"]]
+    in_scope = sorted(df["intent"].unique())
     names = in_scope + ["oos"]
     oos = len(in_scope)
     index = {n: i for i, n in enumerate(in_scope)}
-    team_of = {n: TEAMS[n.split("_")[0]] for n in in_scope}
+    team_of = dict(zip(df["intent"], (TEAMS[c] for c in df["category"])))
+    y = [index[i] for i in df["intent"]]
+    xtr, xrest, ytr, yrest = train_test_split(list(df["text"]), y, test_size=0.3, stratify=y, random_state=SEED)
+    xva, xte, yva, yte = train_test_split(xrest, yrest, test_size=2 / 3, stratify=yrest, random_state=SEED)
 
-    splits = {}
-    for k in ("train", "validation", "test"):
-        texts, labels = [], []
-        for t, i, s in zip(ds[k]["utt"], ds[k]["intent"], ds[k]["scenario"]):
-            if scen[s] in HELD_OUT:
-                if k == "train":
-                    continue  # never shown to any model
-                labels.append(oos)
-            else:
-                labels.append(index[intents[i]])
-            texts.append(t)
-        splits[k] = (texts, labels)
-    return splits, names, oos, team_of
+    clinc = load_dataset("clinc/clinc_oos", "plus")
+    cl_names = clinc["train"].features["intent"].names
+    cl_oos = cl_names.index("oos")
+
+    # Training negatives: CLINC150 requests from other domains ("set a timer", "how do i
+    # cook rice"), labelled "oos" so the models learn what is NOT a support request.
+    # Banking/credit-card and order intents are left out: they overlap with our teams.
+    neg = [t for t, i in zip(clinc["train"]["text"], clinc["train"]["intent"])
+           if i != cl_oos and cl_names[i] not in OVERLAPPING]
+    r.shuffle(neg)
+    neg = neg[:3000]
+    xtr = [augment_product(t, r) for t in xtr]  # in-scope training sentences only
+    xtr, ytr = xtr + neg, ytr + [oos] * len(neg)
+
+    # Validation/test out-of-scope: CLINC150's own out-of-scope queries, which belong to
+    # none of its 150 intents ("what's the population of finland"). Never trained on.
+    pool = [t for k in ("validation", "test") for t, i in zip(clinc[k]["text"], clinc[k]["intent"]) if i == cl_oos]
+    r.shuffle(pool)
+    n_val = round(len(xva) * 0.15)
+    xva, yva = xva + pool[:n_val], yva + [oos] * n_val
+    xte, yte = xte + pool[n_val:], yte + [oos] * len(pool[n_val:])
+    return {"train": (xtr, ytr), "validation": (xva, yva), "test": (xte, yte)}, names, oos, team_of
 
 
 # --- B: regex normalization ------------------------------------------------
@@ -77,14 +135,10 @@ def load_data():
 MODEL_CODE = re.compile(r"\b([A-Z]{1,4})-?(\d{3,5}[A-Z]?)\b")
 URL = re.compile(r"https?://\S+|www\.\S+")
 EMAIL = re.compile(r"\b[\w.+-]+@[\w-]+\.[\w.]+\b")
-REPEAT = re.compile(r"(\w)\1{2,}")  # "çooook" -> "çook"
-NON_WORD = re.compile(r"[^a-z0-9çğıöşü<> ]+")
+NUMBER = re.compile(r"#?\b(?:inv-)?\d{3,}\b")  # order / invoice numbers -> <num>
+REPEAT = re.compile(r"(\w)\1{2,}")  # "pleeease" -> "pleease"
+NON_WORD = re.compile(r"[^a-z0-9<> ']+")
 SPACES = re.compile(r"\s+")
-
-
-def tr_lower(text: str) -> str:
-    """Turkish lower case: I -> ı and İ -> i (Python's lower() turns İ into i + a combining dot)."""
-    return text.replace("I", "ı").replace("İ", "i").lower()
 
 
 def extract_model_codes(text: str) -> list[str]:
@@ -96,7 +150,8 @@ def regex_normalize(text: str) -> str:
     text = URL.sub(" <url> ", text)
     text = EMAIL.sub(" <email> ", text)
     text = MODEL_CODE.sub(" <model> ", text)
-    text = tr_lower(text)
+    text = text.lower()
+    text = NUMBER.sub(" <num> ", text)
     text = REPEAT.sub(r"\1\1", text)
     text = NON_WORD.sub(" ", text)
     return SPACES.sub(" ", text).strip()
@@ -117,27 +172,21 @@ def edit_distance(a: str, b: str) -> int:
     return prev[-1]
 
 
-def is_turkish_word(w: str) -> bool:
-    """Real Turkish words outside the training vocabulary are left alone."""
+def is_english_word(w: str) -> bool:
+    """Real English words outside the training vocabulary ("blender") are left alone."""
     from wordfreq import zipf_frequency
 
-    return zipf_frequency(w, "tr") >= 2.5
-
-
-ASCII_FOLD = str.maketrans("çğıöşü", "cgiosu")
+    return zipf_frequency(w, "en") >= 3.0
 
 
 class SpellCorrector:
-    """Fixes unknown words: first missing Turkish letters ("muzik" -> "müzik"),
-    then the closest frequent training word by minimum edit distance."""
+    """Replaces unknown words with the closest frequent training word (minimum edit distance)."""
 
     def __init__(self, vocab: Counter, min_count: int = 2):
         self.freq = {w: c for w, c in vocab.items() if c >= min_count}
         self.by_len: dict[int, list[str]] = {}
-        self.folded: dict[str, str] = {}
         for w in sorted(self.freq, key=self.freq.get):  # most frequent wins
             self.by_len.setdefault(len(w), []).append(w)
-            self.folded[w.translate(ASCII_FOLD)] = w
 
     @classmethod
     def from_texts(cls, texts) -> "SpellCorrector":
@@ -153,9 +202,7 @@ class SpellCorrector:
     def correct_word(self, w: str) -> str:
         if w in self.freq:
             return w
-        if w in self.folded:
-            return self.folded[w]
-        if len(w) < 4 or not w.isalpha() or is_turkish_word(w):
+        if len(w) < 4 or not w.isalpha() or is_english_word(w):
             return w
         max_d = 1 if len(w) < 8 else 2
         best, best_key = w, None
@@ -191,22 +238,24 @@ def normalize(text: str, correct: bool = True) -> str:
 # --- B: ELIZA-style small talk rules ---------------------------------------
 
 ELIZA_RULES = [
-    (re.compile(r"^(merhaba|selam|selamlar|günaydın|iyi akşamlar|iyi günler)$"),
-     "Merhaba! Sorununu yaz, seni doğru ekibe yönlendireyim."),
-    (re.compile(r"^(teşekkürler|teşekkür ederim|sağ ol|sağol|eyvallah)( çok)?$"),
-     "Rica ederim. Başka bir konuda yardımcı olabilir miyim?"),
-    (re.compile(r"^(görüşürüz|hoşça kal|güle güle|bay bay)$"),
-     "Görüşmek üzere, iyi günler!"),
-    (re.compile(r"^(nasılsın|naber|ne haber)$"),
-     "Ben bir destek botuyum, hep iyiyim. Sana nasıl yardımcı olabilirim?"),
-    (re.compile(r"^(sen )?(bot|robot|insan) mısın$"),
-     "Otomatik bir asistanım. İstersen seni bir müşteri temsilcisine aktarırım."),
+    (re.compile(r"^(hi+|hel+o+|hey+|good (morning|afternoon|evening))( there)?$"),
+     "Hello! Tell me what you need and I will route you to the right team."),
+    (re.compile(r"^(thanks|thank you|thx|ty)( (so|very) much)?( for (your|the) help)?$"),
+     "You're welcome! Is there anything else I can help with?"),
+    (re.compile(r"^(bye|goodbye|see you)( later)?$"), "Goodbye, have a nice day!"),
+    (re.compile(r"^how are you( doing| today)?$"), "I'm a support bot, always fine. How can I help?"),
+    (re.compile(r"^are you (a )?(bot|robot|human|real)$"), "I'm an automated assistant. Ask for a human agent any time."),
 ]
+# "my order arrived, thanks!" is gratitude, not a ticket, unless it also asks for something.
+THANKS = re.compile(r"\b(thanks|thank you|thx|appreciate it)\b")
+REQUEST = re.compile(r"\b(not|never|no|wrong|broken|damaged|late|missing|cancel|refund|return|change|help|how|what|where|when|why|can|could|need|want|problem|issue)\b")
 
 
 def eliza_reply(normalized: str) -> str | None:
-    """Whole-message rules only, so "teşekkürler kartım reddedildi" still gets routed."""
+    """Whole-message rules, plus thanks without any request in the same message."""
     for pattern, reply in ELIZA_RULES:
         if pattern.match(normalized):
             return reply
+    if THANKS.search(normalized) and not REQUEST.search(normalized):
+        return "Glad to hear that, thank you! Is there anything else I can help with?"
     return None

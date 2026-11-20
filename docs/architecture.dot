@@ -1,30 +1,30 @@
-// Rendered with: dot -Tpng docs/architecture.dot -o docs/architecture.png
+// Rendered with: dot -Tpng -Gdpi=200 docs/architecture.dot -o docs/architecture.png
 digraph router {
   rankdir=TB;
   graph [fontname="Helvetica", fontsize=11, nodesep=0.25, ranksep=0.45, pad=0.2];
   node  [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled", fillcolor="#f2f2f2", color="#555555"];
   edge  [fontname="Helvetica", fontsize=9, color="#555555"];
 
-  ui     [label="Gradio UI (app.py)\nuser types a Turkish message", fillcolor="#dde8f5"];
+  ui     [label="Gradio UI (app.py)\ncustomer types a message", fillcolor="#dde8f5"];
 
   subgraph cluster_pre {
     label="Preprocessing (src/common.py) - area B"; style=dashed; color="#888888";
-    regex  [label="Regex normalization\nURL/e-mail/model code -> tokens\nTurkish lowercase (I->ı, İ->i), repeated letters"];
+    regex  [label="Regex normalization\nURL / e-mail / model code / order number -> tokens\nlower case, repeated letters"];
     codes  [label="Model-code extraction\nDW-6534"];
-    spell  [label="Spell correction\n1) restore Turkish letters (isik->ışık)\n2) min. edit distance vs training vocab"];
-    eliza  [label="ELIZA rules\nmerhaba / teşekkürler / görüşürüz"];
+    spell  [label="Spell correction\nmin. edit distance vs training vocab"];
+    eliza  [label="ELIZA rules\nhello / thanks without a request"];
   }
 
   subgraph cluster_models {
-    label="Model ladder (src/models.py) - CPU, same test set"; style=dashed; color="#888888";
+    label="Model ladder (src/models.py) - CPU, same test set, 27 intents + out-of-scope"; style=dashed; color="#888888";
     m1 [label="1  tf-idf (word 1-2 + char 2-5 gram)\n+ LogReg, FP64 - area B baseline"];
     m2 [label="2  own fastText (skip-gram) avg\n-> FFN 256, SGD+backprop\nFP32 - area A"];
-    m3 [label="3  BERTurk fine-tuned\nFP32 - area C"];
-    m4 [label="4  Turkish BERT-mini distilled from 3\n+ dynamic INT8 quantization\narea D", fillcolor="#e3f1e0"];
+    m3 [label="3  BERT-base fine-tuned\nFP32 - area C"];
+    m4 [label="4  BERT-base + dynamic\nINT8 quantization - area D", fillcolor="#e3f1e0"];
   }
 
-  thr    [label="Decision (tuned on validation)\nmax p < tau or catch-all intent\n-> human agent"];
-  out    [label="Output\nteam (14) | human agent |\nrule reply + side-by-side table", fillcolor="#dde8f5"];
+  thr    [label="Decision (tau tuned on validation)\nout-of-scope or max p < tau\n-> human agent"];
+  out    [label="Output\nteam (11) | human agent |\nrule reply + side-by-side table", fillcolor="#dde8f5"];
 
   ui -> regex;
   regex -> codes [style=dotted, arrowhead=none];
@@ -32,5 +32,5 @@ digraph router {
   spell -> m1; spell -> m2; spell -> m3; spell -> m4;
   m4 -> thr [label="routing decision", penwidth=1.6];
   m1 -> out [style=dashed, label="shown"]; m2 -> out [style=dashed]; m3 -> out [style=dashed];
-  thr -> out; eliza -> out [label="whole-message small talk"]; codes -> out;
+  thr -> out; eliza -> out [label="small talk"]; codes -> out;
 }

@@ -1,136 +1,76 @@
-[19:26:34] stage tfidf
-[19:26:49] tf-idf val acc 0.8322
-[19:26:49] stage ffn
-[19:27:03] ffn best val acc 0.8025
-[19:27:03] stage bert
-W1118 19:27:05.322000 88169 .venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
-
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]
-Loading weights: 100%|██████████| 199/199 [00:00<00:00, 103930.58it/s]
-[transformers] [1mBertForSequenceClassification LOAD REPORT[0m from: dbmdz/bert-base-turkish-uncased
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[23:52:38] stage tfidf
+[23:52:41] tf-idf val acc 0.9992
+[23:52:41] stage ffn
+Exception ignored in: 'gensim.models.word2vec_inner.our_dot_float'
+Exception ignored in: 'gensim.models.word2vec_inner.our_dot_float'
+Exception ignored in: 'gensim.models.word2vec_inner.our_dot_float'
+Exception ignored in: 'gensim.models.word2vec_inner.our_dot_float'
+[23:53:04] ffn best val acc 0.9992
+[23:53:04] stage bert
+W1118 23:53:06.653000 42671 .venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6521.39it/s]
+[transformers] [1mBertForSequenceClassification LOAD REPORT[0m from: bert-base-uncased
 Key                                        | Status     | 
 -------------------------------------------+------------+-
-cls.seq_relationship.weight                | UNEXPECTED | 
-cls.predictions.decoder.weight             | UNEXPECTED | 
-cls.predictions.transform.dense.weight     | UNEXPECTED | 
-cls.predictions.transform.LayerNorm.weight | UNEXPECTED | 
-cls.predictions.transform.dense.bias       | UNEXPECTED | 
+cls.seq_relationship.bias                  | UNEXPECTED | 
+cls.predictions.bias                       | UNEXPECTED | 
 cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED | 
+cls.seq_relationship.weight                | UNEXPECTED | 
+cls.predictions.transform.dense.bias       | UNEXPECTED | 
+cls.predictions.transform.dense.weight     | UNEXPECTED | 
+classifier.weight                          | MISSING    | 
+classifier.bias                            | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+[23:57:04] bert epoch 1/3 val acc 0.9959
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.36s/it]Writing model shards: 100%|██████████| 1/1 [00:01<00:00,  1.36s/it]
+[00:01:30] bert epoch 2/3 val acc 0.9980
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:03<00:00,  3.37s/it]Writing model shards: 100%|██████████| 1/1 [00:03<00:00,  3.38s/it]
+[00:05:32] bert epoch 3/3 val acc 0.9980
+[00:05:32] bert best val acc 0.9980
+[00:05:32] stage distill
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 6516.42it/s]
+Loading weights:   0%|          | 0/71 [00:00<?, ?it/s]Loading weights: 100%|██████████| 71/71 [00:00<00:00, 77109.16it/s]
+[transformers] [1mBertForSequenceClassification LOAD REPORT[0m from: google/bert_uncased_L-4_H-256_A-4
+Key                                        | Status     | 
+-------------------------------------------+------------+-
+cls.seq_relationship.bias                  | UNEXPECTED | 
+cls.predictions.bias                       | UNEXPECTED | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED | 
 cls.predictions.decoder.bias               | UNEXPECTED | 
-cls.seq_relationship.bias                  | UNEXPECTED | 
-cls.predictions.bias                       | UNEXPECTED | 
-classifier.weight                          | MISSING    | 
-classifier.bias                            | MISSING    | 
-
-Notes:
-- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
-- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
-[19:30:43] bert epoch 1/4 val acc 0.7774
-
-Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.71it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.70it/s]
-[19:32:44] bert epoch 2/4 val acc 0.8156
-
-Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.28it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.28it/s]
-[19:35:59] bert epoch 3/4 val acc 0.8425
-
-Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.06it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.06it/s]
-[19:39:07] bert epoch 4/4 val acc 0.8396
-[19:39:07] bert best val acc 0.8425
-[19:39:07] stage distill
-
-Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]
-Loading weights: 100%|██████████| 201/201 [00:00<00:00, 6512.84it/s]
-
-Loading weights:   0%|          | 0/71 [00:00<?, ?it/s]
-Loading weights: 100%|██████████| 71/71 [00:00<00:00, 16901.00it/s]
-[transformers] [1mBertForSequenceClassification LOAD REPORT[0m from: ytu-ce-cosmos/turkish-mini-bert-uncased
-Key                                        | Status     | 
--------------------------------------------+------------+-
+cls.predictions.decoder.weight             | UNEXPECTED | 
 cls.seq_relationship.weight                | UNEXPECTED | 
-cls.predictions.transform.dense.weight     | UNEXPECTED | 
-cls.predictions.transform.LayerNorm.weight | UNEXPECTED | 
 cls.predictions.transform.dense.bias       | UNEXPECTED | 
-cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | 
-cls.seq_relationship.bias                  | UNEXPECTED | 
-cls.predictions.bias                       | UNEXPECTED | 
-classifier.weight                          | MISSING    | 
+cls.predictions.transform.dense.weight     | UNEXPECTED | 
 classifier.bias                            | MISSING    | 
+classifier.weight                          | MISSING    | 
 
 Notes:
 - UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
 - MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
-[19:40:15] student epoch 1/25 val acc 0.3487
-
-Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00, 10.04it/s]
-[19:40:32] student epoch 2/25 val acc 0.7374
-
-Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  6.28it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  6.26it/s]
-[19:40:51] student epoch 3/25 val acc 0.8128
-
-Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.71it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.68it/s]
-[19:41:11] student epoch 4/25 val acc 0.8225
-
-Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.74it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.72it/s]
-[19:41:29] student epoch 5/25 val acc 0.8362
-
-Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.66it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  4.65it/s]
-[19:41:47] student epoch 6/25 val acc 0.8522
-
-Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.51it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.49it/s]
-[19:41:58] student epoch 7/25 val acc 0.8562
-
-Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00, 13.14it/s]
-[19:42:10] student epoch 8/25 val acc 0.8556
-[19:42:21] student epoch 9/25 val acc 0.8550
-[19:42:32] student epoch 10/25 val acc 0.8545
-[19:42:42] student epoch 11/25 val acc 0.8579
-
-Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00, 11.51it/s]
-[19:42:57] student epoch 12/25 val acc 0.8596
-
-Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.74it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.72it/s]
-[19:43:16] student epoch 13/25 val acc 0.8550
-[19:43:36] student epoch 14/25 val acc 0.8619
-
-Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  5.57it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  5.56it/s]
-[19:43:54] student epoch 15/25 val acc 0.8647
-
-Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00, 14.17it/s]
-[19:44:05] student epoch 16/25 val acc 0.8653
-
-Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
-Writing model shards: 100%|██████████| 1/1 [00:00<00:00, 10.39it/s]
-[19:44:18] student epoch 17/25 val acc 0.8607
-[19:44:31] student epoch 18/25 val acc 0.8619
-[19:44:40] student epoch 19/25 val acc 0.8607
-[19:44:50] student epoch 20/25 val acc 0.8602
-[19:44:59] student epoch 21/25 val acc 0.8647
-[19:45:09] student epoch 22/25 val acc 0.8602
-[19:45:19] student epoch 23/25 val acc 0.8619
-[19:45:27] student epoch 24/25 val acc 0.8624
-[19:45:36] student epoch 25/25 val acc 0.8642
-[19:45:36] student best val acc 0.8653
+[00:06:53] student epoch 1/15 val acc 0.9834
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00, 10.37it/s]
+[00:07:08] student epoch 2/15 val acc 0.9972
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.38it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.37it/s]
+[00:07:23] student epoch 3/15 val acc 0.9976
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00, 22.38it/s]
+[00:07:37] student epoch 4/15 val acc 0.9976
+[00:07:52] student epoch 5/15 val acc 0.9976
+[00:08:07] student epoch 6/15 val acc 0.9980
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  6.41it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  6.41it/s]
+[00:08:21] student epoch 7/15 val acc 0.9976
+[00:08:36] student epoch 8/15 val acc 0.9980
+[00:08:50] student epoch 9/15 val acc 0.9984
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.03it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.02it/s]
+[00:09:05] student epoch 10/15 val acc 0.9972
+[00:09:25] student epoch 11/15 val acc 0.9972
+[00:09:49] student epoch 12/15 val acc 0.9980
+[00:10:07] student epoch 13/15 val acc 0.9984
+[00:10:22] student epoch 14/15 val acc 0.9980
+[00:10:37] student epoch 15/15 val acc 0.9980
+[00:10:37] student best val acc 0.9984

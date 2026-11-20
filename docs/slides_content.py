@@ -35,22 +35,22 @@ Demo video & \url{{{VIDEO}}} \\
 
     ("Introduction: the problem", r"""
 \begin{itemize}
-\item A support desk receives thousands of free-text \textbf{Turkish} messages a day; each must reach the right team \textbf{instantly}.
+\item A support desk receives thousands of free-text messages a day (orders, refunds, invoices, accounts); each must reach the right team \textbf{instantly}.
 \item Users: the support team (routing) and customers (fast answer).
-\item The app takes a message $\rightarrow$ normalizes it $\rightarrow$ predicts the intent with a confidence $\rightarrow$ routes it to one of 14 teams.
-\item Low-confidence messages (e.g.\ topics never seen in training) go to a \textbf{human agent}; greetings and thanks get a rule-based reply.
-\item Domain change (allowed by Section 4): Turkish \textbf{MASSIVE} assistant requests (alarm, smart home, transport, \dots) instead of appliance tickets -- public and labeled.
+\item The app takes a message $\rightarrow$ normalizes it $\rightarrow$ predicts the intent with a confidence $\rightarrow$ routes it to one of 11 teams.
+\item Low-confidence or out-of-scope messages go to a \textbf{human agent}; greetings and thanks get a rule-based reply.
+\item Domain (allowed by Section 4): a general online-shop support desk in English instead of an appliance brand.
 \end{itemize}
 \textbf{Success} = high in-scope accuracy \emph{and} high out-of-scope recall (a wrong team is worse than a human agent), at CPU latency of a few ms.
 """),
 
     ("Development: data", r"""
 \begin{itemize}
-\item \textbf{MASSIVE 1.1, tr-TR} (FitzGerald et al., 2022, CC BY 4.0): 18 scenarios, 60 intents, fixed train/validation/test splits.
-\item No out-of-scope class, so 4 scenarios (cooking, takeaway, social, weather) are \textbf{removed from training}; their validation/test sentences are labelled out-of-scope.
-\item Result: 53 intents in 14 teams. Train 10,082 $\cdot$ validation 2,033 (281 OOS) $\cdot$ \textbf{test 2,974 (391 OOS)}.
-\item Models trained on train; checkpoints and thresholds chosen on validation; \textbf{every number on the following slides is from the same test split}.
-\item Preprocessing (identical for all models): NFKC, URL/e-mail/model-code tokens (\texttt{DW-6534}), Turkish lowercase (I$\rightarrow$ı, İ$\rightarrow$i), repeated letters, punctuation, restoring Turkish letters (\textit{isiklari} $\rightarrow$ \textit{ışıkları}), edit-distance spelling correction.
+\item \textbf{Bitext customer-support dataset} (CDLA-Sharing-1.0): 27 intents in 11 categories, used as the 11 teams (orders, refunds, invoices, account, delivery, \dots). Duplicates removed; slots such as \texttt{\{\{Order Number\}\}} filled with realistic values.
+\item Stratified split with a fixed seed: train 70\% $\cdot$ validation 10\% $\cdot$ test 20\%.
+\item \textbf{Out-of-scope:} 3,000 other-domain CLINC150 requests (Larson et al., 2019, CC BY 3.0) as a trained out-of-scope class (``set a timer''); CLINC150's own out-of-scope queries (``what's the population of finland'') only in validation and test, 13\% of each.
+\item Result: train 20,244 (3,000 negatives) $\cdot$ validation 2,832 (369 OOS) $\cdot$ \textbf{test 5,659 (731 OOS)}. Every number on the following slides is from the same test split.
+\item Preprocessing (identical for all models): NFKC, URL/e-mail/model-code/number tokens, lower case, repeated letters, punctuation, edit-distance spelling correction.
 \end{itemize}
 """),
 
@@ -66,8 +66,8 @@ Demo video & \url{{{VIDEO}}} \\
 \textbf{Area} & \textbf{Technique used} & \textbf{Where in the code} \\ \midrule
 A $\cdot$ Neural networks & Feedforward net on averaged fastText vectors, trained with SGD (momentum) + backprop & \texttt{train.py: train\_ffn}, \texttt{src/models.py: FFN} \\
 B $\cdot$ Classical NLP & Regex normalization, model-code extraction, min.\ edit distance spelling correction, ELIZA-style rules, tf-idf + logistic regression; own fastText embeddings & \texttt{src/common.py}, \texttt{train.py: train\_tfidf} \\
-C $\cdot$ Transformers & BERTurk fine-tuned with a 53-way classification head; WordPiece tokenizer & \texttt{train.py: train\_bert} \\
-D $\cdot$ Efficient models & Knowledge distillation BERTurk $\rightarrow$ Turkish BERT-mini, then dynamic INT8 quantization; size and latency benchmark & \texttt{train.py: train\_distill}, \texttt{src/models.py}, \texttt{evaluate.py} \\
+C $\cdot$ Transformers & BERT-base fine-tuned with a 27-way classification head; WordPiece tokenizer & \texttt{train.py: train\_bert} \\
+D $\cdot$ Efficient models & Dynamic INT8 quantization of BERT-base (app model); distillation into BERT-mini as ablation; size and latency benchmark & \texttt{train.py: train\_distill}, \texttt{src/models.py}, \texttt{evaluate.py} \\
 \bottomrule
 \end{tabular}
 """),
@@ -75,15 +75,17 @@ D $\cdot$ Efficient models & Knowledge distillation BERTurk $\rightarrow$ Turkis
     ("Development: the four models and how they were trained", r"""
 \small
 \begin{enumerate}
-\item \textbf{Classical baseline:} tf-idf on word 1--2 grams + character 2--5 grams (Turkish suffixes share stems) + logistic regression ($C{=}20$).
+\item \textbf{Classical baseline:} tf-idf on word 1--2 grams + character 2--5 grams (typos still share pieces) + logistic regression ($C{=}20$).
 \item \textbf{Own neural network:} skip-gram fastText (200-d, char 3--5 grams, 40 epochs) trained on the training sentences; averaged sentence vector $\rightarrow$ FFN (256 ReLU, dropout 0.3) $\rightarrow$ softmax; SGD lr 0.1, momentum 0.9, 60 epochs, best validation epoch kept.
-\item \textbf{Transformer:} BERTurk (\texttt{dbmdz/bert-base-turkish-uncased}, 110M params, \texttt{strip\_accents=False}) fine-tuned 4 epochs, AdamW lr $4\cdot10^{-5}$, batch 32, linear warm-up/decay (Apple M4 GPU).
-\item \textbf{Quantized Transformer:} Turkish BERT-mini student (\texttt{ytu-ce-cosmos}, 4 layers, 256 hidden) trained 25 epochs on $0.5\cdot$KL(teacher, T=2) + $0.5\cdot$CE; then PyTorch dynamic quantization: \texttt{Linear} weights INT8, embedding table 8-bit weight-only.
+\item \textbf{Transformer:} \texttt{bert-base-uncased} (110M params) fine-tuned 3 epochs for 27 intents + out-of-scope, AdamW lr $4\cdot10^{-5}$, batch 32, linear warm-up/decay (Apple M4 GPU).
+\item \textbf{Quantized Transformer:} the same BERT-base with PyTorch dynamic quantization: \texttt{Linear} weights INT8, embedding table 8-bit weight-only.
 \end{enumerate}
-Routing: if $\max p < \tau$ $\rightarrow$ human agent (no model has an out-of-scope output). $\tau$ per model maximizes accuracy on validation (14\% out-of-scope, about the same share as test).
+Ablation: BERT-mini student (\texttt{google/bert\_uncased\_L-4\_H-256\_A-4}) distilled from BERT-base, 15 epochs on $0.5\cdot$KL(teacher, T=2) + $0.5\cdot$CE, then INT8.
+
+Routing: predicted out-of-scope or $\max p < \tau$ $\rightarrow$ human agent; $\tau$ per model chosen on validation.
 """),
 
-    ("Development: results (same held-out test set, 2,974 messages)", r"""
+    ("Development: results (same held-out test set, 5,659 messages)", r"""
 \centering\footnotesize
 @@RESULTS@@
 
@@ -94,32 +96,34 @@ Routing: if $\max p < \tau$ $\rightarrow$ human agent (no model has an out-of-sc
     ("Conclusion: what the comparison showed", r"""
 \small
 \begin{itemize}
-\item \textbf{Out-of-scope is the hard part.} Unseen topics often land in MASSIVE's catch-all intent \texttt{general\_quirky} with high confidence. No team owns that intent, so we route it to a human: out-of-scope recall of the app model rose from 43\% to 74\%, and accuracy rose from 75.3\% to 76.0\%.
-\item \textbf{The classical baseline is strong.} tf-idf + LogReg (76.1\%) matches BERTurk (76.1\%) and beats my fastText + FFN (72.0\%). Character n-grams handle Turkish suffixes; averaging word vectors loses word order.
-\item \textbf{The student matched its teacher.} BERTurk peaked at epoch 3; the distilled BERT-mini reached 77.8\% before quantization.
-\item \textbf{Distillation brought the speed:} 9.6$\times$ smaller and about 13$\times$ faster than BERTurk.
-\item \textbf{Quantization brought the size:} 46.3 $\rightarrow$ 11.9 MB (3.9$\times$) for $-1.9$ points. It does not speed up the small student on the M4 CPU; on BERTurk INT8 is 3$\times$ faster.
-\item \textbf{Final app model:} 11.9 MB, 2.2 ms, 76.0\% accuracy, the same accuracy as BERTurk at 37$\times$ smaller.
+\item \textbf{The test set does not separate the models.} Bitext sentences come from templates, so every model is above 99\%; tf-idf (99.6\%) is as good as BERT (99.3\%).
+\item \textbf{Natural messages do.} ``where is my order \#48213? it was supposed to arrive monday'' and ``I want my money back, the blender arrived broken'' reach the right team with BERT; the fastText network sends both to a human.
+\item \textbf{The out-of-scope class matters most.} With only a threshold, BERT gave ``what is the capital of france'' 0.89 confidence for a delivery intent. 3,000 other-domain negatives fixed it; I had to drop CLINC intents such as ``no'' and ``thank\_you'' and add product names to Bitext sentences, because the models first learned ``natural phrasing = out-of-scope''.
+\item \textbf{Quantization:} BERT-base INT8 is 4$\times$ smaller and about 3$\times$ faster for $-0.04$ points, so it runs in the app.
+\item \textbf{Distillation:} BERT-mini is 10$\times$ smaller and much faster, but catches fewer out-of-scope messages (95.2\% vs 97.0\%), so it stays an ablation.
 \end{itemize}
 """),
 
     ("Conclusion: failure examples and limitations", r"""
 \small
-Final model: 715 of 2,974 test messages wrong. \textbf{386} in-scope messages went to a human agent (the safe error), \textbf{101} out-of-scope messages went to a team, and 228 went to the wrong team.
 \begin{itemize}
-\item \textit{``bana biraz yulaf pişir''} (cooking, never seen) $\rightarrow$ \texttt{iot\_coffee}. The closest known request is the coffee machine.
-\item \textit{``şu anki hava durumu''} (weather, never seen) $\rightarrow$ \texttt{transport\_traffic}.
-\item \textit{``beni yarım saat sonra kaldır''} (true: \texttt{alarm\_set}) $\rightarrow$ human agent. ``kaldır'' means both ``wake'' and ``remove'' in Turkish.
+\item \textit{``I received the wrong size, I want to exchange it''} $\rightarrow$ human agent. None of the 27 intents covers exchanges, so this is the right fallback.
+\item \textit{``my package never came''} $\rightarrow$ human agent (out-of-scope 0.82). The phrasing is far from Bitext's ``how long does delivery take''.
+\item \textit{``I was charged twice for the same purchase''} $\rightarrow$ human agent instead of the payments team.
 \end{itemize}
-\textbf{Limitations:} MASSIVE is assistant requests, not real support tickets; intents stand in for teams; out-of-scope is simulated with 4 held-out scenarios; latency was measured on a laptop with other processes running.
+\textbf{Limitations:}
+\begin{itemize}
+\item Bitext is template-based, so test accuracy overstates real-world accuracy.
+\item Out-of-scope test queries come from another dataset (CLINC150).
+\item Latency was measured on a laptop on battery with other processes running; BERT-base FP32 measured 26--46 ms in different runs.
+\end{itemize}
 """),
 
     ("Conclusion: next steps", r"""
 \begin{itemize}
-\item Collect real Turkish support tickets (appliance faults, model codes) and map intents to real teams.
-\item Train with an explicit out-of-scope class instead of relying on the threshold alone.
-\item Try static INT8 or ONNX Runtime kernels, where INT8 actually speeds up the matrix multiplications on ARM.
-\item Calibrate confidences (temperature scaling) so the human-agent threshold is more reliable.
+\item Collect real support tickets and label a test set in the customers' own words.
+\item Add intents the data lacks (exchanges, damaged items) and a Turkish version for the original scenario.
+\item Try static INT8 or ONNX Runtime kernels, and calibrate confidences (temperature scaling).
 \end{itemize}
 """),
 
@@ -127,7 +131,7 @@ Final model: 715 of 2,974 test messages wrong. \textbf{386} in-scope messages we
 \begin{itemize}
 \item \textbf{Claude (Anthropic), via Claude Code}: wrote and debugged the training, evaluation and Gradio code, the Graphviz architecture diagram and the draft of these slides.
 \item All training and evaluation ran on my own laptop (Apple M4); every number comes from these runs (\texttt{results/results.csv}, \texttt{results/train.log}), none from papers, model cards or AI answers.
-\item No AI tool was used to generate data or labels; the dataset is public MASSIVE.
+\item No AI tool was used to generate data or labels; the datasets are public Bitext and CLINC150.
 \end{itemize}
 """),
 ]

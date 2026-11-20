@@ -1,6 +1,6 @@
-"""The four models of the ladder behind one interface: predict_proba(list[str]) -> (n, 53).
+"""The four models of the ladder behind one interface: predict_proba(list[str]) -> (n, 28): 27 intents + out-of-scope.
 
-None of them has an out-of-scope output; out-of-scope is decided by a confidence threshold.
+The last column is the out-of-scope class, learned from other-domain CLINC150 requests.
 """
 from __future__ import annotations
 
@@ -57,7 +57,7 @@ class FFN(nn.Module):
 
 def average_vectors(kv, texts: list[str]) -> np.ndarray:
     """Mean of the word vectors. fastText builds a vector even for unseen words
-    ("alarmlarımı") from its character n-grams."""
+    ("refnd") from its character n-grams."""
     out = np.zeros((len(texts), kv.vector_size), dtype=np.float32)
     for i, t in enumerate(texts):
         vecs = [kv[w] for w in t.split()]
@@ -121,24 +121,25 @@ class HFClassifier(Model):
 
 
 def bert():
-    return HFClassifier(MODELS / "bert", "BERTurk fine-tuned", "FP32")
+    return HFClassifier(MODELS / "bert", "BERT-base fine-tuned", "FP32")
 
 
 def student_int8():
-    return HFClassifier(MODELS / "student", "Turkish BERT-mini distilled", "INT8 (dynamic)", quantize=True)
+    return HFClassifier(MODELS / "student", "BERT-mini distilled", "INT8 (dynamic)", quantize=True)
 
 
 def bert_int8():
-    return HFClassifier(MODELS / "bert", "BERTurk fine-tuned", "INT8 (dynamic)", quantize=True)
+    return HFClassifier(MODELS / "bert", "BERT-base fine-tuned", "INT8 (dynamic)", quantize=True)
 
 
 def student_fp32():
-    return HFClassifier(MODELS / "student", "Turkish BERT-mini distilled", "FP32")
+    return HFClassifier(MODELS / "student", "BERT-mini distilled", "FP32")
 
 
 def load_all(with_ablations: bool = False) -> list[Model]:
-    """The four-model ladder; ablations add BERTurk INT8 and the student before quantization."""
+    """The four-model ladder; the last one (BERT-base INT8) makes the routing decision.
+    Ablations add the distilled BERT-mini student before and after INT8 quantization."""
     models = [TfidfLR(), FastTextFFN(), bert()]
     if with_ablations:
-        models += [bert_int8(), student_fp32()]
-    return models + [student_int8()]
+        models += [student_fp32(), student_int8()]
+    return models + [bert_int8()]

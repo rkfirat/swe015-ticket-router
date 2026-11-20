@@ -1,4 +1,4 @@
-"""Train the four-model ladder on MASSIVE tr-TR (held-out scenarios are out-of-scope).
+"""Train the four-model ladder on the Bitext customer-support data (27 intents, 11 teams).
 
     python train.py                 # everything
     python train.py tfidf ffn       # selected stages: tfidf ffn bert distill
@@ -36,11 +36,11 @@ def data():
     get_corrector()  # builds models/vocab.json from the training split only
     split = {k: ([normalize(t) for t in splits[k][0]], np.array(splits[k][1]))
              for k in ("train", "validation")}
-    # Checkpoints are picked on in-scope validation accuracy; OOS is handled later by a threshold.
+    # Checkpoints are picked on in-scope validation accuracy; OOS recall is tuned later with the threshold.
     xva, yva = split["validation"]
     keep = yva != oos
     split["validation"] = ([t for t, k in zip(xva, keep) if k], yva[keep])
-    return split, oos  # number of in-scope classes == index of "oos"
+    return split, oos + 1  # 27 intents + the "oos" class learned from CLINC negatives
 
 
 # --- 1. tf-idf + logistic regression ------------------------------------------
@@ -51,7 +51,7 @@ def train_tfidf(split, n_classes):
     from sklearn.pipeline import FeatureUnion
 
     (xtr, ytr), (xva, yva) = split["train"], split["validation"]
-    # Word 1-2 grams plus character 2-5 grams: Turkish suffixes ("alarm-lar-ım-ı") share stems.
+    # Word 1-2 grams plus character 2-5 grams: typos ("acount") still share most pieces.
     vec = FeatureUnion([
         ("word", TfidfVectorizer(ngram_range=(1, 2), sublinear_tf=True)),
         ("char", TfidfVectorizer(analyzer="char_wb", ngram_range=(2, 5), sublinear_tf=True, min_df=2)),
@@ -154,11 +154,10 @@ def fine_tune(model, tok, split, out_dir, epochs, lr, bs=32, teacher_logits=None
 def train_bert(split, n_classes):
     from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
-    name = "dbmdz/bert-base-turkish-uncased"
-    # The default would strip accents (ş -> s) and break Turkish words into odd pieces.
-    tok = AutoTokenizer.from_pretrained(name, strip_accents=False)
+    name = "bert-base-uncased"
+    tok = AutoTokenizer.from_pretrained(name)
     model = AutoModelForSequenceClassification.from_pretrained(name, num_labels=n_classes)
-    fine_tune(model, tok, split, MODELS / "bert", epochs=4, lr=4e-5)
+    fine_tune(model, tok, split, MODELS / "bert", epochs=3, lr=4e-5)
 
 
 def train_distill(split, n_classes):
@@ -176,10 +175,10 @@ def train_distill(split, n_classes):
     teacher_logits = torch.cat(logits)
     del teacher
 
-    name = "ytu-ce-cosmos/turkish-mini-bert-uncased"  # 4 layers, 256 hidden
+    name = "google/bert_uncased_L-4_H-256_A-4"  # BERT-mini: 4 layers, 256 hidden
     tok = AutoTokenizer.from_pretrained(name)
     student = AutoModelForSequenceClassification.from_pretrained(name, num_labels=n_classes)
-    fine_tune(student, tok, split, MODELS / "student", epochs=25, lr=2e-4, bs=64,
+    fine_tune(student, tok, split, MODELS / "student", epochs=15, lr=2e-4, bs=64,
               teacher_logits=teacher_logits)
 
 

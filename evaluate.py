@@ -1,4 +1,4 @@
-"""Evaluate every model on the same held-out MASSIVE tr-TR test split (R3, R4).
+"""Evaluate every model on the same held-out test split (Bitext 20% + CLINC150 out-of-scope) (R3, R4).
 
 Outputs results/results.csv, results/results.md, results/thresholds.json, results/errors.csv.
 """
@@ -24,8 +24,7 @@ HUMAN_IDS: list[int] = []
 
 
 def route(probs: np.ndarray, oos: int, tau: float) -> np.ndarray:
-    """Max probability below tau, or a catch-all intent -> human agent (oos).
-    The models have no oos output."""
+    """Predicted out-of-scope, max probability below tau, or a catch-all intent -> human agent."""
     pred = probs.argmax(-1)
     pred[probs.max(-1) < tau] = oos
     pred[np.isin(pred, HUMAN_IDS)] = oos
@@ -33,10 +32,14 @@ def route(probs: np.ndarray, oos: int, tau: float) -> np.ndarray:
 
 
 def pick_threshold(probs, y, oos) -> float:
-    """Maximize overall accuracy on validation, where 14% of the messages are out-of-scope
-    (about the same share as in test)."""
-    grid = np.round(np.arange(0.0, 0.96, 0.05), 2)
-    return float(max(grid, key=lambda t: (route(probs, oos, t) == y).mean()))
+    """Overall accuracy on validation, where 13% of the messages are out-of-scope (as in test)."""
+    grid = np.round(np.r_[np.arange(0.0, 0.96, 0.05), 0.97, 0.98, 0.99], 2)
+    acc = {t: (route(probs, oos, t) == y).mean() for t in grid}
+    best = max(acc.values())
+    # Validation is in Bitext's style, where almost every threshold looks the same. Among the
+    # thresholds within 0.2 points of the best, take the lowest: real messages are phrased more
+    # loosely and get lower confidence, and the out-of-scope class already catches unrelated ones.
+    return float(min(t for t in grid if acc[t] >= best - 0.002))
 
 
 def metrics(pred, y, oos):
@@ -94,8 +97,8 @@ def main():
     df.to_csv(RESULTS / "results.csv", index=False)
     hw = hardware()
     (RESULTS / "results.md").write_text(
-        f"Test split: MASSIVE 1.1 tr-TR test, {len(test_y)} messages "
-        f"({(test_y == oos).sum()} out-of-scope from held-out scenarios). "
+        f"Test split: Bitext 20% + CLINC150 out-of-scope, {len(test_y)} messages "
+        f"({(test_y == oos).sum()} out-of-scope). "
         f"Latency: mean of {LATENCY_RUNS} single-message "
         f"calls incl. preprocessing, {hw}.\n\n" + df.to_markdown(index=False) + "\n"
     )
