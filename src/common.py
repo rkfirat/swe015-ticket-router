@@ -17,10 +17,6 @@ RESULTS.mkdir(exist_ok=True)
 
 SEED = 42
 
-# No intent is sent to a human on top of the threshold rule; Bitext has its own
-# contact_human_agent intent, which the "Human agent" team owns.
-TO_HUMAN: tuple[str, ...] = ()
-
 # Each Bitext category is one support team.
 TEAMS = {
     "ACCOUNT": "Account team", "CANCEL": "Cancellation team", "CONTACT": "Human agent",

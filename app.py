@@ -10,7 +10,7 @@ import time
 import gradio as gr
 import pandas as pd
 
-from src.common import RESULTS, TO_HUMAN, eliza_reply, extract_model_codes, load_data, normalize
+from src.common import RESULTS, eliza_reply, extract_model_codes, load_data, normalize
 from src.models import load_all
 
 _, NAMES, OOS, TEAM_OF = load_data()
@@ -50,8 +50,6 @@ def classify(text: str):
             routed, reason = "Human agent", f"predicted out-of-scope, p={conf:.2f}"
         elif conf < tau:
             routed, reason = "Human agent", f"low confidence {conf:.2f} < threshold {tau:.2f}"
-        elif NAMES[idx] in TO_HUMAN:
-            routed, reason = "Human agent", f"catch-all intent {NAMES[idx]}"
         else:
             routed, reason = TEAM_OF[NAMES[idx]], f"intent {NAMES[idx]}, confidence {conf:.2f}"
         rows.append({"model": key, "predicted intent": NAMES[idx], "confidence": round(conf, 3),
