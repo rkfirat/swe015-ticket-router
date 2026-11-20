@@ -20,6 +20,10 @@ SEED = 42
 # validation/test messages are labelled "oos": topics the router has never seen.
 HELD_OUT = ("cooking", "takeaway", "social", "weather")
 
+# MASSIVE's catch-all intent for odd requests ("bana bugünü anlat", "merkezi olmayan tasarım").
+# No team owns it, and unseen topics land in it with high confidence, so it goes to a human.
+TO_HUMAN = ("general_quirky",)
+
 # Each MASSIVE scenario is one support team.
 TEAMS = {
     "alarm": "Alarm ekibi", "audio": "Ses ekibi", "calendar": "Takvim ekibi",

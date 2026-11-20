@@ -14,16 +14,21 @@ import numpy as np
 import pandas as pd
 import torch
 
-from src.common import RESULTS, load_data
+from src.common import RESULTS, TO_HUMAN, load_data
 from src.models import load_all
 
 LATENCY_RUNS = 200
 
 
+HUMAN_IDS: list[int] = []
+
+
 def route(probs: np.ndarray, oos: int, tau: float) -> np.ndarray:
-    """Max probability below tau -> human agent (oos). The models have no oos output."""
+    """Max probability below tau, or a catch-all intent -> human agent (oos).
+    The models have no oos output."""
     pred = probs.argmax(-1)
     pred[probs.max(-1) < tau] = oos
+    pred[np.isin(pred, HUMAN_IDS)] = oos
     return pred
 
 
@@ -64,6 +69,7 @@ def hardware() -> str:
 
 def main():
     splits, names, oos, _ = load_data()
+    HUMAN_IDS[:] = [names.index(n) for n in TO_HUMAN]
     val_x, val_y = splits["validation"][0], np.array(splits["validation"][1])
     test_x, test_y = splits["test"][0], np.array(splits["test"][1])
 

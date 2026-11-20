@@ -23,7 +23,7 @@ digraph router {
     m4 [label="4  Turkish BERT-mini distilled from 3\n+ dynamic INT8 quantization\narea D", fillcolor="#e3f1e0"];
   }
 
-  thr    [label="Confidence threshold\n(tuned on validation)\nmax p < tau -> human agent"];
+  thr    [label="Decision (tuned on validation)\nmax p < tau or catch-all intent\n-> human agent"];
   out    [label="Output\nteam (14) | human agent |\nrule reply + side-by-side table", fillcolor="#dde8f5"];
 
   ui -> regex;

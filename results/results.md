@@ -2,9 +2,9 @@ Test split: MASSIVE 1.1 tr-TR test, 2974 messages (391 out-of-scope from held-ou
 
 | model                       | precision      |   accuracy |   in-scope acc |   OOS recall |   size (MB) |   latency (ms) |   threshold |
 |:----------------------------|:---------------|-----------:|---------------:|-------------:|------------:|---------------:|------------:|
-| tf-idf + LogReg             | FP64           |      74.88 |          77.86 |        55.24 |        25.5 |           5.28 |        0.45 |
-| fastText + FFN              | FP32           |      71.52 |          74.72 |        50.38 |        86.9 |           1.04 |        0.4  |
-| BERTurk fine-tuned          | FP32           |      74.41 |          79.13 |        43.22 |       442.7 |          29.18 |        0.5  |
-| BERTurk fine-tuned          | INT8 (dynamic) |      73.74 |          78.28 |        43.73 |       111.4 |          13.58 |        0.5  |
-| Turkish BERT-mini distilled | FP32           |      77.84 |          83.89 |        37.85 |        46.3 |           1.92 |        0.5  |
-| Turkish BERT-mini distilled | INT8 (dynamic) |      75.25 |          80.06 |        43.48 |        11.9 |           2.73 |        0.45 |
+| tf-idf + LogReg             | FP64           |      76.06 |          76.69 |        71.87 |        25.5 |           1.11 |        0.35 |
+| fastText + FFN              | FP32           |      72.02 |          72.94 |        65.98 |        86.9 |           0.74 |        0.4  |
+| BERTurk fine-tuned          | FP32           |      76.09 |          77.66 |        65.73 |       442.7 |          29.73 |        0.4  |
+| BERTurk fine-tuned          | INT8 (dynamic) |      75.62 |          76.19 |        71.87 |       111.4 |           9.61 |        0.45 |
+| Turkish BERT-mini distilled | FP32           |      77.84 |          80.53 |        60.1  |        46.3 |           2.3  |        0.5  |
+| Turkish BERT-mini distilled | INT8 (dynamic) |      75.96 |          76.23 |        74.17 |        11.9 |           2.17 |        0.45 |

@@ -94,31 +94,24 @@ Routing: if $\max p < \tau$ $\rightarrow$ human agent (no model has an out-of-sc
     ("Conclusion: what the comparison showed", r"""
 \small
 \begin{itemize}
-\item \textbf{Out-of-scope is the hard part}: every model reaches 75--84\% in-scope accuracy, but catches only 38--55\% of never-seen topics. Unseen topics get confident wrong answers, mostly into the catch-all intent \texttt{general\_quirky}.
-\item \textbf{The classical baseline is strong}: tf-idf + LogReg (74.9\%) beats my fastText + FFN (71.5\%) and has the best OOS recall (55\%). Character n-grams handle Turkish suffixes; averaging word vectors loses word order.
-\item \textbf{The student beat its teacher}: BERTurk peaked at epoch 3 (79.1\% in-scope); the distilled BERT-mini reached 83.9\%. Soft labels regularize, and the student trained for 25 epochs.
-\item \textbf{Distillation brought the speed}: 9.6$\times$ smaller and 15$\times$ faster than BERTurk.
-\item \textbf{Quantization brought the size}: INT8 cuts the student from 46.3 to 11.9 MB (3.9$\times$) for $-2.6$ points. On the M4 CPU it is \emph{slower} for this small model (1.9 $\rightarrow$ 2.7 ms): quantizing activations at every layer costs more than the 256-wide multiplications save. On BERTurk, INT8 is 4$\times$ smaller and 2.1$\times$ faster for $-0.7$ points.
-\item \textbf{Final app model}: 11.9 MB, 2.7 ms, 75.3\% accuracy -- 37$\times$ smaller and 11$\times$ faster than BERTurk, and slightly more accurate.
+\item \textbf{Out-of-scope is the hard part.} Unseen topics often land in MASSIVE's catch-all intent \texttt{general\_quirky} with high confidence. No team owns that intent, so we route it to a human: out-of-scope recall of the app model rose from 43\% to 74\%, and accuracy rose from 75.3\% to 76.0\%.
+\item \textbf{The classical baseline is strong.} tf-idf + LogReg (76.1\%) matches BERTurk (76.1\%) and beats my fastText + FFN (72.0\%). Character n-grams handle Turkish suffixes; averaging word vectors loses word order.
+\item \textbf{The student matched its teacher.} BERTurk peaked at epoch 3; the distilled BERT-mini reached 77.8\% before quantization.
+\item \textbf{Distillation brought the speed:} 9.6$\times$ smaller and about 13$\times$ faster than BERTurk.
+\item \textbf{Quantization brought the size:} 46.3 $\rightarrow$ 11.9 MB (3.9$\times$) for $-1.9$ points. It does not speed up the small student on the M4 CPU; on BERTurk INT8 is 3$\times$ faster.
+\item \textbf{Final app model:} 11.9 MB, 2.2 ms, 76.0\% accuracy, the same accuracy as BERTurk at 37$\times$ smaller.
 \end{itemize}
-
 """),
 
     ("Conclusion: failure examples and limitations", r"""
 \small
-Final model: 736 of 2,974 test messages wrong. \textbf{221} in-scope messages went to a human agent (the safe error), \textbf{221} out-of-scope messages went to a team, and 294 went to the wrong team.
+Final model: 715 of 2,974 test messages wrong. \textbf{386} in-scope messages went to a human agent (the safe error), \textbf{101} out-of-scope messages went to a team, and 228 went to the wrong team.
 \begin{itemize}
-\item \textit{``bugün hava nasıl olacak''} (weather, never seen) $\rightarrow$ \texttt{general\_quirky} (0.88). The catch-all intent absorbs unknown topics with high confidence, so the threshold cannot catch it.
-\item \textit{``bana makarna tarifi ver''} (cooking, never seen) $\rightarrow$ \texttt{general\_quirky} (0.64). This is the same failure.
+\item \textit{``bana biraz yulaf pişir''} (cooking, never seen) $\rightarrow$ \texttt{iot\_coffee}. The closest known request is the coffee machine.
+\item \textit{``şu anki hava durumu''} (weather, never seen) $\rightarrow$ \texttt{transport\_traffic}.
 \item \textit{``beni yarım saat sonra kaldır''} (true: \texttt{alarm\_set}) $\rightarrow$ human agent. ``kaldır'' means both ``wake'' and ``remove'' in Turkish.
 \end{itemize}
-\textbf{Limitations:}
-\begin{itemize}
-\item MASSIVE is assistant requests, not real support tickets, and intents stand in for teams.
-\item Out-of-scope is simulated with 4 held-out scenarios.
-\item Latency was measured on a laptop with other processes running, so the tf-idf and BERTurk numbers moved by up to 4$\times$ between runs.
-\end{itemize}
-
+\textbf{Limitations:} MASSIVE is assistant requests, not real support tickets; intents stand in for teams; out-of-scope is simulated with 4 held-out scenarios; latency was measured on a laptop with other processes running.
 """),
 
     ("Conclusion: next steps", r"""

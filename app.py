@@ -10,7 +10,7 @@ import time
 import gradio as gr
 import pandas as pd
 
-from src.common import RESULTS, eliza_reply, extract_model_codes, load_data, normalize
+from src.common import RESULTS, TO_HUMAN, eliza_reply, extract_model_codes, load_data, normalize
 from src.models import load_all
 
 _, NAMES, OOS, TEAM_OF = load_data()
@@ -48,6 +48,8 @@ def classify(text: str):
         conf = float(probs[idx])
         if conf < tau:
             routed, reason = "müşteri temsilcisi", f"düşük güven {conf:.2f} < eşik {tau:.2f}"
+        elif NAMES[idx] in TO_HUMAN:
+            routed, reason = "müşteri temsilcisi", f"belirsiz istek ({NAMES[idx]}), sahibi olan ekip yok"
         else:
             routed, reason = TEAM_OF[NAMES[idx]], f"niyet {NAMES[idx]}, güven {conf:.2f}"
         rows.append({"model": key, "tahmin edilen niyet": NAMES[idx], "güven": round(conf, 3),

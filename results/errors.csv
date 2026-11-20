@@ -1,381 +1,383 @@
 text,true,tf-idf + LogReg [FP64],fastText + FFN [FP32],BERTurk fine-tuned [FP32],BERTurk fine-tuned [INT8 (dynamic)],Turkish BERT-mini distilled [FP32],Turkish BERT-mini distilled [INT8 (dynamic)]
 tek ihtiyacımız olan pembe,iot_hue_lightchange,oos,oos,iot_hue_lightchange,iot_hue_lightchange,oos,oos
-ve karanlık çöktü,iot_hue_lighton,iot_hue_lighton,general_quirky,iot_hue_lightdim,iot_hue_lightdim,oos,oos
+ve karanlık çöktü,iot_hue_lighton,iot_hue_lighton,oos,iot_hue_lightdim,iot_hue_lightdim,oos,oos
 burası çok pis biraz gürültü yap,iot_cleaning,play_music,oos,oos,oos,oos,oos
+ekran parlaklığımın statüsünü istiyorum,general_quirky,oos,iot_hue_lightchange,oos,oos,oos,oos
 naber olly,general_greet,general_greet,general_greet,oos,oos,oos,oos
-olly gmt artı beş in kaç olduğunu söyle bana,datetime_convert,oos,qa_maths,oos,oos,qa_maths,oos
-bu gece akşam yemeği için sushi söyler misin,oos,general_quirky,oos,oos,oos,general_quirky,general_quirky
+olly gmt artı beş in kaç olduğunu söyle bana,datetime_convert,qa_maths,qa_maths,qa_maths,qa_maths,qa_maths,oos
 bir kikirdeme gönder,general_joke,email_sendemail,email_sendemail,oos,oos,email_sendemail,oos
-paket servisi sipariş et,oos,general_quirky,lists_createoradd,oos,oos,oos,general_quirky
 onu tekrar çal lütfen,play_music,music_settings,play_music,oos,oos,music_settings,oos
-paket servis yapıyorlar mı,oos,general_quirky,oos,general_quirky,general_quirky,oos,general_quirky
-onlar teslimat yapabiliyorlar mı,oos,general_quirky,oos,general_quirky,general_quirky,general_quirky,general_quirky
-eve teslim yapıyorlar mı,oos,general_quirky,oos,oos,oos,oos,general_quirky
-bugün hava nasıl,oos,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky
-yarın şemsiye getireyim mi,oos,calendar_query,general_quirky,calendar_query,calendar_query,calendar_query,general_quirky
-şu an canım çok jazz istiyor ya sen,play_music,oos,play_music,oos,oos,music_likeness,oos
-olly benim favori fenerbahçe oyuncumdan güzel bir bölüm oynat,play_music,play_podcasts,play_podcasts,oos,oos,oos,oos
-adana için bugünkü hava nasıl,oos,general_quirky,general_quirky,oos,oos,oos,qa_factoid
+şu an canım çok jazz istiyor ya sen,play_music,play_music,play_music,play_music,oos,music_likeness,oos
+olly benim favori fenerbahçe oyuncumdan güzel bir bölüm oynat,play_music,play_podcasts,play_podcasts,play_music,oos,oos,oos
+adana için bugünkü hava nasıl,oos,oos,oos,oos,oos,oos,qa_factoid
 amerikan doları ingiliz sterlini oranları nedir,news_query,qa_currency,qa_currency,qa_currency,qa_currency,qa_currency,qa_currency
 mutfaktaki ışıkları yükselt,iot_hue_lighton,iot_hue_lightup,iot_hue_lightdim,iot_hue_lightoff,iot_hue_lightoff,iot_hue_lightup,iot_hue_lightup
-volkan konak şarkılarını karıştır,play_music,music_settings,music_settings,play_music,oos,play_music,oos
-hava nasıl,oos,general_quirky,email_querycontact,general_quirky,general_quirky,general_quirky,general_quirky
-bugün konuşma,audio_volume_mute,audio_volume_mute,general_quirky,oos,oos,oos,oos
+volkan konak şarkılarını karıştır,play_music,music_settings,music_settings,play_music,play_music,play_music,oos
+bugün konuşma,audio_volume_mute,audio_volume_mute,oos,oos,oos,oos,oos
 fişi çek,iot_wemo_off,oos,oos,oos,oos,iot_wemo_on,iot_wemo_on
-yaz dostum,play_music,general_quirky,email_sendemail,oos,oos,oos,general_quirky
+yaz dostum,play_music,oos,email_sendemail,oos,oos,oos,oos
 bayburt'ta hava durumu nasıl,oos,oos,oos,oos,oos,oos,qa_factoid
 izmir'deki hava durumunu öğrenmek istiyorum,oos,oos,oos,oos,oos,oos,qa_factoid
-yarın yağmurlu mu olacak,oos,calendar_query,general_quirky,calendar_query,calendar_query,calendar_query,calendar_query
-yarın yağmur var mı,oos,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query,general_quirky
-müziğin kayıt edilmesinin istiyorum benim için onu yapar mısın,music_likeness,oos,oos,oos,oos,general_quirky,general_quirky
-yeni çağ da sansasyonel ne var,news_query,news_query,oos,news_query,news_query,news_query,general_quirky
-şimdi hava nasıl,oos,general_quirky,email_sendemail,general_quirky,general_quirky,general_quirky,general_quirky
+yarın yağmurlu mu olacak,oos,calendar_query,oos,calendar_query,calendar_query,calendar_query,calendar_query
+müziğin kayıt edilmesinin istiyorum benim için onu yapar mısın,music_likeness,oos,oos,oos,oos,oos,oos
+yeni çağ da sansasyonel ne var,news_query,news_query,oos,news_query,news_query,news_query,oos
 dini sohbetler klasörünü aç,play_music,play_music,oos,oos,oos,play_music,oos
 ışıkları loşa çevir,iot_hue_lightdim,iot_hue_lightchange,iot_hue_lightchange,oos,oos,oos,oos
-dışarısı soğuk mu,oos,general_quirky,general_quirky,oos,general_quirky,general_quirky,general_quirky
-gündoğarken tarafından,oos,oos,qa_factoid,oos,oos,oos,general_quirky
+genellikle yaptığın hatalar nelerdir,general_quirky,oos,oos,oos,oos,oos,oos
 lütfen radyoda hande yener çal,play_music,play_radio,play_music,play_radio,play_radio,play_radio,play_radio
-acilen iki burger ve bir kola istiyorum,oos,oos,oos,iot_coffee,oos,iot_coffee,iot_coffee
-bitcoin fiyatı hakkında beni haberdar tut,news_query,news_query,oos,oos,oos,qa_stock,oos
-bugün dışarısı ne kadar soğuk,oos,general_quirky,oos,qa_factoid,oos,general_quirky,general_quirky
+acilen iki burger ve bir kola istiyorum,oos,oos,oos,iot_coffee,iot_coffee,iot_coffee,iot_coffee
+bitcoin fiyatı hakkında beni haberdar tut,news_query,news_query,oos,news_query,news_query,qa_stock,oos
 ceza 'dan evin delisi 'ni aç,play_music,play_music,play_music,play_music,play_audiobook,play_audiobook,play_audiobook
 hey siri hoparlörlerin sesini kıs,audio_volume_mute,audio_volume_down,oos,audio_volume_down,audio_volume_down,audio_volume_down,audio_volume_down
-dışarıda anlık sıcaklık nedir,oos,qa_factoid,general_quirky,qa_factoid,qa_factoid,qa_factoid,qa_factoid
+dışarıda anlık sıcaklık nedir,oos,qa_factoid,oos,qa_factoid,qa_factoid,qa_factoid,qa_factoid
 alarm ayarları,alarm_query,alarm_set,alarm_set,alarm_set,alarm_set,alarm_set,alarm_set
 oturma odasını temizle şimdi,iot_cleaning,iot_cleaning,iot_cleaning,iot_cleaning,iot_cleaning,iot_cleaning,oos
-görüş kaydet,music_likeness,general_quirky,calendar_set,music_likeness,music_likeness,oos,oos
-daha loş ışıklar istiyorum,iot_hue_lightdim,oos,iot_hue_lightup,oos,oos,iot_hue_lightdim,oos
+görüş kaydet,music_likeness,oos,calendar_set,music_likeness,music_likeness,oos,oos
+daha loş ışıklar istiyorum,iot_hue_lightdim,iot_hue_lightdim,iot_hue_lightup,iot_hue_lightup,oos,iot_hue_lightdim,oos
 teslimat yapan en yakın tayland restoranını ara,oos,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations
 ses ayarı nerede,audio_volume_other,oos,oos,oos,oos,audio_volume_other,oos
 koridor daki ışıkları daha da aydınlat,iot_hue_lightup,iot_hue_lightup,oos,iot_hue_lightup,iot_hue_lightup,iot_hue_lightup,oos
 lütfen ekran parlaklığını sonuna kadar aç,iot_hue_lightup,oos,oos,iot_hue_lightup,iot_hue_lightup,iot_hue_lightup,oos
 rock metal çalma,music_dislikeness,play_music,play_music,play_music,play_music,play_music,play_music
-kullanıcı dostu,news_query,oos,oos,general_quirky,general_quirky,general_quirky,general_quirky
-siyaset te özel bir şey var mı,news_query,general_quirky,oos,news_query,news_query,general_quirky,general_quirky
+kullanıcı dostu,news_query,oos,oos,oos,oos,oos,oos
+siyaset te özel bir şey var mı,news_query,oos,oos,news_query,news_query,oos,oos
 sırada nil karaibrahimgil kanatlarım var ruhumda çalmak için hazırla,play_music,oos,oos,oos,oos,oos,oos
 pandora,play_music,play_radio,play_radio,play_radio,play_radio,oos,oos
 çabuk,audio_volume_up,oos,oos,oos,oos,oos,oos
 yıldız tilbe şarkılarını seviyorum onu çal lütfen,music_likeness,music_likeness,play_music,music_likeness,music_likeness,play_music,play_music
-lütfen ışıkları yükselt bunda rahat değilim,iot_hue_lightup,iot_hue_lightup,oos,general_quirky,general_quirky,oos,oos
-genelde dikkat ederim,oos,oos,general_quirky,oos,oos,general_quirky,general_quirky
-arada bir bakarım,oos,general_quirky,recommendation_events,oos,oos,general_quirky,general_quirky
+lütfen ışıkları yükselt bunda rahat değilim,iot_hue_lightup,iot_hue_lightup,oos,oos,oos,oos,oos
 iki bin on sekizde kurban bayramı ne zaman olacak,datetime_query,datetime_query,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query
 bugün alanya için sıcaklık ne,oos,oos,oos,qa_factoid,qa_factoid,qa_factoid,qa_factoid
-sabah alarmına kadar ses çıkartma,audio_volume_mute,oos,oos,oos,oos,alarm_set,oos
+sabah alarmına kadar ses çıkartma,audio_volume_mute,alarm_set,oos,oos,oos,alarm_set,oos
 dışarıda sıcaklık kaç derece,oos,qa_factoid,qa_factoid,qa_factoid,qa_factoid,qa_factoid,qa_factoid
-bu hafta yağmur var mı,oos,calendar_query,calendar_query,calendar_query,calendar_query,oos,general_quirky
 lambaları söndür,iot_hue_lightoff,iot_hue_lightoff,iot_hue_lightoff,oos,oos,iot_hue_lightoff,oos
 yarın öğlen kar var mı,oos,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query
-yarınki hava sıcak olacak evet mi hayır mı,oos,oos,oos,general_quirky,oos,calendar_query,general_quirky
-evet mi hayır mı yarınki hava sıcak olacak,oos,oos,oos,general_quirky,general_quirky,general_quirky,general_quirky
 elektrikli süpürgem her gün sabah on ile on bir arasında başlamalı,iot_cleaning,iot_cleaning,calendar_set,iot_cleaning,iot_cleaning,iot_cleaning,oos
-rock modunu değiştir,music_settings,oos,iot_hue_lightchange,oos,oos,oos,oos
+rock modunu değiştir,music_settings,iot_hue_lightchange,iot_hue_lightchange,oos,oos,oos,oos
 istanbul için en düşük sıcaklık kaç derece,oos,qa_factoid,qa_factoid,qa_factoid,qa_factoid,qa_factoid,qa_factoid
-ne dersin,music_likeness,oos,qa_definition,general_quirky,general_quirky,general_quirky,general_quirky
+ne dersin,music_likeness,oos,qa_definition,oos,oos,oos,oos
 bütün ışıkları söndür,iot_hue_lightoff,iot_hue_lightoff,iot_hue_lightoff,oos,oos,iot_hue_lightoff,oos
-sıradaki şarkı,play_music,oos,play_music,play_podcasts,play_podcasts,oos,oos
+sıradaki şarkı,play_music,play_music,play_music,play_podcasts,play_podcasts,oos,oos
 yemek salonunu kapat,iot_hue_lightoff,oos,iot_hue_lightoff,iot_hue_lightoff,iot_hue_lightoff,iot_hue_lightoff,oos
 biden türkiye'yi yakın zamanda ziyaret edecek mi,news_query,oos,oos,qa_factoid,qa_factoid,recommendation_events,oos
-prömiyer lig de bugün hangi takımlar oynuyor,news_query,oos,recommendation_events,oos,oos,recommendation_events,oos
+prömiyer lig de bugün hangi takımlar oynuyor,news_query,oos,recommendation_events,recommendation_events,oos,recommendation_events,oos
 daha fazla ışık lütfen,iot_hue_lightup,iot_hue_lightup,iot_hue_lightup,iot_hue_lightup,iot_hue_lightup,iot_hue_lightup,oos
-başlık,music_query,oos,news_query,oos,oos,oos,oos
-baharatlı bir şeyler almak istiyorum,oos,general_quirky,general_quirky,oos,oos,recommendation_locations,iot_coffee
+başlık,music_query,news_query,news_query,oos,oos,oos,oos
+baharatlı bir şeyler almak istiyorum,oos,oos,oos,oos,oos,recommendation_locations,iot_coffee
 pizza hut dan bir pizza sipariş et,oos,oos,oos,oos,oos,iot_coffee,iot_coffee
-şu anda hava raporu ne,oos,news_query,oos,news_query,news_query,news_query,general_quirky
-bugün aylardan ne,datetime_query,oos,oos,datetime_query,datetime_query,calendar_query,calendar_query
-yolculuk için güzel şarkılar,music_likeness,music_likeness,music_likeness,general_quirky,general_quirky,music_likeness,oos
+bugün aylardan ne,datetime_query,datetime_query,oos,datetime_query,datetime_query,calendar_query,calendar_query
+yolculuk için güzel şarkılar,music_likeness,music_likeness,music_likeness,oos,oos,music_likeness,oos
 oynatılanlar listesine şarkı ekle,music_likeness,lists_createoradd,lists_createoradd,lists_createoradd,lists_createoradd,lists_createoradd,oos
-bana maçın önemli anlarını getir,news_query,oos,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky
+bana maçın önemli anlarını getir,news_query,oos,oos,oos,oos,oos,oos
 ışıkları açabilir misin,iot_hue_lightup,iot_hue_lightup,iot_hue_lightup,oos,oos,iot_hue_lightup,oos
-benim itunes 'ümü açabilir misin,play_music,oos,play_music,oos,play_music,oos,oos
-olly yemek nerede,oos,recommendation_locations,recommendation_locations,oos,oos,recommendation_locations,general_quirky
+benim itunes 'ümü açabilir misin,play_music,oos,play_music,play_music,play_music,oos,oos
 o şarkıyı bir daha duymak istemiyorum,music_dislikeness,oos,music_dislikeness,oos,oos,oos,oos
 benim semtteki bütün etkinlikleri söyle bana,recommendation_events,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query
 şu andan iki yıl sonrası için kış gündönümü hangi gün,datetime_query,calendar_query,datetime_query,datetime_query,datetime_query,datetime_query,calendar_query
-şimdi uyuyacağım,iot_hue_lightoff,general_quirky,email_sendemail,oos,oos,general_quirky,general_quirky
-yemek siparişi nasıl gidiyor,oos,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky
-ne zaman yiyebiliriz,oos,oos,datetime_query,oos,oos,general_quirky,general_quirky
-akşam yemeği hazır mı,oos,general_quirky,calendar_set,calendar_query,calendar_query,general_quirky,general_quirky
+şimdi uyuyacağım,iot_hue_lightoff,oos,email_sendemail,oos,oos,oos,oos
 beni yarım saat sonra kaldır,alarm_set,calendar_remove,alarm_set,oos,oos,oos,oos
 martılar sanatçısı kim,music_query,music_query,music_query,qa_factoid,qa_factoid,music_query,oos
-benim muhitimde anlık hava nasıl,oos,general_quirky,general_quirky,oos,oos,general_quirky,general_quirky
-sessizce ayarla,audio_volume_mute,oos,audio_volume_other,audio_volume_mute,audio_volume_mute,audio_volume_mute,oos
+sessizce ayarla,audio_volume_mute,calendar_set,audio_volume_other,audio_volume_mute,audio_volume_mute,audio_volume_mute,oos
+woooo,general_quirky,oos,oos,oos,oos,oos,oos
 mutfak ışığını söndür,iot_hue_lightoff,iot_hue_lightoff,iot_hue_lightoff,iot_hue_lightoff,iot_hue_lightoff,iot_hue_lightoff,oos
 göremiyorum ışıkları aç,iot_hue_lightup,iot_hue_lighton,iot_hue_lighton,oos,oos,oos,oos
-bugün kazak giymem gerekir mi,oos,general_quirky,general_quirky,general_quirky,general_quirky,calendar_query,general_quirky
 bana mat renk göster,iot_hue_lightdim,oos,oos,iot_hue_lightchange,iot_hue_lightchange,iot_hue_lightchange,iot_hue_lightchange
 çalışma odası için açık renk,iot_hue_lightup,oos,iot_hue_lightchange,iot_hue_lightchange,iot_hue_lightchange,iot_hue_lightchange,iot_hue_lightchange
-şu anda izmir de hava nasıl söyle lütfen,oos,oos,datetime_query,oos,oos,oos,qa_factoid
-beni bugünün süper lig sonuçları ylagüncel tut,news_query,news_query,oos,oos,oos,news_query,general_quirky
-pasifik saatine göre saat sabah yedi,datetime_convert,datetime_query,datetime_convert,oos,oos,datetime_convert,datetime_query
-bu cuma hava nasıl,oos,general_quirky,oos,oos,oos,calendar_query,datetime_query
+şu anda izmir de hava nasıl söyle lütfen,oos,news_query,datetime_query,transport_traffic,oos,oos,qa_factoid
+beni bugünün süper lig sonuçları ylagüncel tut,news_query,news_query,oos,oos,oos,news_query,oos
+pasifik saatine göre saat sabah yedi,datetime_convert,datetime_query,datetime_convert,datetime_query,datetime_query,datetime_convert,datetime_query
+bu cuma hava nasıl,oos,oos,oos,calendar_query,oos,calendar_query,datetime_query
 bir paket makarna al götür yap,oos,oos,oos,oos,oos,oos,iot_coffee
 radyoda hangi şarkı çalıyor,music_query,music_query,music_query,play_radio,play_radio,play_radio,play_radio
-bana gruptan daha fazla şarkılar ara,play_music,oos,music_query,music_query,oos,music_query,music_query
-siparişim ne alemde,oos,general_quirky,oos,general_quirky,general_quirky,general_quirky,general_quirky
+bana gruptan daha fazla şarkılar ara,play_music,oos,music_query,music_query,music_query,music_query,music_query
 yedi yüz,datetime_convert,qa_maths,qa_maths,oos,oos,datetime_query,oos
-hava nasıl,oos,general_quirky,email_querycontact,general_quirky,general_quirky,general_quirky,general_quirky
-şu anki hava durumu,oos,oos,datetime_query,oos,general_quirky,transport_traffic,transport_traffic
-önümüzdeki çarşamba mont giymem gerekir mi,oos,calendar_query,oos,general_quirky,general_quirky,calendar_query,calendar_query
-irem derici için bir pandora kanalı oluşturur musun,music_settings,oos,play_music,play_radio,play_radio,play_radio,play_radio
-sonraki doktor randevum için anımsatıcı alarm kurmayı hatırladım mı,alarm_query,calendar_set,alarm_set,alarm_set,oos,alarm_query,oos
-bu gece yağmur yağıyor mu,oos,general_quirky,general_quirky,calendar_query,calendar_query,general_quirky,general_quirky
-sıcaklık aynı mı kalacak yoksa soğuyacak mı,oos,qa_factoid,oos,oos,oos,general_quirky,general_quirky
-son sipariş hazır mı,oos,general_quirky,oos,calendar_query,calendar_query,oos,general_quirky
-benim sipariş ne kadar sürede hazır olur,oos,general_quirky,oos,calendar_query,calendar_query,general_quirky,general_quirky
+şu anki hava durumu,oos,oos,datetime_query,oos,oos,transport_traffic,transport_traffic
+önümüzdeki çarşamba mont giymem gerekir mi,oos,calendar_query,oos,oos,oos,calendar_query,calendar_query
+irem derici için bir pandora kanalı oluşturur musun,music_settings,play_radio,play_music,play_radio,play_radio,play_radio,play_radio
+sonraki doktor randevum için anımsatıcı alarm kurmayı hatırladım mı,alarm_query,calendar_set,alarm_set,alarm_set,alarm_set,alarm_query,oos
 ışıkları kullanmayı bırak,iot_hue_lightoff,oos,iot_hue_lightdim,oos,oos,iot_hue_lightoff,oos
-bugün şemsiye almalı mıyım,oos,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky
 yaklaşan konserler var mı,music_likeness,recommendation_events,recommendation_events,recommendation_events,recommendation_events,recommendation_events,recommendation_events
 lütfen bana borsa ile ilgili haberleri söyle,qa_stock,news_query,news_query,news_query,oos,news_query,news_query
-benim için ışığı geri al,iot_hue_lightup,iot_hue_lightup,oos,calendar_remove,oos,oos,oos
-salcılar paket servis yapıyor mu,oos,general_quirky,general_quirky,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations
+benim için ışığı geri al,iot_hue_lightup,iot_hue_lightup,oos,calendar_remove,calendar_remove,oos,oos
+salcılar paket servis yapıyor mu,oos,oos,oos,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations
 ben bu şarkıdan nefret ediyorum,music_dislikeness,oos,music_likeness,music_likeness,music_likeness,oos,oos
 pasifik standart zamanına göre saat kaç,datetime_query,datetime_query,datetime_query,datetime_query,oos,datetime_query,datetime_convert
 new jersey'de hava nasıl,oos,oos,oos,oos,oos,qa_factoid,qa_factoid
-bu şarkı yı tekrar çalma,music_dislikeness,music_settings,music_settings,music_settings,oos,music_settings,music_settings
+bu şarkı yı tekrar çalma,music_dislikeness,music_settings,music_settings,music_settings,music_settings,music_settings,music_settings
+bu ay kaç kere kasırga çıktı,general_quirky,oos,qa_factoid,oos,oos,oos,oos
+olly bu ay kaç hortum olacak,general_quirky,oos,calendar_query,oos,oos,oos,oos
 dur meyve suyunu başlat,iot_wemo_on,oos,play_game,iot_coffee,iot_coffee,oos,oos
-beş puan ver,music_likeness,oos,general_quirky,oos,oos,qa_maths,qa_maths
+beş puan ver,music_likeness,oos,oos,oos,oos,qa_maths,qa_maths
 tarkan 'dan dudu dudu yayınla,play_music,oos,play_music,play_music,play_music,oos,oos
-erdoğanın rusya ile ilişkilerine yönelik soruşturma nın şu anki durumu nedir,news_query,news_query,news_query,oos,oos,news_query,oos
+erdoğanın rusya ile ilişkilerine yönelik soruşturma nın şu anki durumu nedir,news_query,news_query,news_query,qa_factoid,oos,news_query,oos
 daha düşük ışık istiyorum,iot_hue_lightdim,oos,iot_hue_lightdim,iot_hue_lightup,oos,iot_hue_lightdim,oos
-guşgana kebapçısı adrese teslim yapıyor mu olly,oos,general_quirky,general_quirky,oos,recommendation_locations,recommendation_locations,recommendation_locations
+guşgana kebapçısı adrese teslim yapıyor mu olly,oos,oos,oos,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations
 yakınlardaki tadım pizza teslimat yapıyor mu,oos,recommendation_locations,oos,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations
-hafta için hava tahmini nasıl,oos,oos,oos,general_quirky,general_quirky,datetime_query,datetime_query
-otuz üç bin yedi yüz yetmiş için hava raporu,oos,oos,qa_maths,oos,oos,calendar_query,calendar_query
-niğde için hava durumunu ver,oos,oos,oos,general_quirky,general_quirky,oos,qa_factoid
+hafta için hava tahmini nasıl,oos,oos,oos,oos,oos,datetime_query,datetime_query
+otuz üç bin yedi yüz yetmiş için hava raporu,oos,oos,qa_maths,news_query,oos,calendar_query,calendar_query
+niğde için hava durumunu ver,oos,oos,oos,oos,oos,oos,qa_factoid
 araba nerede,audio_volume_up,qa_factoid,oos,oos,oos,oos,oos
 tak tak,general_joke,oos,transport_taxi,oos,oos,play_music,oos
-mutfakta ışık olmasın,iot_hue_lightoff,oos,iot_hue_lightoff,oos,oos,iot_hue_lightoff,oos
-ışıkları orta seviyeye indir,iot_hue_lightoff,iot_hue_lightdim,iot_hue_lightchange,oos,oos,iot_hue_lightdim,iot_hue_lightdim
-on günlük tahmin nedir,oos,general_quirky,oos,oos,oos,general_quirky,general_quirky
-bu hafta yağmur veya kar beklentisi var mı,oos,calendar_query,oos,calendar_query,calendar_query,calendar_query,general_quirky
-bu hafta sonu hava güzel olacak mı,oos,oos,recommendation_events,oos,oos,recommendation_events,recommendation_events
-siparişimin sırasını biliyor musun,oos,general_quirky,general_quirky,calendar_query,calendar_query,calendar_query,calendar_query
-dışarısı kaç derece,oos,oos,qa_factoid,qa_factoid,oos,qa_factoid,qa_factoid
+mutfakta ışık olmasın,iot_hue_lightoff,oos,iot_hue_lightoff,iot_hue_lightdim,oos,iot_hue_lightoff,oos
+ışıkları orta seviyeye indir,iot_hue_lightoff,iot_hue_lightdim,iot_hue_lightchange,iot_hue_lightdim,iot_hue_lightdim,iot_hue_lightdim,iot_hue_lightdim
+bu hafta sonu hava güzel olacak mı,oos,recommendation_events,recommendation_events,calendar_query,oos,recommendation_events,recommendation_events
+siparişimin sırasını biliyor musun,oos,oos,oos,calendar_query,calendar_query,calendar_query,calendar_query
+dışarısı kaç derece,oos,qa_factoid,qa_factoid,qa_factoid,oos,qa_factoid,qa_factoid
 daha sessizce konuş lütfen,audio_volume_down,audio_volume_down,audio_volume_down,audio_volume_mute,audio_volume_mute,oos,audio_volume_mute
-eskişehir'de hava nasıl,oos,oos,email_sendemail,general_quirky,general_quirky,oos,qa_factoid
-tahminde kar var mı,oos,oos,oos,oos,general_quirky,general_quirky,general_quirky
+eskişehir'de hava nasıl,oos,oos,email_sendemail,oos,oos,oos,qa_factoid
 lütfen balkon ışıklarımı aç,iot_hue_lighton,oos,iot_hue_lighton,oos,oos,oos,oos
-biraz led zeppelin aç,play_music,oos,play_game,play_music,play_music,iot_hue_lightchange,oos
-kedi gibi yi çal,play_music,play_podcasts,play_music,oos,oos,play_podcasts,play_podcasts
+biraz led zeppelin aç,play_music,play_music,play_game,play_music,play_music,iot_hue_lightchange,oos
+kedi gibi yi çal,play_music,play_podcasts,play_music,oos,play_audiobook,play_podcasts,play_podcasts
 bursa'da hava nasıl,oos,oos,oos,oos,oos,qa_factoid,qa_factoid
 daha aydınlık,iot_hue_lightup,iot_hue_lightup,iot_hue_lightup,iot_hue_lightup,oos,iot_hue_lightup,oos
-bugün güneşli değil mi,oos,general_quirky,datetime_query,oos,oos,general_quirky,general_quirky
-ne tür müzik sevdiğimi düşünüyorsun,music_query,general_quirky,music_query,music_query,music_query,music_query,general_quirky
+peki ya sen,general_quirky,oos,play_music,oos,oos,oos,oos
+ne tür müzik sevdiğimi düşünüyorsun,music_query,oos,music_query,music_query,music_query,music_query,oos
 bana bir yerdeki saati söyle,datetime_convert,datetime_query,datetime_query,datetime_query,datetime_query,datetime_query,datetime_query
 bu restoran da paket servis alabilir miyim,oos,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations
-mutfağın farklı renkte olmasını seviyorum,iot_hue_lightchange,general_quirky,iot_hue_lightchange,iot_hue_lightchange,iot_hue_lightchange,iot_hue_lightchange,general_quirky
+mutfağın farklı renkte olmasını seviyorum,iot_hue_lightchange,oos,iot_hue_lightchange,iot_hue_lightchange,iot_hue_lightchange,iot_hue_lightchange,oos
 hoparlör sesini yavaşlat,audio_volume_down,audio_volume_up,audio_volume_up,audio_volume_up,audio_volume_up,audio_volume_down,audio_volume_up
-bana arabalar hakkında bilgi bul,news_query,qa_factoid,qa_factoid,general_quirky,general_quirky,qa_definition,oos
+bana arabalar hakkında bilgi bul,news_query,qa_factoid,qa_factoid,oos,oos,qa_definition,oos
 roombayı etkinleştir,iot_cleaning,oos,iot_cleaning,iot_cleaning,iot_cleaning,iot_cleaning,oos
-şu anda elmadağ için hava nasl olacak,oos,oos,oos,general_quirky,general_quirky,qa_factoid,qa_factoid
+şu anda elmadağ için hava nasl olacak,oos,oos,oos,oos,oos,qa_factoid,qa_factoid
 onu yeniden oku,play_audiobook,play_audiobook,lists_remove,play_audiobook,play_audiobook,play_audiobook,oos
-sıcaklık kaç derece,oos,qa_factoid,qa_factoid,oos,oos,qa_factoid,qa_factoid
-survivor da ne oldu,news_query,news_query,news_query,news_query,news_query,news_query,general_quirky
+sıcaklık kaç derece,oos,qa_factoid,qa_factoid,qa_factoid,qa_factoid,qa_factoid,qa_factoid
+survivor da ne oldu,news_query,news_query,news_query,news_query,news_query,news_query,oos
 kapat,iot_wemo_off,iot_hue_lightoff,iot_wemo_off,iot_hue_lightoff,iot_hue_lightoff,iot_hue_lightoff,oos
-lütfen günaydın et lokantasının sipariş alıp almadığını öğren,oos,general_quirky,oos,general_quirky,general_quirky,general_quirky,general_quirky
-bugün karşıyaka'da hava nasıl,oos,general_quirky,general_quirky,oos,oos,oos,general_quirky
-kaliforniya daki barajın yıkılmasıyla ilgili her şeyi bilmek istiyorum,news_query,oos,oos,general_quirky,general_quirky,general_quirky,general_quirky
+kaliforniya daki barajın yıkılmasıyla ilgili her şeyi bilmek istiyorum,news_query,oos,oos,oos,oos,oos,oos
 bugün için niğde aksaray da yağmur ihtimali oranını bildir bana,oos,oos,oos,qa_factoid,qa_factoid,oos,qa_factoid
-imogen heap açabilir misin lütfen,play_music,oos,iot_coffee,oos,oos,qa_maths,oos
-hacıoğlunun paket servisi yapıp yapmadığını teyit eder misin,oos,oos,oos,general_quirky,general_quirky,general_quirky,general_quirky
+imogen heap açabilir misin lütfen,play_music,oos,iot_coffee,qa_currency,qa_currency,qa_maths,oos
 ses seviyesini yüzde otuz beşe getir,audio_volume_other,audio_volume_up,audio_volume_up,audio_volume_up,audio_volume_up,audio_volume_up,audio_volume_up
 ses seviyesini maksimuma değiştir,audio_volume_other,audio_volume_other,audio_volume_other,oos,oos,oos,audio_volume_up
-bu akşam çim biçmem mümkün olacak mı,oos,general_quirky,oos,calendar_query,calendar_query,recommendation_events,general_quirky
 çin yemeğim ne zaman gelecek,oos,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query
-önümüzdeki hafta için yapılan tahminlerde yağmur var mı,oos,calendar_query,calendar_query,news_query,oos,calendar_query,general_quirky
 halen öğleden sonra mı,datetime_query,calendar_query,calendar_query,datetime_query,datetime_query,calendar_query,calendar_query
 roombayı aç,iot_cleaning,iot_cleaning,oos,iot_cleaning,iot_cleaning,iot_cleaning,oos
 türkiyenin doğu kıyısında saat kaç,datetime_query,datetime_query,datetime_query,datetime_query,datetime_query,datetime_query,oos
 listedeki bir sonraki şarkıya geç,music_settings,play_music,lists_remove,lists_createoradd,lists_createoradd,oos,oos
-bu gece yanıma bir ceket almalı mıyım,oos,oos,oos,general_quirky,general_quirky,general_quirky,general_quirky
 istanbul türkiye de gece yarısı kaçta oluyor,datetime_query,recommendation_events,recommendation_events,oos,oos,recommendation_events,oos
 çalışan ışıkları durdur,iot_hue_lightoff,oos,oos,audio_volume_mute,audio_volume_mute,oos,oos
-şu an bulunduğum yerde hava nasıl,oos,oos,oos,general_quirky,general_quirky,general_quirky,general_quirky
 bana birkaç iyi ses ver,play_music,oos,oos,audio_volume_up,audio_volume_up,audio_volume_up,audio_volume_up
-bugün dışarıda hava nasıl,oos,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky
-şu anki hava durumu nasıl,oos,oos,oos,general_quirky,general_quirky,transport_traffic,transport_traffic
-hava yarın nasıl olacak,oos,calendar_query,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky
+şu anki hava durumu nasıl,oos,oos,oos,oos,oos,transport_traffic,transport_traffic
 bursa'da hava nasıl,oos,oos,oos,oos,oos,qa_factoid,qa_factoid
 şarkıyı tanımla,music_query,qa_definition,music_query,qa_definition,qa_definition,qa_definition,qa_definition
-nasıl bir ceket giymeliyim,oos,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky
-bugün öğleden sonra bir de yağmur yağacak mı,oos,general_quirky,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query
-tersane ocakbaşı da sadece akşam yemeği mi var,oos,general_quirky,oos,oos,oos,calendar_query,calendar_query
-bana bu hafta için hava durumu tahminlerini ver,oos,oos,calendar_query,general_quirky,general_quirky,news_query,news_query
-benim bölgemdeki en son suç istatistikleri nasıl,news_query,general_quirky,oos,news_query,oos,oos,general_quirky
-vogue bugün ne paylaştı,news_query,oos,oos,oos,oos,oos,general_quirky
-olly bugün hava durumu nasıl,oos,general_quirky,general_quirky,general_quirky,general_quirky,oos,general_quirky
+bugün öğleden sonra bir de yağmur yağacak mı,oos,oos,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query
+tersane ocakbaşı da sadece akşam yemeği mi var,oos,oos,oos,calendar_query,oos,calendar_query,calendar_query
+bana bu hafta için hava durumu tahminlerini ver,oos,oos,calendar_query,oos,oos,news_query,news_query
+benim bölgemdeki en son suç istatistikleri nasıl,news_query,oos,oos,news_query,oos,oos,oos
+vogue bugün ne paylaştı,news_query,oos,oos,music_query,oos,oos,oos
 on iki parça baharatlı bal hardallı kanat kombo ve içecek olarak da sprite sipariş et,oos,oos,oos,iot_coffee,oos,iot_coffee,iot_coffee
-hey olly ben ege 'den müzik istiyorum,music_likeness,oos,play_music,oos,oos,play_music,play_music
-spor maçları için bir uyarı kur,calendar_set,oos,alarm_set,alarm_set,alarm_set,calendar_set,alarm_set
-öğleden sonra beş olduğunda haber ver,alarm_set,oos,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set
-günün borsa bilgilerini bul,news_query,oos,datetime_query,qa_stock,qa_stock,qa_stock,qa_stock
-bu gelmiş geçmiş en iyi grup,music_likeness,oos,oos,oos,oos,oos,oos
-sandalet mi yoksa çorap ve ayakkabı mı giymem lazım,oos,oos,oos,general_quirky,general_quirky,oos,general_quirky
-hava durumunu biliyor musun,oos,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky
+hey olly ben ege 'den müzik istiyorum,music_likeness,oos,play_music,oos,music_likeness,play_music,play_music
+spor maçları için bir uyarı kur,calendar_set,alarm_set,alarm_set,alarm_set,alarm_set,calendar_set,alarm_set
+öğleden sonra beş olduğunda haber ver,alarm_set,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set
+günün borsa bilgilerini bul,news_query,qa_stock,datetime_query,qa_stock,qa_stock,qa_stock,qa_stock
+bu gelmiş geçmiş en iyi grup,music_likeness,calendar_query,oos,oos,oos,oos,oos
 yarın beni uyandırma,alarm_remove,alarm_set,alarm_set,alarm_set,alarm_set,alarm_set,alarm_set
 pazartesi günü yağmur yağacak mı,oos,oos,datetime_query,calendar_query,calendar_query,calendar_query,calendar_query
 meksika amerika sınır duvarı nı içeren yeni bir bilgi var mı,news_query,oos,oos,news_query,news_query,qa_factoid,qa_factoid
 verileri temizle,audio_volume_mute,calendar_remove,calendar_remove,calendar_remove,calendar_remove,calendar_remove,oos
 hiç haber var mı olly,news_query,news_query,email_query,news_query,news_query,email_query,email_query
-benim bulunduğum yer ile istanbul arasındaki uzaklık ne kadar,datetime_convert,qa_factoid,oos,oos,oos,transport_query,transport_query
-hava dışarıda nasıl,oos,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky
+benim bulunduğum yer ile istanbul arasındaki uzaklık ne kadar,datetime_convert,qa_factoid,oos,qa_factoid,transport_query,transport_query,transport_query
 şarkı önerisi gir,music_likeness,music_query,music_query,oos,oos,oos,oos
-mevcut yerel zamanı ve zaman dililmini ara,datetime_query,datetime_convert,datetime_convert,oos,oos,datetime_convert,datetime_convert
+mevcut yerel zamanı ve zaman dililmini ara,datetime_query,datetime_convert,datetime_convert,datetime_query,oos,datetime_convert,datetime_convert
 türkiye deki hava felaketleri ile ilgili tüm mevcut bildirimleri kur,calendar_set,oos,oos,news_query,news_query,news_query,news_query
-dışarıdaki sıcaklık,oos,oos,general_quirky,qa_factoid,qa_factoid,general_quirky,general_quirky
-şimdi yağmur yağacak mı,oos,general_quirky,oos,oos,oos,general_quirky,general_quirky
 domino's siparişimin saat kaçta varma ihtimali var,oos,calendar_query,oos,oos,oos,calendar_query,calendar_query
-görmek ister misin,iot_hue_lightchange,oos,iot_coffee,play_music,play_music,general_quirky,general_quirky
+görmek ister misin,iot_hue_lightchange,oos,iot_coffee,play_music,play_music,oos,oos
 olly kumralım çal,play_music,play_music,play_music,play_music,play_music,play_radio,play_radio
-şu anda çalmakta olan şarkı ile ilgili fikri ve bu şarkıyı hangi oynatıcın tarafından desteklendiğini kaydetmek istiyorum,music_likeness,music_query,music_query,oos,oos,music_query,music_query
-bu şarkıyı sonraki çalan şarkıya ekle,play_music,oos,music_settings,music_likeness,music_likeness,music_likeness,oos
-en yakın on üçüncü cuma ne zaman,datetime_query,oos,datetime_query,transport_query,oos,datetime_query,oos
-hava şimdi nasıl,oos,general_quirky,email_sendemail,general_quirky,general_quirky,general_quirky,general_quirky
-alexa evdeki ışıkları kapat lütfen,iot_hue_lightdim,oos,iot_hue_lightoff,iot_hue_lightoff,iot_hue_lightoff,iot_hue_lightoff,iot_hue_lightoff
-bu hafta hava nasıldı,oos,oos,calendar_query,general_quirky,general_quirky,general_quirky,general_quirky
-cumartesi günü için hava tahmini nasıl,oos,oos,oos,oos,oos,datetime_query,datetime_query
+şu anda çalmakta olan şarkı ile ilgili fikri ve bu şarkıyı hangi oynatıcın tarafından desteklendiğini kaydetmek istiyorum,music_likeness,music_query,music_query,music_likeness,music_likeness,music_query,music_query
+bu şarkıyı sonraki çalan şarkıya ekle,play_music,music_likeness,music_settings,music_likeness,music_likeness,music_likeness,oos
+en yakın on üçüncü cuma ne zaman,datetime_query,oos,datetime_query,transport_query,transport_query,datetime_query,oos
+alexa evdeki ışıkları kapat lütfen,iot_hue_lightdim,iot_hue_lightoff,iot_hue_lightoff,iot_hue_lightoff,iot_hue_lightoff,iot_hue_lightoff,iot_hue_lightoff
+cumartesi günü için hava tahmini nasıl,oos,calendar_query,oos,oos,oos,datetime_query,datetime_query
 herhangi bir alarm istemiyorum,alarm_remove,alarm_query,alarm_set,alarm_query,alarm_query,alarm_query,oos
-i̇şte birinin bütçesine göre yemekler hakkındaki gerçek,news_query,general_quirky,oos,general_quirky,general_quirky,general_quirky,general_quirky
+i̇şte birinin bütçesine göre yemekler hakkındaki gerçek,news_query,oos,oos,oos,oos,oos,oos
 almanya'ya seyahat biletini onayla,transport_ticket,oos,transport_ticket,transport_ticket,transport_ticket,transport_ticket,transport_query
 lütfen iki şarkı atla,music_settings,music_settings,music_settings,play_podcasts,play_podcasts,music_settings,oos
-brexit hakkında bilgi istiyorum,news_query,qa_factoid,qa_factoid,news_query,news_query,oos,general_quirky
-lütfen hoparlörün sesini azalt,audio_volume_down,audio_volume_down,audio_volume_up,oos,oos,audio_volume_down,oos
+brexit hakkında bilgi istiyorum,news_query,qa_factoid,qa_factoid,news_query,news_query,oos,oos
+lütfen hoparlörün sesini azalt,audio_volume_down,audio_volume_down,audio_volume_up,audio_volume_down,audio_volume_down,audio_volume_down,oos
 bu şarkıyı çalma listesine ekle,music_likeness,play_music,lists_createoradd,music_likeness,music_likeness,lists_createoradd,oos
-lütfen beni saat konusunda uyar,datetime_query,alarm_set,alarm_set,alarm_set,oos,alarm_set,alarm_set
+lütfen beni saat konusunda uyar,datetime_query,alarm_set,alarm_set,alarm_set,alarm_set,alarm_set,alarm_set
 olly bana biraz loş ışık ver,iot_hue_lightdim,iot_hue_lightdim,iot_hue_lightchange,oos,oos,iot_hue_lightdim,oos
 mevcut saati değiştir,datetime_query,datetime_query,datetime_query,datetime_query,datetime_query,datetime_convert,oos
 s.,play_music,oos,oos,oos,oos,oos,oos
-daha sonra yağmur yağacak mı,oos,general_quirky,oos,calendar_query,calendar_query,oos,general_quirky
 bugün sandaletlerimi giyebilir miyim,oos,calendar_remove,calendar_query,oos,oos,lists_remove,lists_remove
-güneş gözlüğü almam gerekiyor mu,oos,oos,oos,calendar_query,calendar_query,general_quirky,general_quirky
 sesi kes,audio_volume_down,audio_volume_mute,audio_volume_mute,oos,oos,oos,oos
-lütfen bütün ışıkları aç,iot_hue_lightup,iot_hue_lighton,iot_hue_lighton,oos,oos,oos,oos
+lütfen bütün ışıkları aç,iot_hue_lightup,iot_hue_lighton,iot_hue_lighton,iot_hue_lightup,oos,oos,oos
 sekiz buçuğu gtm dörtten gmt beş buçuğa çevir,datetime_convert,oos,datetime_convert,oos,oos,oos,oos
-reggae istiyorum,play_music,oos,oos,play_music,oos,calendar_set,calendar_set
+reggae istiyorum,play_music,oos,oos,play_music,play_music,calendar_set,calendar_set
 lütfen mutfaktaki aydınlığa uygun şekilde parlaklığı ayarla,iot_hue_lightup,oos,iot_hue_lightchange,oos,oos,iot_hue_lightchange,iot_hue_lightchange
-oturma odasındaki ışıkları aydınlat,iot_hue_lightup,iot_hue_lightup,oos,oos,oos,iot_hue_lightup,oos
-kış sabah ında sıcak çoraplar lazım olacak bana,oos,oos,oos,oos,oos,general_quirky,general_quirky
-ses seviyesini değiştirir misin,audio_volume_other,audio_volume_other,audio_volume_other,oos,oos,oos,oos
-yemek fiyatını ve hepsini kontrol et,oos,general_quirky,oos,general_quirky,general_quirky,general_quirky,general_quirky
+oturma odasındaki ışıkları aydınlat,iot_hue_lightup,iot_hue_lightup,oos,iot_hue_lightup,oos,iot_hue_lightup,oos
+ses seviyesini değiştirir misin,audio_volume_other,audio_volume_other,audio_volume_other,audio_volume_up,oos,oos,oos
 şu an radyoda ne var,music_query,play_radio,music_query,play_radio,play_radio,play_radio,play_radio
-sabah altı da uyandığımdan emin ol,alarm_set,oos,oos,oos,oos,general_quirky,general_quirky
-bugün akşamki hava durumunu sor,oos,oos,general_quirky,oos,oos,oos,datetime_query
-şimdi yağmurluğumu yanıma alayım mı,oos,oos,oos,oos,oos,general_quirky,general_quirky
-atiye,music_likeness,oos,email_sendemail,oos,oos,oos,oos
+sabah altı da uyandığımdan emin ol,alarm_set,oos,oos,oos,oos,oos,oos
+bugün akşamki hava durumunu sor,oos,oos,oos,oos,oos,oos,datetime_query
+atiye,music_likeness,oos,email_sendemail,email_sendemail,oos,oos,oos
 ikiye çeyrek var,datetime_query,oos,calendar_query,qa_maths,qa_maths,qa_maths,qa_maths
 başkentte hava nasıl,oos,qa_factoid,email_querycontact,oos,oos,qa_factoid,qa_factoid
-dışarı çıkmadan önce yağmurluk giymeli miyim,oos,general_quirky,oos,general_quirky,general_quirky,general_quirky,general_quirky
-varsayılan ses ayarı yap,audio_volume_other,oos,oos,oos,oos,oos,oos
-model pembe mezarlık,play_music,oos,oos,oos,oos,general_quirky,general_quirky
-yüzde yirmi azalt,audio_volume_down,oos,oos,iot_hue_lightdim,iot_hue_lightdim,iot_hue_lightdim,oos
-bugün mersin'de hava nasıl,oos,general_quirky,general_quirky,oos,oos,qa_factoid,qa_factoid
-sıcak konu,news_query,oos,oos,oos,oos,oos,oos
+varsayılan ses ayarı yap,audio_volume_other,play_audiobook,oos,oos,oos,oos,oos
+model pembe mezarlık,play_music,oos,oos,oos,oos,oos,oos
+yüzde yirmi azalt,audio_volume_down,iot_hue_lightdim,oos,iot_hue_lightdim,iot_hue_lightdim,iot_hue_lightdim,oos
+bugün mersin'de hava nasıl,oos,oos,oos,oos,oos,qa_factoid,qa_factoid
+sıcak konu,news_query,oos,oos,news_query,news_query,oos,oos
 bu müziklerdeki şarkıları kes,music_settings,music_query,music_query,oos,oos,play_music,oos
-yaşamak için şehir daha mı ucuz daha mı pahalı,oos,oos,recommendation_locations,general_quirky,general_quirky,general_quirky,general_quirky
-şehir kanun ve düzen açısından ne kadar güvenli,oos,qa_factoid,qa_factoid,general_quirky,oos,general_quirky,general_quirky
 ışıkları daha düşük ayarlara ayarla lütfen,iot_hue_lightdim,oos,iot_hue_lightchange,oos,oos,iot_hue_lightup,iot_hue_lightchange
-bu öğleden sonra kar botlarıma ihtiyacım olacak mı,oos,calendar_query,calendar_query,general_quirky,general_quirky,calendar_query,calendar_query
+bu öğleden sonra kar botlarıma ihtiyacım olacak mı,oos,calendar_query,calendar_query,oos,oos,calendar_query,calendar_query
 bu radyodaki kim,music_query,play_radio,play_radio,play_radio,play_radio,play_radio,play_radio
-aşırı nemli bir gece mi olacak,oos,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky
-yarın yağmurlu bir gün mü olacak,oos,general_quirky,general_quirky,calendar_query,calendar_query,calendar_query,general_quirky
 seçilmiş bir şarkı ekle,play_music,music_likeness,music_likeness,oos,oos,music_likeness,music_likeness
-daha sonra güneş kremine ihtiyacım olacak mı,oos,oos,oos,general_quirky,general_quirky,oos,general_quirky
 garajdaki ışığı açık mı bıraktım,iot_hue_lightoff,oos,oos,oos,oos,oos,oos
-çiya'dan yemeğimi almak için kaç dakika daha beklemem gerekiyor,oos,general_quirky,oos,oos,oos,calendar_query,calendar_query
-bugün los angeles california'da hava nasıl olacak,oos,general_quirky,oos,oos,oos,qa_factoid,qa_factoid
-şarkı ile ilgili bilgi topla,music_likeness,oos,calendar_set,oos,oos,oos,music_query
+çiya'dan yemeğimi almak için kaç dakika daha beklemem gerekiyor,oos,oos,oos,oos,oos,calendar_query,calendar_query
+bugün los angeles california'da hava nasıl olacak,oos,oos,oos,oos,oos,qa_factoid,qa_factoid
+şarkı ile ilgili bilgi topla,music_likeness,oos,calendar_set,qa_factoid,oos,oos,music_query
 tavuk dünyası dan patates kızartması ve kanat söyle,oos,oos,oos,oos,oos,play_music,play_music
-güneş gözlükleri bugün için iyi bir seçim mi,oos,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky
-bir ceket giymeli miyim,oos,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky
-bugün hava nasıl,oos,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky
+hey olly seni özledim,general_quirky,oos,oos,oos,oos,oos,oos
+aklından ne geçiyor,general_quirky,oos,oos,oos,oos,oos,oos
+günüm çalışarak geçti olly,general_quirky,oos,oos,oos,oos,oos,oos
 hey bana bugünkü toplantılarımdan daha fazla bahset,general_quirky,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query
 arkadaşımın doğum günü ne zaman olacak,general_quirky,calendar_query,calendar_set,calendar_query,calendar_query,calendar_query,calendar_query
-bugün çok mutluyum konser için bilet aldım,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky,transport_ticket,oos
-kalkar kalkmaz yemek yedim,general_quirky,general_quirky,oos,general_quirky,general_quirky,audio_volume_mute,audio_volume_mute
-hey bugün hava nasıl,oos,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky
-olly arabamı daha yeni temizledim,general_quirky,oos,lists_createoradd,general_quirky,general_quirky,oos,oos
+lütfen bu soruya ne yazdığını gör,general_quirky,oos,oos,oos,oos,oos,oos
+bu soruyu nasıl cevaplayabileceğimi bilmiyorum bir kaç kelime eksik bırakmışsın,general_quirky,oos,oos,oos,oos,oos,oos
+bugün işe gideceğim,general_quirky,oos,oos,oos,oos,oos,oos
+berbat bir gün geçirdim,general_quirky,oos,oos,oos,oos,oos,oos
+bugün bir fakire yardım ettim olly,general_quirky,oos,oos,oos,oos,oos,oos
+bugün çok mutluyum konser için bilet aldım,general_quirky,oos,oos,oos,oos,transport_ticket,oos
+kaç yaşındasın,general_quirky,qa_factoid,qa_factoid,oos,oos,oos,oos
+adın ne,general_quirky,oos,music_query,oos,oos,oos,oos
+eğer üç kişiyi kurtarmak için birilerini öldürmen gerekseydi bunu yapar mıydın ve öyleyse nasıl,general_quirky,oos,oos,oos,oos,oos,oos
+biraz muhabbet edelim,general_quirky,oos,oos,oos,oos,oos,oos
+kalkar kalkmaz yemek yedim,general_quirky,oos,oos,oos,oos,audio_volume_mute,audio_volume_mute
+ne okumamı tavsiye edersin,general_quirky,qa_definition,qa_definition,oos,oos,oos,oos
+hey olly bugün eski bir sınıf arkadaşıma rastladım,general_quirky,oos,oos,oos,oos,oos,oos
+olly arabamı daha yeni temizledim,general_quirky,oos,lists_createoradd,oos,oos,oos,oos
 trafik sıkışıklığının bu kadar uzun sürmesinden nefret ediyorum,general_quirky,transport_traffic,transport_traffic,transport_traffic,transport_traffic,transport_traffic,transport_traffic
 mumbar ne demek,general_quirky,qa_definition,qa_definition,qa_definition,qa_definition,qa_definition,qa_definition
-sezon öncesi beyzbol biletleri aldım,general_quirky,oos,transport_query,general_quirky,oos,oos,oos
+bugün nasıl hissediyorsun,general_quirky,oos,oos,oos,oos,oos,oos
+bugün ne yapmak istiyorsun,general_quirky,oos,oos,oos,oos,oos,oos
+bugün buldog gördüm,general_quirky,oos,oos,oos,oos,oos,oos
+sence bugün tiyatro ya gideyim mi,general_quirky,oos,transport_query,oos,oos,oos,oos
+lütfen bana maçın skorunu söyle,general_quirky,oos,oos,oos,oos,oos,oos
+günüm inanılmaz zordu,general_quirky,oos,oos,oos,oos,oos,oos
+sezon öncesi beyzbol biletleri aldım,general_quirky,oos,transport_query,oos,oos,oos,oos
+olly sana günümü anlatmak zorundayım,general_quirky,oos,oos,oos,oos,oos,oos
+dükkana gittim,general_quirky,oos,recommendation_locations,oos,oos,oos,oos
 benzin almam lazım,general_quirky,oos,oos,oos,oos,iot_cleaning,oos
 önümüzdeki haftam nasıl görünüyor,calendar_query,oos,calendar_query,calendar_query,calendar_query,calendar_query,oos
-iki bin on altıdan güzel bir iran filmi nedir,recommendation_movies,general_quirky,oos,oos,oos,general_quirky,general_quirky
-köpekler ne ses çıkarır,general_quirky,oos,oos,oos,oos,audio_volume_up,audio_volume_up
-önümüzdeki çarşamba hava nasıl,oos,oos,oos,general_quirky,general_quirky,datetime_query,datetime_query
+veganizm,general_quirky,oos,qa_factoid,oos,oos,oos,oos
+iki bin on altıdan güzel bir iran filmi nedir,recommendation_movies,oos,oos,recommendation_movies,oos,oos,oos
+bendeki veriler ve bilgilerle ne yapılabilir,general_quirky,oos,oos,oos,oos,oos,oos
+hey son zamanlarda sporda hangi ilginç şeyler oldu,general_quirky,oos,oos,news_query,news_query,oos,oos
+gelecekte hangi özellikleri yayınlamayı planlıyorsun,general_quirky,oos,calendar_query,calendar_query,calendar_query,oos,oos
+günüm harika geçti,general_quirky,oos,oos,oos,oos,oos,oos
+bana bir kaç sağlık ipucu ver,general_quirky,qa_factoid,qa_factoid,oos,oos,oos,oos
+köpekler ne ses çıkarır,general_quirky,oos,oos,audio_volume_up,audio_volume_up,audio_volume_up,audio_volume_up
+önümüzdeki çarşamba hava nasıl,oos,oos,oos,oos,oos,datetime_query,datetime_query
+günüm iyi gidiyor bir not ekle,general_quirky,oos,oos,lists_createoradd,lists_createoradd,oos,oos
+selam günün nasıl geçiyor,general_quirky,oos,oos,oos,oos,oos,oos
 teknoloji,general_quirky,news_query,news_query,news_query,news_query,news_query,news_query
 bugün ali ile bir toplantı yaptım,general_quirky,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set
 bugün olanlar şu şekilde caner ile bir toplantı ayarladım,general_quirky,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set
 lütfen bil ki bugün cemil ile bir toplantım randevum,general_quirky,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set
+bana biraz kendinden bahsedebilir misin,general_quirky,oos,oos,oos,oos,oos,oos
+bugün her yerde telefonumu aradım ama bulamadım,general_quirky,oos,oos,oos,oos,oos,oos
 yenilerde hiç güzel bir müzik dinledin mi,general_quirky,play_music,play_music,music_query,music_query,play_music,play_music
-zeki misin,general_quirky,qa_factoid,general_quirky,general_quirky,general_quirky,qa_factoid,qa_factoid
-beyzbol skorları,general_quirky,news_query,general_quirky,news_query,news_query,news_query,news_query
-web aramaları,general_quirky,oos,oos,general_quirky,general_quirky,oos,oos
+sadece kediler için kuaför var mı,general_quirky,oos,calendar_query,oos,oos,oos,oos
+kılıçdaroğlu,general_quirky,oos,qa_factoid,oos,oos,news_query,oos
+zeki misin,general_quirky,qa_factoid,oos,oos,oos,qa_factoid,qa_factoid
+aklındaki herhangi bir şey,general_quirky,oos,oos,oos,oos,oos,oos
+bugün hava kötüydü,general_quirky,oos,oos,oos,oos,oos,oos
+beyzbol skorları,general_quirky,news_query,oos,news_query,news_query,news_query,news_query
+bugün ne seviyorum,general_quirky,music_likeness,oos,oos,oos,oos,oos
+web aramaları,general_quirky,oos,oos,oos,oos,oos,oos
+lütfen tavsiyede bulun,general_quirky,oos,recommendation_locations,oos,oos,oos,oos
 yeni gereçler,general_quirky,news_query,lists_createoradd,oos,oos,oos,oos
 sosyal medya,oos,oos,oos,news_query,news_query,news_query,news_query
-genel bilgi soruları sor,general_quirky,oos,general_quirky,general_quirky,general_quirky,news_query,oos
+beni köpek kovaladı,general_quirky,oos,general_joke,oos,oos,oos,oos
+genel bilgi soruları sor,general_quirky,oos,oos,oos,oos,news_query,oos
+bugün gününüz nasıl geçti,general_quirky,oos,oos,calendar_query,calendar_query,oos,oos
+yoğun bir gün müydü,general_quirky,oos,oos,oos,oos,oos,oos
 tarih,general_quirky,datetime_query,datetime_query,datetime_query,datetime_query,datetime_query,datetime_query
+mutlu musun,general_quirky,oos,oos,oos,oos,oos,oos
 bugünü diyetimin başlangıcı olarak işaretle,calendar_set,calendar_set,calendar_set,oos,oos,calendar_set,oos
+bugün terfi aldım çok iyi hissettiriyor,general_quirky,oos,oos,oos,oos,oos,oos
 videolar oynat,general_quirky,play_music,play_game,oos,oos,play_audiobook,oos
-online bilgi araştırmak,general_quirky,oos,qa_factoid,oos,oos,general_quirky,oos
-matematik,general_quirky,general_quirky,calendar_set,general_quirky,general_quirky,qa_maths,qa_maths
+hey olly kız arkadaşımı seviyor musun,general_quirky,oos,oos,oos,oos,oos,oos
+online bilgi araştırmak,general_quirky,oos,qa_factoid,news_query,oos,oos,oos
+matematik,general_quirky,oos,calendar_set,oos,oos,qa_maths,qa_maths
+sen bilinçli olursan bana ne olur,general_quirky,oos,oos,oos,oos,oos,oos
+erkek arkadaşın var mı,general_quirky,calendar_query,email_querycontact,qa_factoid,qa_factoid,oos,oos
+bitkiler,general_quirky,oos,oos,oos,oos,oos,oos
+aşk,general_quirky,oos,play_audiobook,oos,oos,oos,oos
+selam sana,general_quirky,general_greet,oos,oos,oos,oos,oos
 bir dedikodu başlat,general_quirky,oos,play_game,news_query,news_query,news_query,news_query
+bugün gittiğim yer,general_quirky,oos,oos,qa_factoid,qa_factoid,oos,oos
+bu yerden döndüğümde,general_quirky,play_audiobook,play_music,play_audiobook,play_audiobook,play_audiobook,oos
+sağlık,general_quirky,oos,oos,oos,oos,oos,oos
+ebeveynlik,general_quirky,oos,oos,oos,oos,oos,oos
 yaşınız nedir,general_quirky,qa_definition,qa_definition,oos,oos,oos,oos
+gelecek hakkında ne düşünüyorsun,general_quirky,oos,oos,oos,oos,oos,oos
 sinemada en son çıkan filmler,general_quirky,recommendation_movies,recommendation_movies,recommendation_movies,recommendation_movies,recommendation_movies,recommendation_movies
-n. s. a. için mi çalışıyorsun,general_quirky,general_quirky,transport_query,oos,oos,news_query,oos
-bugün google da en üst seviye araştırmalar hangileri,general_quirky,oos,oos,oos,general_quirky,news_query,oos
-hadi pohpohla beni,general_quirky,oos,general_quirky,general_quirky,general_quirky,play_podcasts,oos
-seçimler yaklaşıyor,news_query,oos,recommendation_events,oos,oos,oos,general_quirky
-ekonomik işler,news_query,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky
-arkadaş güncellemeleri,general_quirky,oos,news_query,general_quirky,general_quirky,oos,oos
+senin geliştiricilerin kimler,general_quirky,oos,qa_factoid,oos,oos,oos,oos
+bölgemdeki dijital pazarlamada en iyi ücretli işler,general_quirky,oos,oos,recommendation_locations,oos,oos,oos
+n. s. a. için mi çalışıyorsun,general_quirky,oos,transport_query,oos,oos,news_query,oos
+bugün google da en üst seviye araştırmalar hangileri,general_quirky,oos,oos,oos,oos,news_query,oos
+alexa beni ne kadar tanıyorsun,general_quirky,oos,oos,oos,oos,oos,oos
+diyete bağlı kalmak,general_quirky,oos,oos,oos,oos,oos,oos
+tatil yerleri,general_quirky,play_podcasts,recommendation_locations,oos,oos,oos,oos
+güzel ücretsiz örgü modelleri biliyor musun,general_quirky,oos,oos,oos,oos,oos,oos
+hadi pohpohla beni,general_quirky,oos,oos,oos,oos,play_podcasts,oos
+seçimler yaklaşıyor,news_query,oos,recommendation_events,oos,oos,oos,oos
+ekonomik işler,news_query,oos,oos,oos,oos,oos,oos
+bugün berbat bir gün geçiriyorum eğlenmek için ne seyredebilirim,general_quirky,oos,oos,oos,oos,oos,oos
+genel sağlık ipuçları,general_quirky,qa_factoid,oos,oos,oos,news_query,oos
+arkadaş güncellemeleri,general_quirky,oos,news_query,oos,oos,oos,oos
+sen gerçek misin,general_quirky,oos,oos,oos,oos,oos,oos
 seneye istanbul da gerçekleşecek olan istanbul komedi festivali ile ilgili neler biliyorsun,general_quirky,recommendation_events,recommendation_events,recommendation_events,recommendation_events,recommendation_events,oos
+olly yarın izinliyim,general_quirky,oos,oos,oos,oos,oos,oos
 olly bu gece dokuzda jazz barda çok güzel bir müzik grubu çalıyor gitmek istiyorum,calendar_set,calendar_set,oos,calendar_set,calendar_set,calendar_set,oos
-bana film programını verebilir misin,calendar_query,oos,oos,calendar_query,calendar_query,oos,recommendation_movies
+bana film programını verebilir misin,calendar_query,recommendation_movies,oos,calendar_query,calendar_query,oos,recommendation_movies
 cuma mı,calendar_query,calendar_query,calendar_query,datetime_query,datetime_query,datetime_query,datetime_query
 takvimimde hiç etkinlik kalmadığından emin ol,calendar_remove,calendar_set,calendar_query,oos,oos,oos,calendar_query
-önümüzdeki cumartesi akşam altıda ne yapmam gerektiğini öğrenebilir miyim,calendar_set,oos,oos,calendar_query,calendar_query,calendar_query,calendar_query
-bu konudaki gerçekleri kontrol edebilir misin,calendar_query,general_quirky,calendar_query,oos,oos,general_quirky,general_quirky
+önümüzdeki cumartesi akşam altıda ne yapmam gerektiğini öğrenebilir miyim,calendar_set,calendar_set,oos,calendar_query,calendar_query,calendar_query,calendar_query
+bu konudaki gerçekleri kontrol edebilir misin,calendar_query,oos,calendar_query,news_query,oos,oos,oos
 bana yapılacaklar listesini ver,calendar_query,lists_query,lists_query,lists_query,lists_query,lists_query,lists_query
 benim bir sonraki etkinliğim için takvimimi araştır ve öncesinde beni bilgilendir,calendar_set,calendar_query,calendar_set,calendar_set,calendar_set,calendar_set,calendar_query
 bu hafta sonu şehir merkezinde herhangi bir etkinlik var mı,calendar_query,recommendation_events,recommendation_events,recommendation_events,recommendation_events,recommendation_events,recommendation_events
 bana yirmi altı martta yaklaşan yıllık etkinliğin ayrıntılarını verebilir misin,general_quirky,calendar_set,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query
+iyi bir ilk izlenim,general_quirky,oos,oos,oos,oos,oos,oos
 bana bir saat sonra patrona e-posta göndermeyi hatırlat,calendar_set,calendar_set,email_query,email_sendemail,email_sendemail,email_sendemail,email_sendemail
-yarın sabah ondan bir saat sonrasını engelle,calendar_set,oos,alarm_set,oos,oos,oos,oos
-sadece önümüzdeki haftalarda adana'nın hava durumunu bana bildir,email_query,oos,oos,oos,oos,oos,oos
+yarın sabah ondan bir saat sonrasını engelle,calendar_set,calendar_set,alarm_set,calendar_remove,oos,oos,oos
+sadece önümüzdeki haftalarda adana'nın hava durumunu bana bildir,email_query,calendar_set,oos,oos,oos,oos,oos
 lütfen maaş günlerini ekle,calendar_set,calendar_set,lists_createoradd,calendar_set,calendar_set,calendar_set,oos
 saat üçe kadar toplantı istiyorum,calendar_set,calendar_set,calendar_query,calendar_set,calendar_set,calendar_query,calendar_query
-doğum günü,calendar_set,calendar_set,calendar_set,general_quirky,oos,calendar_set,calendar_query
+doğum günü,calendar_set,calendar_set,calendar_set,oos,oos,calendar_set,calendar_query
 yarını planla,calendar_query,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set
 takvimindeki tanışma toplantısı,calendar_set,calendar_query,calendar_set,calendar_set,calendar_set,oos,calendar_query
-hey olly iki mart için benim tüm randevularımı ve aramaları iptal et çünkü o gün jim'in doğum günü bu etkinliği takvime kaydet,calendar_set,calendar_set,calendar_remove,calendar_set,oos,calendar_remove,oos
+hey olly iki mart için benim tüm randevularımı ve aramaları iptal et çünkü o gün jim'in doğum günü bu etkinliği takvime kaydet,calendar_set,calendar_set,calendar_remove,calendar_set,calendar_remove,calendar_remove,oos
 kayıtlar açıldığında beni uyar,calendar_set,calendar_set,news_query,oos,oos,oos,oos
 bugün öğlen bir toplantım var,calendar_set,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query
 son iki aydır neler oluyor,news_query,news_query,oos,news_query,news_query,news_query,oos
 bugünkü saç kesimini temizle,calendar_remove,calendar_remove,calendar_remove,oos,oos,oos,oos
 bugünkü bir sonraki etkinliği dil,calendar_remove,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query
-bana bir saat içinde seçimle ilgili bilgi ver,calendar_set,oos,calendar_query,calendar_set,oos,calendar_query,calendar_query
+bana bir saat içinde seçimle ilgili bilgi ver,calendar_set,oos,calendar_query,calendar_set,calendar_set,calendar_query,calendar_query
 mersin de yaklaşan konserler neler,calendar_query,recommendation_events,recommendation_events,recommendation_events,recommendation_events,recommendation_events,recommendation_events
 bana ne zaman bir etkinliğim olduğunu söyle,calendar_set,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query
-ayın yirmisi pazartesi günü serdar ile hafta sonu gezimiz hakkında konuşmam gerekiyor,calendar_set,oos,calendar_set,calendar_set,calendar_set,calendar_query,calendar_query
+ayın yirmisi pazartesi günü serdar ile hafta sonu gezimiz hakkında konuşmam gerekiyor,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set,calendar_query,calendar_query
 saat on iki buçuk senin on dakika içerisinde bir toplantın var,calendar_query,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set
 günlerden ne,calendar_query,datetime_query,datetime_query,datetime_query,datetime_query,datetime_query,datetime_query
 pazarları saat on birde kilise hizmetlerinden haberdar olmam gerekiyor,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set,calendar_query
-dün öğle saatlerinde taksim meydanında ki protesto ne hakkındaydı,news_query,news_query,oos,oos,oos,news_query,oos
+dün öğle saatlerinde taksim meydanında ki protesto ne hakkındaydı,news_query,news_query,oos,news_query,oos,news_query,oos
 bu hafta sonu geçit töreni hakkında daha fazla bilgiye ihtiyacım var,general_quirky,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query,oos
-bu hafta sonu olan fuar hakkında daha fazla bilgi edinmek istiyorum,general_quirky,general_quirky,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query
+bu hafta sonu olan fuar hakkında daha fazla bilgi edinmek istiyorum,general_quirky,oos,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query
 toplantının ne zaman gerçekleşeceğini bana haber ver,calendar_set,calendar_set,calendar_query,calendar_set,calendar_set,calendar_query,calendar_query
-bana etkinliklerimden biraz daha bahset,general_quirky,oos,music_query,calendar_query,calendar_query,calendar_query,calendar_query
-lütfen beni uyar,calendar_set,calendar_set,alarm_set,oos,calendar_set,alarm_set,alarm_set
-bana dünden bu sabaha kadar olan güncel olaylardan bahset,calendar_query,oos,oos,oos,oos,news_query,oos
+bana etkinliklerimden biraz daha bahset,general_quirky,calendar_query,music_query,calendar_query,calendar_query,calendar_query,calendar_query
+lütfen beni uyar,calendar_set,calendar_set,alarm_set,calendar_set,calendar_set,alarm_set,alarm_set
+bana dünden bu sabaha kadar olan güncel olaylardan bahset,calendar_query,oos,oos,news_query,oos,news_query,oos
 lütfen takvimimi bu etkinlikle birlikte değiştir,calendar_set,calendar_remove,calendar_set,calendar_set,calendar_set,calendar_set,calendar_remove
 yarın öğleden sonra saat ikide beni meşgul olarak işaretler misin,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set,oos,oos
 bugün aziz patrick günü mü,calendar_query,oos,datetime_query,qa_factoid,qa_factoid,qa_factoid,qa_factoid
 gelecek etkinlikler için bilgi,recommendation_events,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query
-takvimde diğerleriyle etkinlikten bahset,calendar_set,oos,calendar_set,calendar_set,calendar_set,calendar_query,calendar_query
+takvimde diğerleriyle etkinlikten bahset,calendar_set,calendar_query,calendar_set,calendar_set,calendar_set,calendar_query,calendar_query
 toplantı vaktini aç,calendar_query,calendar_set,calendar_set,calendar_remove,calendar_remove,calendar_query,calendar_set
 bana bu hafta hatırlayacağım bir şey söyle,calendar_set,calendar_query,calendar_query,oos,oos,calendar_query,oos
 sadece hafta boyunca patronumla yapacağım önemli toplantıları bana bildir,calendar_set,calendar_query,calendar_query,calendar_set,calendar_set,calendar_query,calendar_query
-toplantıları göster,calendar_set,calendar_query,calendar_query,calendar_set,oos,calendar_query,calendar_query
+toplantıları göster,calendar_set,calendar_query,calendar_query,calendar_set,calendar_set,calendar_query,calendar_query
 raci nikah hatırlatıcı,calendar_query,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set
 takvimdeki yaklaşan etkinlikler,calendar_set,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query
 yirmi beş mart toplu iki bin on yedi sergisi o tarihleri not et,calendar_set,oos,calendar_query,calendar_set,calendar_set,calendar_set,calendar_query
@@ -383,7 +385,7 @@ toplantımı yeniden ayarlayabilir misin,calendar_query,calendar_set,calendar_se
 hangi günler için rezervasyon yaptırdım,calendar_query,oos,calendar_query,oos,oos,oos,oos
 gelecek hafta için çalışma takvimimdeki etkinlikleri göster,calendar_set,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query
 italyan restoranı öğle ve akşam yemekleri arasında saat kaçta kapalı,calendar_query,oos,calendar_query,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations
-şampiyonluk maçı resmi olarak ne zaman başlıyor,qa_factoid,calendar_query,oos,calendar_query,calendar_query,calendar_query,general_quirky
+şampiyonluk maçı resmi olarak ne zaman başlıyor,qa_factoid,calendar_query,oos,calendar_query,calendar_query,calendar_query,oos
 hatırlatmak,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set,oos
 toplantıya katılacak tüm müşterileri araştır,calendar_set,oos,calendar_set,calendar_query,calendar_query,calendar_query,calendar_query
 f. m. çal,play_radio,play_music,play_radio,play_radio,play_radio,play_radio,play_music
@@ -392,79 +394,46 @@ f. m. çal,play_radio,play_music,play_radio,play_radio,play_radio,play_radio,pla
 müzik hitler çalalım,play_radio,play_music,play_music,play_music,play_music,play_music,play_music
 sıla 'dan canlı konser serileri aç,play_radio,play_music,play_music,play_music,play_music,play_music,play_music
 bana sabahları yayınlanan ekonomi ekoloji şovları çal,play_radio,play_music,oos,news_query,news_query,oos,oos
-sabahattin ali 'den kürk mantolu madonna 'yı dinlemek istiyorum,play_audiobook,oos,play_music,play_music,play_music,play_music,play_music
+sabahattin ali 'den kürk mantolu madonna 'yı dinlemek istiyorum,play_audiobook,play_music,play_music,play_music,play_music,play_music,play_music
 kuyucaklı yusuf 'u açabilir misin,play_audiobook,oos,oos,oos,oos,play_radio,oos
 şapka 'yı aç,play_audiobook,play_music,play_music,oos,oos,oos,oos
-senden önce ben'i aç,play_audiobook,play_music,play_music,play_music,oos,oos,oos
-olly kiralık konak ı dinleyelim,play_audiobook,oos,oos,play_music,oos,play_music,oos
+senden önce ben'i aç,play_audiobook,play_music,play_music,play_music,play_music,oos,oos
+olly kiralık konak ı dinleyelim,play_audiobook,oos,oos,play_music,play_music,play_music,oos
 çalmayı durdur,play_audiobook,audio_volume_mute,audio_volume_mute,audio_volume_mute,oos,audio_volume_mute,oos
-beklet,play_audiobook,oos,lists_createoradd,oos,oos,audio_volume_mute,audio_volume_mute
+beklet,play_audiobook,calendar_set,lists_createoradd,audio_volume_mute,oos,audio_volume_mute,audio_volume_mute
 kanunlar gibi yi kaldığı yerden devam ettir,play_music,play_audiobook,play_audiobook,play_audiobook,play_audiobook,play_audiobook,play_audiobook
 alexa mahalle kahvesi son bölümünü başlat,play_audiobook,oos,oos,oos,oos,oos,oos
-benim seçimim baştan bir ses çalmak,play_audiobook,oos,play_audiobook,audio_volume_up,audio_volume_up,oos,oos
+benim seçimim baştan bir ses çalmak,play_audiobook,play_music,play_audiobook,audio_volume_up,audio_volume_up,oos,oos
 benim favori kitabımı çal lütfen,play_audiobook,play_music,play_music,play_audiobook,play_audiobook,play_audiobook,play_music
-bana daha çok latife tekin kitabı oku,play_audiobook,play_audiobook,oos,play_audiobook,play_audiobook,play_audiobook,general_quirky
+bana daha çok latife tekin kitabı oku,play_audiobook,play_audiobook,oos,play_audiobook,play_audiobook,play_audiobook,oos
 yaban da beşinci bölüme başla,play_audiobook,oos,play_audiobook,qa_factoid,qa_factoid,play_podcasts,play_podcasts
 ahmet ümit 'ten polisiye romanları geri çal,play_audiobook,play_music,play_music,play_audiobook,play_audiobook,play_audiobook,oos
-eylül ü oynatmayı sürdür,play_audiobook,oos,oos,oos,oos,oos,oos
-nasıl pizza yaparım,oos,general_quirky,oos,general_quirky,general_quirky,general_quirky,general_quirky
-bana tarifini söyle,oos,oos,qa_definition,general_quirky,general_quirky,oos,general_quirky
-yumurtayı ne kadar süre haşlamalıyım,oos,oos,oos,oos,general_quirky,general_quirky,general_quirky
-bana çikolatalı pasta tarifi bul,oos,oos,transport_query,general_quirky,general_quirky,general_quirky,general_quirky
+eylül ü oynatmayı sürdür,play_audiobook,play_audiobook,oos,oos,oos,oos,oos
 yaş pastaya konulacakların tümü neler,oos,oos,oos,oos,oos,oos,calendar_query
 sebzeli lazanya ne kadar sürede yapılır,oos,qa_factoid,qa_factoid,qa_factoid,qa_factoid,qa_factoid,qa_factoid
-bana pişirme dersleri ver,oos,oos,oos,general_quirky,general_quirky,general_quirky,general_quirky
-bana bir kızarmış tavuk hazırlama videosu göster,oos,general_quirky,oos,general_quirky,general_quirky,general_quirky,general_quirky
-makarna pişirmenin en iyi yolu ne,oos,general_quirky,oos,general_quirky,general_quirky,general_quirky,general_quirky
-yemek süreci hakkında bilgi,oos,qa_factoid,qa_factoid,general_quirky,general_quirky,calendar_query,calendar_query
-makarna pişirmenin en kolay yolu nedir,oos,oos,qa_factoid,general_quirky,general_quirky,general_quirky,general_quirky
-lütfen internet araması yapıp italyan yemekleri pişirmek için uygun youtube videoları göster,oos,general_quirky,oos,general_quirky,general_quirky,general_quirky,general_quirky
+yemek süreci hakkında bilgi,oos,qa_factoid,qa_factoid,oos,oos,calendar_query,calendar_query
 bana biraz yulaf pişir,oos,oos,oos,oos,oos,oos,iot_coffee
 bugün menü nedir ona haşlanmış sebzeler de ekle,oos,oos,calendar_set,oos,oos,lists_createoradd,lists_createoradd
-şükran günü hindisi tarifini beş cümleyle versen ne derdin,oos,oos,oos,general_quirky,general_quirky,qa_definition,general_quirky
-bana on iki adet yulaf ezmeli kurabiyeyi nasıl pişireceğimi söyler misin,oos,general_quirky,oos,general_quirky,general_quirky,general_quirky,general_quirky
-kuzu külbastı yapmak için neye ihtiyacım var,oos,oos,oos,general_quirky,general_quirky,general_quirky,general_quirky
 benim alışveriş listemdeki malzemelerden bir tarif istiyorum,oos,lists_query,lists_createoradd,oos,oos,lists_query,lists_query
-yemek için iyi bir fikre ihtiyacım var,oos,recommendation_locations,recommendation_locations,general_quirky,general_quirky,general_quirky,general_quirky
-bana ev yapımı terbiyeli erişteli tavuk çorbası tarifi verebilir misin,oos,oos,oos,general_quirky,general_quirky,oos,general_quirky
-nasıl hindi pişiririm,oos,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky
-bana balık ekmek nasıl yapılır anlat,oos,qa_factoid,oos,general_quirky,general_quirky,general_quirky,general_quirky
-nasıl pizza yapabilirim,oos,oos,general_quirky,general_quirky,general_quirky,recommendation_locations,general_quirky
-kızarmış tavuk tarifi ne,oos,oos,oos,general_quirky,general_quirky,general_quirky,general_quirky
-akşam yemeği için ne yapayım,oos,general_quirky,calendar_query,general_quirky,general_quirky,calendar_query,general_quirky
-akşam yemeği için ne pişirmeliyim,oos,general_quirky,calendar_query,calendar_query,calendar_query,general_quirky,general_quirky
-birlikte köfte pişirelim,oos,oos,oos,general_quirky,general_quirky,iot_coffee,iot_coffee
-bana köfte pişirmeyi anlat,oos,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky
+birlikte köfte pişirelim,oos,oos,oos,oos,oos,iot_coffee,iot_coffee
 lazanya nasıl yapılır,oos,qa_factoid,oos,oos,oos,qa_factoid,qa_factoid
-risotto nasıl yapılır biliyor musun,oos,general_quirky,general_quirky,general_quirky,general_quirky,oos,general_quirky
-pilav tarifi biliyor musun,oos,general_quirky,general_quirky,general_quirky,oos,general_quirky,general_quirky
-altı kiloluk bir hindiyi ne kadar süre pişirirsin,oos,oos,oos,general_quirky,general_quirky,qa_factoid,general_quirky
 fırınlama ve kızartma arasındaki fark nedir,oos,oos,oos,oos,oos,qa_maths,qa_maths
-biber dolması nasıl yapılır öğrenmem lazım,oos,general_quirky,oos,general_quirky,general_quirky,oos,general_quirky
-makarnayı ne kadar süre pişiriyorum,oos,oos,oos,general_quirky,general_quirky,general_quirky,general_quirky
 elmalı turta tarifi ara,oos,transport_query,oos,qa_definition,qa_definition,transport_query,transport_query
-peynirli makarna nasıl yapılır,oos,qa_factoid,oos,general_quirky,general_quirky,general_quirky,general_quirky
-bana en iyi spagetti tarifini göster,oos,oos,transport_query,general_quirky,general_quirky,qa_definition,general_quirky
-pilav nasıl hazırlanır,oos,oos,oos,general_quirky,general_quirky,oos,general_quirky
-internette kek kalıbı ara,oos,oos,oos,oos,oos,oos,general_quirky
-nefisyemektarifleri uygulaması içinde acuka tarifini bul,oos,oos,transport_query,general_quirky,general_quirky,qa_definition,general_quirky
-lezzetli olmalı,oos,oos,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky
-makarna hazırlama tarifi verir misin,oos,oos,qa_definition,oos,general_quirky,general_quirky,general_quirky
 masa tenisi aç,play_game,oos,play_game,play_game,play_game,play_game,oos
 bana xox aç,play_game,oos,play_game,news_query,news_query,oos,oos
-saga aç,play_game,oos,oos,oos,oos,oos,oos
+saga aç,play_game,audio_volume_up,oos,oos,oos,oos,oos
 mfö çal,play_game,play_music,play_music,play_music,play_music,play_music,play_music
 papa pear saga çal,play_game,play_music,play_music,play_music,play_music,play_music,play_music
 bizim için competitive crossword başlat,play_game,oos,oos,oos,oos,oos,oos
-günlükte başka ne eksik,lists_query,oos,oos,general_quirky,oos,oos,oos
-bugün ne yapacağım,lists_query,calendar_query,general_quirky,datetime_query,datetime_query,calendar_query,calendar_query
+günlükte başka ne eksik,lists_query,calendar_query,oos,oos,oos,oos,oos
+bugün ne yapacağım,lists_query,calendar_query,oos,datetime_query,datetime_query,calendar_query,calendar_query
 antalyadaki beş yıldızlı otellerin bir listesini alabilir miyim,qa_factoid,oos,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations
 sırada bekleyen her şeyi listele,lists_query,oos,lists_remove,lists_query,lists_query,lists_query,oos
 bu haftanın alışveriş listesini yapmak istiyorum,lists_createoradd,lists_createoradd,lists_createoradd,lists_createoradd,lists_createoradd,lists_query,oos
 araba ödememi takvimimden kaldır,lists_remove,calendar_remove,calendar_remove,calendar_remove,calendar_remove,calendar_remove,calendar_remove
 lütfen alışveriş listemi tekrar et,lists_query,oos,lists_remove,oos,oos,lists_createoradd,lists_createoradd
-android,lists_query,oos,oos,general_quirky,oos,oos,oos
-öğeyi ara,lists_createoradd,lists_remove,lists_remove,oos,oos,lists_query,lists_remove
+android,lists_query,oos,oos,oos,oos,oos,oos
+öğeyi ara,lists_createoradd,lists_remove,lists_remove,email_querycontact,oos,lists_query,lists_remove
 planlar listesini yenile,lists_query,lists_createoradd,lists_createoradd,lists_createoradd,lists_createoradd,lists_createoradd,lists_createoradd
 gösteri olayı varsa onu kaldırın,lists_remove,oos,oos,calendar_remove,calendar_remove,calendar_remove,calendar_remove
 değiştir,lists_remove,iot_hue_lightchange,iot_hue_lightchange,oos,oos,iot_hue_lightchange,iot_hue_lightchange
@@ -473,53 +442,53 @@ bir çalma listesi oluştur,lists_createoradd,lists_createoradd,lists_createorad
 hepsini sil,lists_remove,calendar_remove,lists_remove,calendar_remove,calendar_remove,calendar_remove,calendar_remove
 şunu oradan çıkar,lists_remove,lists_remove,lists_remove,oos,oos,lists_remove,oos
 lütfen benim favori albümler listemi kaldır,lists_remove,lists_remove,lists_remove,lists_remove,lists_remove,lists_remove,oos
-kişilerimde hangi gruplar listeleniyor,lists_query,lists_query,lists_query,oos,oos,lists_query,oos
+kişilerimde hangi gruplar listeleniyor,lists_query,lists_query,lists_query,recommendation_locations,recommendation_locations,lists_query,oos
 son cümleyi sil,lists_remove,lists_remove,lists_remove,lists_remove,lists_remove,lists_remove,oos
 bu hafta yapılacakları sil,lists_remove,lists_remove,calendar_remove,calendar_remove,calendar_remove,calendar_remove,calendar_remove
-aliyi kişiler listeme ekle,lists_createoradd,oos,lists_createoradd,lists_createoradd,lists_createoradd,lists_createoradd,oos
+aliyi kişiler listeme ekle,lists_createoradd,lists_createoradd,lists_createoradd,lists_createoradd,lists_createoradd,lists_createoradd,oos
 bana satın alma siparişiyle ilgili ayrıntıları ver,lists_query,oos,oos,oos,oos,lists_query,oos
 kişi listeme çalışma kişileri ekle,lists_createoradd,email_addcontact,lists_createoradd,lists_createoradd,lists_createoradd,oos,oos
 google keep,lists_query,oos,oos,news_query,news_query,oos,email_query
-önemli ev bilgileri,lists_query,general_quirky,oos,oos,general_quirky,general_quirky,general_quirky
+önemli ev bilgileri,lists_query,oos,oos,oos,oos,oos,oos
 bir sonrakini çal,play_podcasts,play_music,play_music,play_podcasts,play_podcasts,play_podcasts,play_music
 bir sonrakini çal,play_podcasts,play_music,play_music,play_podcasts,play_podcasts,play_podcasts,play_music
 j. k. rowling'in harry potter'ının bir sonraki bölümünü çal,play_audiobook,play_podcasts,oos,play_podcasts,play_podcasts,play_podcasts,play_podcasts
 otuz saniye geri git,play_podcasts,oos,oos,oos,oos,audio_volume_mute,audio_volume_mute
 enes batur,play_podcasts,oos,oos,qa_factoid,oos,qa_factoid,qa_factoid
 rabarba başlat,play_podcasts,oos,play_game,oos,oos,oos,oos
-ringcast oynamaya başla,play_podcasts,play_game,play_game,oos,oos,play_game,play_game
-geçen hafta dan tüm felsefe kanalı nı çaldır,play_podcasts,calendar_remove,lists_remove,calendar_remove,oos,oos,oos
-edirnede ne yapabilirim,recommendation_events,oos,general_quirky,qa_factoid,qa_factoid,recommendation_events,transport_query
-eskişehir civarında caz gösterimi yapan hiçbir yer var mı,recommendation_events,oos,recommendation_locations,recommendation_locations,recommendation_locations,oos,oos
-memleketimde olan köpek gösterisi etkinliklerini bana bildir lütfen,recommendation_events,oos,calendar_query,oos,calendar_query,oos,calendar_query
+ringcast oynamaya başla,play_podcasts,play_game,play_game,play_podcasts,oos,play_game,play_game
+geçen hafta dan tüm felsefe kanalı nı çaldır,play_podcasts,calendar_remove,lists_remove,calendar_remove,calendar_remove,oos,oos
+edirnede ne yapabilirim,recommendation_events,oos,oos,qa_factoid,qa_factoid,recommendation_events,transport_query
+eskişehir civarında caz gösterimi yapan hiçbir yer var mı,recommendation_events,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations,oos,oos
+memleketimde olan köpek gösterisi etkinliklerini bana bildir lütfen,recommendation_events,calendar_query,calendar_query,calendar_query,calendar_query,oos,calendar_query
 mersinde sinemada bu gece hangi filmi izleyebilirim,recommendation_events,recommendation_movies,recommendation_movies,recommendation_movies,recommendation_movies,recommendation_movies,recommendation_movies
 bu civardaki tiyatroların listesini ver,recommendation_locations,oos,calendar_query,recommendation_locations,recommendation_locations,recommendation_events,oos
-afyon 'da hangi silah gösterisi var,recommendation_events,oos,recommendation_events,oos,oos,recommendation_events,oos
+afyon 'da hangi silah gösterisi var,recommendation_events,oos,recommendation_events,recommendation_locations,recommendation_locations,recommendation_events,oos
 kartal'da eczane nerede,recommendation_locations,oos,qa_factoid,recommendation_locations,recommendation_locations,recommendation_locations,oos
-ben bugün hangi filmi seyredeyim,recommendation_movies,oos,oos,recommendation_movies,recommendation_movies,recommendation_movies,general_quirky
-hem genç sürücüler ve hem de geçici sürücüler diğer sürücülerden daha çok kaza yaparlar çünkü henüz güvenli sürüş için ihtiyaçları olan yeterli deneyim birikimine sahip değillerdir araştırmalar göstermiştir ki sürücü deneyimi trafik kazalarını azaltmada en önemli faktördür ve genç sürücüler için en güvenli zaman öğrenme sırasında gözetim altında oldukları zamandır,recommendation_events,oos,oos,general_quirky,general_quirky,general_quirky,general_quirky
-lütfen bana yakında olan maratonları göster,recommendation_events,oos,recommendation_locations,recommendation_events,recommendation_events,recommendation_events,general_quirky
+ben bugün hangi filmi seyredeyim,recommendation_movies,oos,oos,recommendation_movies,recommendation_movies,recommendation_movies,oos
+hem genç sürücüler ve hem de geçici sürücüler diğer sürücülerden daha çok kaza yaparlar çünkü henüz güvenli sürüş için ihtiyaçları olan yeterli deneyim birikimine sahip değillerdir araştırmalar göstermiştir ki sürücü deneyimi trafik kazalarını azaltmada en önemli faktördür ve genç sürücüler için en güvenli zaman öğrenme sırasında gözetim altında oldukları zamandır,recommendation_events,oos,oos,oos,oos,oos,oos
+lütfen bana yakında olan maratonları göster,recommendation_events,oos,recommendation_locations,recommendation_events,recommendation_events,recommendation_events,oos
 bölgemizde gerçekleşen etkinlikler hakkında beni bilgilendirirsen sevinirim,recommendation_events,recommendation_events,recommendation_events,calendar_query,calendar_query,recommendation_events,calendar_query
-yüzme,recommendation_events,oos,calendar_set,oos,oos,general_quirky,general_quirky
-bu hafta sonu açılan hangi yeni drama filmleri var,recommendation_movies,recommendation_movies,recommendation_events,oos,oos,recommendation_events,oos
+yüzme,recommendation_events,oos,calendar_set,oos,oos,oos,oos
+bu hafta sonu açılan hangi yeni drama filmleri var,recommendation_movies,recommendation_movies,recommendation_events,recommendation_events,recommendation_movies,recommendation_events,oos
 cisco sistemi,recommendation_movies,oos,oos,oos,oos,qa_definition,qa_definition
-altın kelebek adayı bir film bul,recommendation_movies,recommendation_movies,oos,recommendation_movies,recommendation_movies,recommendation_movies,general_quirky
+altın kelebek adayı bir film bul,recommendation_movies,recommendation_movies,oos,recommendation_movies,recommendation_movies,recommendation_movies,oos
 kütüphanedeki bir sonraki etkinlik ne,recommendation_events,calendar_query,calendar_query,calendar_query,calendar_query,recommendation_events,calendar_query
 bu gece nereye gidebilirim,recommendation_events,recommendation_events,recommendation_events,recommendation_events,recommendation_events,recommendation_events,oos
 körfez bölgesinde ilginç bir şeyler oluyor mu,recommendation_events,recommendation_events,recommendation_events,oos,oos,recommendation_events,oos
 olly karataşta olan heyecanlı etkinlikleri bana bildir,recommendation_events,recommendation_events,recommendation_events,calendar_query,calendar_query,recommendation_events,calendar_query
-bugün ben ne seyredeyim,recommendation_movies,general_quirky,general_quirky,oos,recommendation_movies,oos,general_quirky
+bugün ben ne seyredeyim,recommendation_movies,oos,oos,recommendation_movies,recommendation_movies,oos,oos
 en yakın koçtaş nerede,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations,oos,oos
 benim bölgemde tiyatro nerede,recommendation_locations,recommendation_events,recommendation_locations,recommendation_events,recommendation_events,recommendation_events,recommendation_events
 civarda olan özel bir şeyler var mı,recommendation_events,recommendation_events,recommendation_events,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations
 bana yakın filmleri ara,recommendation_movies,recommendation_movies,recommendation_locations,recommendation_movies,recommendation_movies,recommendation_movies,oos
-bugün şehrimdeki tüm etkinlikleri bildir bana,recommendation_events,calendar_query,calendar_query,recommendation_events,oos,calendar_query,calendar_query
+bugün şehrimdeki tüm etkinlikleri bildir bana,recommendation_events,calendar_query,calendar_query,recommendation_events,calendar_query,calendar_query,calendar_query
 yakınlarda glutensiz fırın bul,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations,oos
-bir hediye bulmalıyım birkaç kilometre çapında hangi mağazalar var,recommendation_locations,recommendation_locations,recommendation_locations,general_quirky,general_quirky,recommendation_locations,general_quirky
-piazza alış veriş merkezi ne zaman açılıyor,recommendation_events,oos,oos,oos,oos,recommendation_locations,oos
+bir hediye bulmalıyım birkaç kilometre çapında hangi mağazalar var,recommendation_locations,recommendation_locations,recommendation_locations,oos,oos,recommendation_locations,oos
+piazza alış veriş merkezi ne zaman açılıyor,recommendation_events,calendar_query,oos,oos,oos,recommendation_locations,oos
 yerel güncel olaylar öner,recommendation_events,recommendation_events,recommendation_events,recommendation_events,recommendation_events,news_query,news_query
-recep ivedik üç,recommendation_movies,oos,oos,oos,oos,play_podcasts,oos
-pazar günü sabah saat beşte trenle aksaray'a gitmem gerekiyor,transport_ticket,oos,calendar_set,transport_query,transport_query,transport_ticket,transport_query
+recep ivedik üç,recommendation_movies,oos,oos,play_game,play_game,play_podcasts,oos
+pazar günü sabah saat beşte trenle aksaray'a gitmem gerekiyor,transport_ticket,calendar_set,calendar_set,transport_query,transport_query,transport_ticket,transport_query
 istanbul'dan ankara'ya tren biletimi ayırt,transport_ticket,transport_query,transport_query,transport_ticket,transport_ticket,transport_ticket,transport_query
 google ankara 'ya tren saatleri,transport_ticket,transport_query,transport_query,transport_query,transport_query,transport_query,transport_query
 benim ev seyahatim için saat beş de trafik nasıl,transport_query,transport_traffic,transport_traffic,transport_traffic,transport_traffic,transport_traffic,transport_traffic
@@ -527,187 +496,197 @@ ankara,transport_query,oos,datetime_query,qa_factoid,oos,qa_factoid,qa_factoid
 istanbul,transport_query,play_radio,transport_query,qa_factoid,oos,oos,oos
 en yakın benzin istasyonu nerede,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations,recommendation_locations,transport_query,transport_query
 en hesaplı tren rezervasyonu yap,transport_ticket,transport_query,transport_query,transport_ticket,transport_ticket,transport_query,transport_query
-oraya doğru git,transport_query,oos,oos,transport_query,transport_query,transport_query,oos
+oraya doğru git,transport_query,qa_factoid,oos,transport_query,transport_query,transport_query,oos
 bana ispanyaya giden en ucuz tren biletini bul,transport_ticket,transport_ticket,transport_query,transport_ticket,transport_ticket,transport_ticket,transport_query
 halk kütüphanesi nerede,transport_query,oos,recommendation_locations,qa_factoid,qa_factoid,qa_factoid,qa_factoid
 beni eskişehir porsuk çayına götür,transport_query,oos,oos,oos,oos,transport_query,oos
-bana tarifleri göster,oos,transport_query,transport_query,general_quirky,general_quirky,lists_query,general_quirky
+konuşma şeklime göre duygularımı takip edebilir misin,general_quirky,oos,oos,oos,oos,oos,oos
 mahalle pastanesinden tatlı patates turtası istiyorum,lists_createoradd,oos,oos,iot_coffee,oos,oos,oos
-cumartesi gecesi konseri için satılan biletleri görmek istiyorum,general_quirky,oos,oos,oos,oos,oos,calendar_query
+cumartesi gecesi konseri için satılan biletleri görmek istiyorum,general_quirky,oos,oos,calendar_query,oos,oos,calendar_query
+anlayacağım dilde bana kuantum fiziğini izah et,general_quirky,oos,oos,oos,oos,oos,oos
 benim için bir şekersiz diyet ve malzemeler için de bir alışveriş listesi oluşturabilir misin,general_quirky,lists_createoradd,lists_createoradd,lists_createoradd,lists_createoradd,lists_createoradd,lists_createoradd
-portakalın tanımları nelerdir,qa_definition,qa_definition,general_quirky,qa_definition,qa_definition,qa_definition,qa_factoid
-şafak sezer neden komik değil,qa_factoid,general_quirky,oos,oos,general_joke,general_quirky,general_quirky
+portakalın tanımları nelerdir,qa_definition,qa_definition,oos,qa_definition,qa_definition,qa_definition,qa_factoid
+şafak sezer neden komik değil,qa_factoid,oos,oos,oos,general_joke,oos,oos
 arabayı sür ve arkadaşlarımı getir,general_quirky,oos,oos,oos,oos,transport_taxi,transport_taxi
-bana kasırga hakkında her şeyi anlat,qa_definition,qa_factoid,oos,general_quirky,general_quirky,general_quirky,general_quirky
+bana kasırga hakkında her şeyi anlat,qa_definition,qa_factoid,oos,oos,oos,oos,oos
+benle karım için özel bir şeyler pişirir misin,general_quirky,oos,oos,calendar_set,calendar_set,oos,oos
 ayşe yılmazın telefon numarasını biliyor musun,qa_factoid,email_querycontact,email_querycontact,email_querycontact,email_querycontact,email_querycontact,email_querycontact
-ünlüleri bilgileriyle ara,general_quirky,oos,oos,email_querycontact,email_querycontact,oos,qa_factoid
+ünlüleri bilgileriyle ara,general_quirky,qa_factoid,oos,email_querycontact,email_querycontact,oos,qa_factoid
 annemle konuşmam gerek,general_quirky,oos,calendar_set,calendar_set,calendar_set,calendar_query,oos
-matematik biliyor musun,qa_maths,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky
-konum,qa_definition,general_quirky,email_query,oos,oos,general_quirky,general_quirky
+keşke bana tavsiye verebilse,general_quirky,qa_factoid,oos,oos,oos,oos,oos
+matematik biliyor musun,qa_maths,oos,oos,oos,oos,oos,oos
+konum,qa_definition,oos,email_query,oos,oos,oos,oos
 benim şehir merkezindeki işime trafiğe takılmadan gidilecek en hızlı yol hangisi,transport_query,transport_traffic,transport_query,transport_traffic,transport_traffic,transport_traffic,transport_traffic
-sibel can çocuklarının kıyafetlerini nereden alıyor,general_quirky,oos,oos,qa_factoid,qa_factoid,qa_factoid,qa_factoid
-hülya avşar neden bu kadar genç görünüyor,general_quirky,qa_factoid,qa_factoid,general_quirky,general_quirky,qa_factoid,qa_factoid
+ceyda düvenci güzel görünmek için neler yapıyor,general_quirky,oos,oos,qa_factoid,qa_factoid,oos,oos
+sibel can çocuklarının kıyafetlerini nereden alıyor,general_quirky,recommendation_locations,oos,qa_factoid,qa_factoid,qa_factoid,qa_factoid
+hülya avşar neden bu kadar genç görünüyor,general_quirky,qa_factoid,qa_factoid,oos,oos,qa_factoid,qa_factoid
+en iyi çikolatalı kurabiye tarifi ne,general_quirky,oos,oos,oos,oos,oos,oos
 bill gates ne kadar para kazandı,qa_factoid,qa_factoid,qa_factoid,qa_factoid,qa_factoid,qa_factoid,oos
-ünlüler ne yapar,qa_factoid,general_quirky,oos,general_quirky,general_quirky,general_quirky,general_quirky
+ünlüler ne yapar,qa_factoid,oos,oos,oos,oos,oos,oos
+benim için akşam yemeği hazırlar mısın,general_quirky,oos,calendar_set,calendar_set,calendar_set,oos,oos
 alexa benim bu ay için on dolarım var bu ay her gün ne kadar harcamam gerekiyor,qa_maths,oos,calendar_query,calendar_query,calendar_query,calendar_query,oos
 yakınımdaki hangi süpermarketin glutensiz ekmekte en iyi fiyata sahip olduğunu bilmek istiyorum,recommendation_locations,recommendation_locations,oos,recommendation_locations,recommendation_locations,recommendation_locations,oos
-wolfram alpha nın yaptığı gibi araştırma sonuçlarından çıkan cevapları kompüte etmek istiyorum,general_quirky,oos,oos,general_quirky,general_quirky,oos,oos
-sadece çen çen,general_quirky,general_quirky,oos,oos,oos,play_podcasts,oos
+wolfram alpha nın yaptığı gibi araştırma sonuçlarından çıkan cevapları kompüte etmek istiyorum,general_quirky,oos,oos,oos,oos,oos,oos
+tercihlerimi hatırlamasını ve sorduğumda bana bir şeyler önermesini istiyorum,general_quirky,oos,oos,calendar_set,calendar_set,oos,oos
+bu ay ne sıklıkta yemek yediğim gibi benim için yaptığın şeyler hakkında istatistikler söylemeni istiyorum,general_quirky,oos,oos,oos,oos,oos,oos
+sadece çen çen,general_quirky,oos,oos,oos,oos,play_podcasts,oos
+sana toplu iğne başında kaç meleğin dans edebileceğini sormak istiyorum,general_quirky,qa_factoid,oos,oos,oos,oos,oos
 kıyamet ne zaman kopacak,general_quirky,calendar_query,oos,oos,oos,oos,oos
 hokey maçları bu akşam kaçta,general_quirky,recommendation_events,calendar_query,calendar_query,calendar_query,oos,calendar_query
-kırk doların yüzde onu kaç lira,qa_maths,oos,qa_maths,qa_currency,qa_currency,oos,qa_currency
+kırk doların yüzde onu kaç lira,qa_maths,qa_currency,qa_maths,qa_currency,qa_currency,oos,qa_currency
 tüm arkadaşlarıma komik bir mesaj gönder,oos,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_sendemail
 yarın hangi mağazada indirim var,general_quirky,recommendation_locations,oos,recommendation_events,oos,recommendation_events,oos
+kemik erimesine ne sebep oluyor,general_quirky,oos,oos,qa_factoid,qa_factoid,qa_factoid,oos
+ben evde yokken robotumun köpeğimi beslemesini ve okşamasını istiyorum,general_quirky,oos,oos,oos,oos,oos,oos
 on sekiz üssü otuz birin kaç olduğunu söyle,qa_maths,datetime_query,qa_maths,datetime_query,datetime_query,qa_factoid,qa_factoid
-a. b. d. ne zaman özgürlüğe kavuştu,qa_factoid,calendar_query,oos,calendar_query,calendar_query,general_quirky,general_quirky
+neden buradayız,general_quirky,oos,oos,oos,oos,oos,oos
+hukuk danışmanlığı verebilseydin harika olurdu,general_quirky,oos,oos,oos,oos,oos,oos
+a. b. d. ne zaman özgürlüğe kavuştu,qa_factoid,calendar_query,oos,calendar_query,calendar_query,oos,oos
 tüm son komutlarımın listesini bana gösterir misin,general_quirky,oos,calendar_query,oos,oos,lists_query,oos
 bu hafta sonu kazanan piyango sayılarını ver lütfen,general_quirky,oos,calendar_query,oos,oos,calendar_query,calendar_query
-motivasyonun tanımını ver,qa_definition,qa_definition,qa_definition,qa_definition,qa_definition,qa_definition,general_quirky
-balinalar neden büyük,qa_factoid,qa_factoid,qa_factoid,qa_factoid,qa_factoid,qa_factoid,general_quirky
+motivasyonun tanımını ver,qa_definition,qa_definition,qa_definition,qa_definition,qa_definition,qa_definition,oos
+balinalar neden büyük,qa_factoid,qa_factoid,qa_factoid,qa_factoid,qa_factoid,qa_factoid,oos
 dünya niye yuvarlak,general_quirky,qa_factoid,oos,qa_factoid,qa_factoid,qa_factoid,qa_factoid
+onun fikirleri analiz etmesine katkıda bulunacağım,general_quirky,oos,oos,oos,oos,oos,oos
+netflix izyleytakılmak ister misin,general_quirky,oos,oos,play_radio,oos,play_music,oos
 cem yılmaz dün gece nerede görüldü,general_quirky,oos,oos,qa_factoid,qa_factoid,qa_factoid,oos
 senden t. v.' yi açmanı istiyorum,iot_wemo_on,oos,oos,oos,oos,oos,oos
-en son akademi ödüllü film ne zamandı,qa_factoid,oos,oos,recommendation_movies,recommendation_movies,recommendation_movies,general_quirky
-bugün cemiyetime yardımcı olmak için neler yapabileceğimi söyle,general_quirky,general_quirky,general_quirky,oos,oos,calendar_query,calendar_query
-en büyük çalışma masası hangisi,qa_definition,qa_factoid,qa_factoid,general_quirky,general_quirky,general_quirky,qa_factoid
-sandalyeler ne renk,qa_factoid,oos,iot_hue_lightchange,general_quirky,general_quirky,oos,general_quirky
+en son akademi ödüllü film ne zamandı,qa_factoid,oos,oos,recommendation_movies,recommendation_movies,recommendation_movies,oos
+bugün cemiyetime yardımcı olmak için neler yapabileceğimi söyle,general_quirky,oos,oos,oos,oos,calendar_query,calendar_query
+en büyük çalışma masası hangisi,qa_definition,qa_factoid,qa_factoid,oos,oos,oos,qa_factoid
+sandalyeler ne renk,qa_factoid,oos,iot_hue_lightchange,oos,oos,oos,oos
+kişinin biyografisi,general_quirky,qa_factoid,email_querycontact,qa_factoid,qa_factoid,oos,oos
 lütfen cam üfleme ile ilgili vikipedi makalesini getir,general_quirky,oos,email_sendemail,oos,oos,qa_definition,oos
 parsek nedir,qa_factoid,qa_definition,qa_factoid,qa_definition,qa_definition,qa_definition,qa_definition
 kartal kalkar dal sarkar dal sarkar kartal kalkar,general_quirky,oos,oos,oos,oos,oos,oos
-bir kredi kartını tarif edebilir misin,qa_definition,general_quirky,qa_definition,qa_definition,qa_definition,qa_definition,general_quirky
-bugün dow jonesa ne oldu,qa_stock,oos,news_query,oos,oos,news_query,oos
-mutlu bir doğum gününü nasıl tarif edersin,qa_definition,oos,oos,general_quirky,general_quirky,general_quirky,general_quirky
-yaşamın tanımı,qa_definition,qa_definition,qa_definition,qa_definition,qa_definition,general_quirky,general_quirky
+bir kredi kartını tarif edebilir misin,qa_definition,oos,qa_definition,qa_definition,qa_definition,qa_definition,oos
+bugün dow jonesa ne oldu,qa_stock,news_query,news_query,qa_stock,qa_stock,news_query,oos
+mutlu bir doğum gününü nasıl tarif edersin,qa_definition,qa_definition,oos,oos,oos,oos,oos
+yaşamın tanımı,qa_definition,qa_definition,qa_definition,qa_definition,qa_definition,oos,oos
 orhan pamukun doğum günü ne zaman,qa_factoid,calendar_query,oos,qa_factoid,qa_factoid,qa_factoid,oos
-şimdi bana kar olan bir yer söyle,general_quirky,oos,oos,general_quirky,general_quirky,recommendation_locations,oos
+şimdi bana kar olan bir yer söyle,general_quirky,oos,oos,oos,oos,recommendation_locations,oos
 yenin değeri ne kadar,qa_currency,qa_stock,qa_stock,news_query,news_query,qa_stock,oos
-acı sonuçlar,qa_definition,oos,general_quirky,oos,oos,general_quirky,general_quirky
-eylemlerin sonuçları,qa_definition,oos,general_quirky,calendar_query,calendar_query,news_query,oos
-ortalama bir ev ne kadardır,qa_factoid,general_quirky,qa_factoid,general_quirky,general_quirky,oos,general_quirky
-tembel hayvanı tarif et,qa_definition,qa_definition,qa_definition,qa_definition,qa_definition,qa_definition,general_quirky
-tembel hayvanlar hakkında bildiğin her şeyi söyle,qa_factoid,qa_factoid,oos,general_quirky,general_quirky,general_quirky,general_quirky
-bir kalem dört dolar ve bir kitap on dolarsa iki kalem ve üç kitap alırsam ne kadar öderim,qa_maths,oos,oos,general_quirky,general_quirky,oos,oos
+acı sonuçlar,qa_definition,oos,oos,oos,oos,oos,oos
+eylemlerin sonuçları,qa_definition,news_query,oos,calendar_query,calendar_query,news_query,oos
+en iyi model araba,general_quirky,oos,oos,oos,oos,oos,oos
+ortalama bir ev ne kadardır,qa_factoid,oos,qa_factoid,oos,oos,oos,oos
+tembel hayvanı tarif et,qa_definition,qa_definition,qa_definition,qa_definition,qa_definition,qa_definition,oos
+tembel hayvanlar hakkında bildiğin her şeyi söyle,qa_factoid,qa_factoid,oos,oos,oos,oos,oos
+bir kalem dört dolar ve bir kitap on dolarsa iki kalem ve üç kitap alırsam ne kadar öderim,qa_maths,play_audiobook,oos,oos,oos,oos,oos
+dün ne giydiğimi söyle,general_quirky,oos,music_query,calendar_query,calendar_query,oos,oos
+hadise neler yapıyor,general_quirky,oos,oos,oos,oos,qa_factoid,oos
 kaya kumu ile ilgili bilgiler ver,qa_definition,oos,oos,qa_definition,qa_definition,qa_definition,qa_factoid
 converse ayakkabı nedir,qa_definition,qa_definition,qa_definition,qa_definition,qa_definition,qa_definition,oos
-ne tür güneş gözlükleri pilot gözlüğü olarak kabul edilir,qa_factoid,oos,oos,general_quirky,general_quirky,general_quirky,general_quirky
-afrika bilgileri,qa_factoid,general_quirky,general_quirky,qa_factoid,qa_factoid,general_quirky,general_quirky
-konumu ara,qa_factoid,oos,email_querycontact,oos,oos,oos,oos
-kişi hakkında detaylar,qa_factoid,qa_factoid,email_querycontact,oos,oos,oos,general_quirky
-bazalt nasıl alınır,general_quirky,oos,oos,general_quirky,oos,iot_hue_lightdim,oos
+ne tür güneş gözlükleri pilot gözlüğü olarak kabul edilir,qa_factoid,oos,oos,oos,oos,oos,oos
+afrika bilgileri,qa_factoid,oos,oos,qa_factoid,qa_factoid,oos,oos
+konumu ara,qa_factoid,oos,email_querycontact,qa_factoid,oos,oos,oos
+kişi hakkında detaylar,qa_factoid,qa_factoid,email_querycontact,news_query,oos,oos,oos
+bazalt nasıl alınır,general_quirky,oos,oos,oos,oos,iot_hue_lightdim,oos
 hey kitap nedir,qa_definition,qa_definition,qa_definition,qa_definition,qa_definition,oos,oos
+bu olay tarihteki en önemsiz mi yoksa en önemli bir durum mu,general_quirky,oos,oos,oos,oos,oos,oos
 çin e karşı hindistan ile ilgili bana ekonomi ve g.d.p bilgisi ver,general_quirky,oos,oos,oos,oos,news_query,oos
 google insanoğlunun temel ihtiyaçları nelerdir,general_quirky,qa_factoid,oos,oos,oos,qa_factoid,qa_factoid
 kainat a cevap ne,qa_factoid,email_sendemail,oos,oos,oos,oos,oos
+sanırım bir günde tüm dünyayı dolaşabilirim,general_quirky,oos,oos,oos,oos,oos,oos
 dördüncü dünya savaşı çıkacak mı,general_quirky,qa_factoid,oos,calendar_query,calendar_query,qa_factoid,qa_factoid
 yirmi yıl sonra dünya nüfusu ne kadar olacak,general_quirky,qa_factoid,oos,calendar_query,calendar_query,qa_factoid,qa_factoid
-bana ünlünün mesleğini söyle,qa_factoid,qa_factoid,oos,qa_factoid,oos,general_quirky,general_quirky
+bana ünlünün mesleğini söyle,qa_factoid,qa_factoid,oos,qa_factoid,oos,oos,oos
 yeni futbol oyun kurallarını tanımla,general_quirky,qa_definition,play_game,qa_definition,qa_definition,qa_definition,qa_definition
+obama günlük hayatında neler yapıyor,general_quirky,oos,oos,oos,oos,oos,oos
 meryem bu sene yeni bir film çekecek mi,qa_factoid,recommendation_movies,recommendation_movies,recommendation_movies,recommendation_movies,recommendation_movies,oos
-şener şenin ilk filmi neydi,qa_factoid,qa_factoid,qa_factoid,general_quirky,oos,qa_factoid,general_quirky
+şener şenin ilk filmi neydi,qa_factoid,qa_factoid,qa_factoid,oos,qa_factoid,qa_factoid,oos
 tülin şahinin yeni bir bebeği mi var,qa_factoid,oos,oos,news_query,news_query,qa_factoid,oos
 rota bul,qa_factoid,transport_query,transport_query,transport_query,transport_query,transport_query,transport_query
 google pixelin özellikleri,general_quirky,oos,oos,qa_factoid,qa_factoid,qa_factoid,qa_factoid
+güneşe gidebilir miyiz,general_quirky,oos,oos,transport_query,oos,oos,oos
 lütfen en sonki george r. r. martin ice and fire kitabını özetle,qa_factoid,oos,oos,play_audiobook,play_audiobook,play_audiobook,play_audiobook
 hande yener konser programı hakkında bir liste yapın,lists_createoradd,oos,oos,lists_createoradd,lists_createoradd,lists_createoradd,oos
-türkiye nin diğer ülkelerden ne kadar da daha iyi olduğunu anlat,general_quirky,qa_factoid,oos,general_quirky,general_quirky,qa_factoid,qa_factoid
+küresel ısanma gerçek mi değil mi söyle,general_quirky,oos,qa_factoid,oos,oos,oos,oos
+türkiye nin diğer ülkelerden ne kadar da daha iyi olduğunu anlat,general_quirky,qa_factoid,oos,oos,oos,qa_factoid,qa_factoid
 japonya dan güney kore ye seyahat ne kadar sürecek,qa_factoid,qa_factoid,transport_query,transport_query,transport_query,transport_query,transport_query
 beren saat hangi yeni filmin üzerinde çalışıyor,qa_factoid,oos,oos,recommendation_movies,recommendation_movies,recommendation_movies,oos
 yabancı çeviri kurları,qa_currency,oos,qa_currency,qa_currency,qa_currency,oos,oos
 kürenin ne olduğunu açıkla,qa_definition,qa_definition,qa_definition,oos,oos,qa_definition,oos
-bugün new jersey için en ucuz uçak biletlerini göster,transport_ticket,oos,transport_query,transport_query,oos,oos,transport_query
-tarif lütfen,oos,qa_definition,qa_definition,qa_definition,qa_definition,qa_definition,general_quirky
+bugün new jersey için en ucuz uçak biletlerini göster,transport_ticket,transport_ticket,transport_query,transport_query,transport_query,oos,transport_query
 ahmet davutoğlunun doğum yılı kaç,qa_factoid,qa_factoid,qa_factoid,qa_factoid,qa_factoid,qa_factoid,calendar_query
-amazon ormanındaki hayvanlar aleminden bahseder misin,general_quirky,oos,oos,general_quirky,general_quirky,general_quirky,qa_factoid
+amazon ormanındaki hayvanlar aleminden bahseder misin,general_quirky,oos,oos,oos,oos,oos,qa_factoid
 yetmiş altıyı ikiye böl,qa_maths,oos,qa_maths,oos,oos,qa_maths,oos
-roma ve gregoryen takvimi arasındaki farklar nelerdir,qa_factoid,oos,calendar_query,oos,oos,calendar_query,calendar_query
-sandalye neyden yapılmış,qa_factoid,oos,oos,qa_definition,qa_definition,qa_definition,general_quirky
+roma ve gregoryen takvimi arasındaki farklar nelerdir,qa_factoid,calendar_query,calendar_query,oos,oos,calendar_query,calendar_query
+sandalye neyden yapılmış,qa_factoid,oos,oos,qa_definition,qa_definition,qa_definition,oos
 bana yakın bir yürüyüş yolu nerededir,recommendation_locations,recommendation_locations,recommendation_locations,transport_query,transport_query,transport_query,transport_query
-insanlarla kıyaslamak,qa_factoid,general_quirky,oos,general_quirky,general_quirky,general_quirky,general_quirky
-nötr yoğunluk filteri nedir ve ben gradyanlı olanı mı katı olanı mı isterim ayrıca stil olarak vidalanabilir olan mı yoksa kare olan mı daha iyi,qa_factoid,oos,oos,oos,oos,qa_factoid,general_quirky
-o bölgedeki iklim koşulları nelerdir,qa_factoid,oos,oos,general_quirky,general_quirky,general_quirky,general_quirky
-internet lütfen,general_quirky,oos,oos,oos,oos,general_quirky,oos
+zor kelimesi uygun şekilde sıralandı,general_quirky,oos,oos,qa_definition,qa_definition,qa_definition,oos
+insanlarla kıyaslamak,qa_factoid,oos,oos,oos,oos,oos,oos
+nötr yoğunluk filteri nedir ve ben gradyanlı olanı mı katı olanı mı isterim ayrıca stil olarak vidalanabilir olan mı yoksa kare olan mı daha iyi,qa_factoid,oos,oos,qa_factoid,oos,qa_factoid,oos
+o bölgedeki iklim koşulları nelerdir,qa_factoid,oos,oos,oos,oos,oos,oos
+bak,general_quirky,qa_definition,qa_definition,oos,oos,oos,oos
+internet lütfen,general_quirky,oos,oos,oos,oos,oos,oos
+kadınları nasıl anlarım,general_quirky,oos,oos,oos,oos,oos,oos
 iphone yedi açıklama,qa_definition,qa_definition,qa_definition,qa_definition,qa_definition,oos,oos
-şener şenin bundan sonraki filmi ne,qa_factoid,oos,music_query,recommendation_movies,recommendation_movies,oos,general_quirky
+şener şenin bundan sonraki filmi ne,qa_factoid,oos,music_query,recommendation_movies,recommendation_movies,oos,oos
 bu yerin jeolojisi nedir,general_quirky,qa_definition,qa_factoid,qa_factoid,qa_factoid,qa_factoid,qa_factoid
-teknosa nasıl gidiyor,qa_stock,general_quirky,general_quirky,qa_stock,qa_stock,qa_stock,oos
-helikopter ol,general_quirky,oos,general_quirky,oos,oos,oos,oos
-sosyal ağlarımı kontrol et,oos,oos,alarm_query,alarm_query,alarm_query,alarm_query,alarm_query
-yeni arkadaşlık isteğim var mı,oos,news_query,email_query,oos,oos,oos,general_quirky
-doğum günü dilekleri,oos,calendar_set,calendar_set,general_quirky,general_quirky,calendar_query,calendar_query
-düğün dilekleri,oos,oos,calendar_set,general_quirky,general_quirky,oos,general_quirky
+teknosa nasıl gidiyor,qa_stock,oos,oos,qa_stock,qa_stock,qa_stock,oos
+helikopter ol,general_quirky,oos,oos,oos,oos,oos,oos
+sosyal ağlarımı kontrol et,oos,alarm_query,alarm_query,alarm_query,alarm_query,alarm_query,alarm_query
+doğum günü dilekleri,oos,calendar_set,calendar_set,oos,oos,calendar_query,calendar_query
 japonya ziyaretimi twitter da yayınla,oos,oos,oos,news_query,news_query,news_query,news_query
-ne oluyor,oos,news_query,news_query,news_query,news_query,news_query,general_quirky
-bana facebooktaki en güncel gelişmeleri göster,oos,news_query,news_query,oos,oos,news_query,news_query
+bana facebooktaki en güncel gelişmeleri göster,oos,news_query,news_query,recommendation_locations,oos,news_query,news_query
 yeni güncellemeler,oos,news_query,news_query,news_query,news_query,news_query,news_query
-merhaba facebooktaki herkes diye paylaşım yap,oos,oos,oos,oos,oos,general_quirky,general_quirky
 facebook'ta arkadaşım mert'ten gönderi var mı,oos,email_query,email_query,email_query,email_query,email_query,email_query
-goa fotoğraf gezim instagramda yayınla,oos,oos,oos,oos,oos,oos,general_quirky
-az önce paylaştığım fotoğrafımı beğenen var mı,oos,oos,oos,calendar_query,calendar_query,general_quirky,general_quirky
 bunu facebook'uma postala,oos,email_query,email_sendemail,email_query,oos,email_query,email_query
-facebook da mutlu olduğumu paylaş,oos,oos,oos,oos,oos,general_quirky,general_quirky
-facebookta güzel havanın tadını çıkardığımı söyleyen yeni bir durum paylaş,oos,general_quirky,oos,news_query,news_query,general_quirky,general_quirky
 mesajı şimdi paylaş,oos,oos,email_query,email_query,oos,email_query,email_query
 olly sıcak sosyal medya konuları neler,oos,oos,news_query,news_query,news_query,news_query,news_query
 bugün twitter'da beni takip eden oldu mu,oos,news_query,calendar_query,email_query,email_query,news_query,news_query
 herhangi bir sosyal medya bildirimim varmı,calendar_query,oos,oos,email_query,email_query,news_query,news_query
 bana facebookta neler olduğunu söyle,oos,news_query,news_query,news_query,news_query,news_query,news_query
 herkese doğum günü dilekleri için teşekkür etmek istiyorum,oos,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set,calendar_set
-durumuma yorum yapan var mı,oos,oos,oos,news_query,news_query,news_query,general_quirky
 lütfen facebook akışımı oku,oos,oos,news_query,news_query,news_query,news_query,news_query
 lütfen twitterda hakkında en çok konuşulan konuları kontrol et,oos,news_query,email_query,news_query,news_query,news_query,news_query
-kim şu anda facebook canlı yayın yapıyor,oos,oos,qa_factoid,oos,oos,news_query,news_query
-samsung ile iletişime geçip çamaşır makinemin yandığını söyleyebilir misin,oos,oos,oos,general_quirky,general_quirky,general_quirky,general_quirky
+kim şu anda facebook canlı yayın yapıyor,oos,oos,qa_factoid,news_query,oos,news_query,news_query
 ağla ilgili sorunlar için vodafona bir şikayet ilet,oos,oos,oos,email_sendemail,email_sendemail,oos,email_query
-ürünün berbat olduğunu tweet at,oos,oos,oos,oos,oos,general_quirky,general_quirky
 bana en kısa zamanda bir kişi bul,oos,email_querycontact,oos,oos,oos,email_querycontact,email_querycontact
 şirket adına iki başparmak aşağı,oos,oos,oos,oos,oos,calendar_set,calendar_set
-burgerimle ilgili bir sorunum var burger kinge tweet atabilirmisin,oos,general_quirky,oos,oos,oos,general_quirky,general_quirky
 twitter şikayeti gönder,oos,email_sendemail,email_sendemail,oos,oos,email_sendemail,email_query
-arçelike onlardan nefret ettiğimi söyle,oos,oos,oos,oos,oos,general_quirky,general_quirky
 tüketici hizmetlerine yeni tweet,oos,news_query,news_query,news_query,news_query,news_query,news_query
 bana en son sosyal medya etkinliğimi göster,oos,calendar_query,calendar_query,news_query,news_query,calendar_query,calendar_query
 sosyal medyada herhangi önemli bir şey oluyor mu,oos,calendar_query,oos,news_query,news_query,news_query,news_query
-samsung'a mobil şikayet tweet'i at,oos,oos,oos,oos,oos,news_query,email_query
-lütfen daikin servisine olumsuz yanıt tweeti,oos,general_quirky,email_sendemail,email_query,email_query,news_query,email_query
+samsung'a mobil şikayet tweet'i at,oos,news_query,oos,oos,oos,news_query,email_query
+lütfen daikin servisine olumsuz yanıt tweeti,oos,oos,email_sendemail,email_query,email_query,news_query,email_query
 geciken hizmetleri için lütfen dell servisine tweet at,oos,oos,oos,email_query,email_query,email_sendemail,email_sendemail
-lütfen konuyla ilgilen,general_quirky,news_query,email_query,general_quirky,general_quirky,news_query,oos
-sorunu ortadan kaldır,general_quirky,calendar_remove,lists_remove,oos,oos,oos,oos
+lütfen konuyla ilgilen,general_quirky,news_query,email_query,oos,oos,news_query,oos
+sorunu ortadan kaldır,general_quirky,calendar_remove,lists_remove,calendar_remove,oos,oos,oos
 şirket ismini aç ve şikayetler bul,oos,oos,oos,music_query,oos,email_query,email_query
 şu tweet'i gönder a. b. c. şirketi'nden memnun değilim benim hesabımın takipleri çok kötü,oos,oos,oos,news_query,news_query,email_query,email_query
 lütfen kötü müşteri hizmetleri için denizcasta şikayet tweeti at,oos,oos,oos,oos,oos,oos,email_query
 mcdonald'sın kötü bir servisi olduğu hakkında tweet at,oos,oos,oos,news_query,news_query,news_query,news_query
-şikayet tweeti at,oos,oos,news_query,oos,oos,oos,email_query
+şikayet tweeti at,oos,email_sendemail,news_query,oos,oos,oos,email_query
 tüketici hizmetlerine rapor gönder,oos,email_sendemail,email_sendemail,news_query,news_query,email_sendemail,email_sendemail
 getire hala teslimatım için beklediğimi söyleyen bir mesaj tweet at,oos,oos,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_sendemail
-benim edevlet de twitter a en son girişimi postla,oos,oos,email_query,email_query,email_query,email_query,email_query
+benim edevlet de twitter a en son girişimi postla,oos,email_query,email_query,email_query,email_query,email_query,email_query
 bir şikayet tweeti gönder,oos,email_sendemail,email_sendemail,oos,oos,oos,email_query
-merhaba birinden aldığım ürün bozuldu,oos,general_quirky,oos,general_quirky,general_quirky,general_quirky,general_quirky
 hizmet a hakkında şikayette bulun,oos,qa_factoid,qa_factoid,news_query,news_query,email_query,email_query
-facebookta mutlu olma durumunu ayarla,oos,oos,oos,calendar_set,calendar_set,general_quirky,general_quirky
 olly türk telekoma bir mesaj tweet at ve servisimin neden kötü olduğunu sor,oos,oos,oos,email_sendemail,email_sendemail,email_sendemail,email_query
-bir şirket hakkında olumsuz bir değerlendirme yükle,oos,oos,oos,general_quirky,general_quirky,general_quirky,general_quirky
-bugün kiminle buluşacağım,calendar_query,oos,general_quirky,qa_factoid,qa_factoid,oos,general_quirky
-seth nerede yaşıyor,email_querycontact,qa_factoid,qa_factoid,oos,oos,qa_factoid,qa_factoid
-burda kişilere eklenecek yeni bir eposta adresi var,email_sendemail,email_addcontact,email_addcontact,oos,oos,email_addcontact,email_query
+bugün kiminle buluşacağım,calendar_query,calendar_query,oos,qa_factoid,qa_factoid,oos,oos
+seth nerede yaşıyor,email_querycontact,qa_factoid,qa_factoid,email_querycontact,email_querycontact,qa_factoid,qa_factoid
+burda kişilere eklenecek yeni bir eposta adresi var,email_sendemail,email_addcontact,email_addcontact,email_sendemail,oos,email_addcontact,email_query
 konu,email_query,news_query,email_query,oos,oos,news_query,oos
-bu bize nasıl geldi,email_sendemail,email_sendemail,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky
-nasıl kredi alabiliriz,email_sendemail,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky,general_quirky
+bu bize nasıl geldi,email_sendemail,email_sendemail,oos,oos,oos,oos,oos
+nasıl kredi alabiliriz,email_sendemail,oos,oos,oos,oos,oos,oos
 kişilerde ali tunayı bul,email_querycontact,email_querycontact,qa_factoid,qa_factoid,qa_factoid,email_querycontact,oos
 çok önemliyse cevap gönder,email_query,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_sendemail
-eğer oldukça bilindik bir yerdense önemli olarak işaretle,email_query,calendar_set,oos,play_audiobook,play_audiobook,general_quirky,general_quirky
+eğer oldukça bilindik bir yerdense önemli olarak işaretle,email_query,calendar_set,oos,play_audiobook,play_audiobook,oos,oos
 bana cemrenin telefon numarasını ver,email_querycontact,email_querycontact,email_querycontact,email_querycontact,email_querycontact,email_querycontact,qa_factoid
 melek'in e-posta adresi ne,email_querycontact,email_sendemail,email_sendemail,email_querycontact,email_querycontact,email_querycontact,email_query
 yardım sadece cemreye gönderilecek,email_sendemail,email_sendemail,email_sendemail,oos,oos,email_sendemail,oos
 bu yeni email kişilerime eklenmeli,email_sendemail,email_addcontact,email_addcontact,email_addcontact,email_addcontact,email_addcontact,oos
 bugünün postasında toplantı programını kontrol et,email_query,calendar_query,calendar_query,email_query,email_query,calendar_query,calendar_query
 bu epostayı hatırla,email_addcontact,email_sendemail,calendar_set,email_query,email_query,email_query,email_query
-jale'ye önümüzdeki üç hafta boyunca projelerle meşgul olacağımı söyler misin,email_sendemail,calendar_query,calendar_set,calendar_set,calendar_set,general_quirky,general_quirky
-bana nalan sden bahset,email_querycontact,oos,qa_factoid,oos,oos,qa_definition,qa_factoid
+jale'ye önümüzdeki üç hafta boyunca projelerle meşgul olacağımı söyler misin,email_sendemail,calendar_query,calendar_set,calendar_set,calendar_set,oos,oos
+bana nalan sden bahset,email_querycontact,oos,qa_factoid,qa_factoid,oos,qa_definition,qa_factoid
 kişileri aç,email_addcontact,email_querycontact,email_querycontact,oos,oos,oos,oos
 bu ay tanıdığım birinin doğum günü var mı,email_querycontact,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query,calendar_query
 on iki ay içinde hangi kişiyi aramadım,email_querycontact,oos,calendar_query,calendar_query,calendar_query,oos,oos
 lütfen epostayı cihana gönder,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_query
-deryaya bir eposta yaz hey bugün ne yapıyorsun,email_sendemail,general_quirky,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_query
+deryaya bir eposta yaz hey bugün ne yapıyorsun,email_sendemail,oos,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_query
 alexa eposta başlat,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_query
 bu emailin şu an gönderilmesine ihtiyacım var,email_sendemail,email_sendemail,email_query,email_query,email_query,email_sendemail,email_query
 tekrar epostası gönder,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_query
@@ -721,17 +700,17 @@ hizmet sorunlarım hakkında kırcılara gönderilecek bir epostaya ihtiyacım v
 ben irtibata girdi mi,email_query,oos,oos,email_querycontact,email_querycontact,email_querycontact,oos
 gratis'e giden e-postayı bul ve onu kişi listeme koy,email_addcontact,email_sendemail,email_sendemail,email_query,email_query,oos,oos
 kişilerimin kaçı marmaris'te yaşıyor veya çalışıyor,email_querycontact,email_querycontact,oos,oos,oos,oos,oos
-kişilerim çoğunlukla kadın mı erkek mi,email_querycontact,general_quirky,email_querycontact,general_quirky,general_quirky,email_querycontact,oos
+kişilerim çoğunlukla kadın mı erkek mi,email_querycontact,oos,email_querycontact,oos,oos,email_querycontact,oos
 email dikte et,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_query
 bu maili benim kişilerime ekle ve email gönder,email_addcontact,email_sendemail,email_sendemail,email_addcontact,email_addcontact,email_sendemail,email_sendemail
-yeni bir email oluştur ama bu kez burak örnek nokta com diye yeni bir adres aldım,email_sendemail,email_sendemail,email_sendemail,oos,oos,email_sendemail,oos
+yeni bir email oluştur ama bu kez burak örnek nokta com diye yeni bir adres aldım,email_sendemail,email_sendemail,email_sendemail,email_query,email_query,email_sendemail,oos
 taksi beyin telefon numarası ne kişilerimde kayıtlı,email_querycontact,email_querycontact,email_querycontact,email_querycontact,email_querycontact,email_querycontact,transport_taxi
 emaili yeni e-posta kimliği ne gönderebilir misin,email_sendemail,email_sendemail,email_sendemail,email_query,email_query,email_sendemail,email_query
 emrenin epostasını yanıtla,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_query
 yanıtı başla,email_sendemail,oos,email_sendemail,oos,oos,oos,oos
-bebek bakıcısı ara,email_query,oos,calendar_set,oos,oos,email_querycontact,oos
+bebek bakıcısı ara,email_query,oos,calendar_set,transport_taxi,oos,email_querycontact,oos
 benim email kişilerime michael den gelen yeni e-posta ları da ekle,email_addcontact,email_query,email_query,email_query,email_query,oos,email_query
-kamil'in e-postası nedir,email_querycontact,oos,email_querycontact,email_querycontact,email_querycontact,email_querycontact,email_query
-pelinin kişi detayı,email_querycontact,oos,email_querycontact,email_querycontact,email_querycontact,qa_factoid,qa_factoid
+kamil'in e-postası nedir,email_querycontact,email_querycontact,email_querycontact,email_querycontact,email_querycontact,email_querycontact,email_query
+pelinin kişi detayı,email_querycontact,qa_factoid,email_querycontact,email_querycontact,email_querycontact,qa_factoid,qa_factoid
 maile şöyle cevap ver merhaba,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_query
 arkadaşım can bana yeni aldığı evine bir davetiye gönderdi email kimliğinden ona teşekkürler de,email_sendemail,email_query,email_sendemail,email_sendemail,email_sendemail,email_sendemail,email_query
